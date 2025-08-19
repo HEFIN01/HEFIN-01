@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEFIN - Health & Finance Intelligence | No Premiums, No Bias</title>
+    <meta name="description" content="HEFIN revolutionizes healthcare financing through intelligent resource allocation, transparent fund pooling, and strategic purchasing of health services. No premiums, no bias - just intelligent care and fair finance, powered by you.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="HEFIN - Health & Finance Intelligence">
+    <meta property="og:description" content="No Premiums, No Bias — Just Intelligent Care and Fair Finance, Powered by You">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hefin.health">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <h1 class="logo-text">HEFIN</h1>
+                    <p class="logo-subtitle">Health & Finance Intelligence</p>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="nav-menu desktop-menu">
+                    <button class="nav-link" onclick="scrollToSection('home')">Home</button>
+                    <button class="nav-link" onclick="scrollToSection('about')">About</button>
+                    <button class="nav-link" onclick="scrollToSection('solutions')">Solutions</button>
+                    <button class="nav-link" onclick="scrollToSection('calculator')">Calculator</button>
+                    <button class="nav-link" onclick="scrollToSection('patients')">Patients</button>
+                    <button class="nav-link" onclick="scrollToSection('contact')">Contact</button>
+                    <button class="btn btn-primary" onclick="scrollToSection('patients')">Get Started</button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu">
+                <button class="nav-link mobile-nav-link" onclick="scrollToSection('home')">Home</button>
+                <button class="nav-link mobile-nav-link" onclick="scrollToSection('about')">About</button>
+                <button class="nav-link mobile-nav-link" onclick="scrollToSection('solutions')">Solutions</button>
+                <button class="nav-link mobile-nav-link" onclick="scrollToSection('calculator')">Calculator</button>
+                <button class="nav-link mobile-nav-link" onclick="scrollToSection('patients')">Patients</button>
+                <button class="nav-link mobile-nav-link" onclick="scrollToSection('contact')">Contact</button>
+                <button class="btn btn-primary mobile-nav-link" onclick="scrollToSection('patients')">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">No Premiums, No Bias</h1>
+                    <h2 class="hero-subtitle">Just Intelligent Care and Fair Finance</h2>
+                    <p class="hero-tagline">Powered by You</p>
+                    <p class="hero-description">
+                        HEFIN revolutionizes healthcare financing by enabling universal health coverage through 
+                        intelligent resource allocation, transparent fund pooling, and strategic purchasing of health services.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-secondary" onclick="scrollToSection('solutions')">Explore Solutions</button>
+                        <button class="btn btn-outline" onclick="scrollToSection('about')">Learn More</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-animation">
+                        <div class="animation-circle"></div>
+                        <div class="animation-shape shape-1"></div>
+                        <div class="animation-shape shape-2"></div>
+                        <div class="animation-shape shape-3"></div>
+                        <div class="animation-shape shape-4"></div>
+                        <div class="hero-icon">
+                            <i data-lucide="heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Core Functions of Health Financing</h2>
+                <p class="section-description">
+                    HEFIN transforms healthcare financing through three strategic pillars designed to achieve 
+                    universal health coverage and financial protection.
+                </p>
+            </div>
+            
+            <div class="functions-grid">
+                <div class="function-card card-blue">
+                    <div class="function-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h3 class="function-title">Revenue Raising</h3>
+                    <p class="function-description">Diversified funding sources for sustainable healthcare financing:</p>
+                    <ul class="function-list">
+                        <li><i data-lucide="check-circle"></i>Government Budget Allocation</li>
+                        <li><i data-lucide="check-circle"></i>Insurance Scheme Integration</li>
+                        <li><i data-lucide="check-circle"></i>Optimized Payment Systems</li>
+                        <li><i data-lucide="check-circle"></i>External Aid Coordination</li>
+                    </ul>
+                </div>
+                
+                <div class="function-card card-green">
+                    <div class="function-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3 class="function-title">Fund Pooling</h3>
+                    <p class="function-description">Strategic accumulation and management of healthcare funds:</p>
+                    <ul class="function-list">
+                        <li><i data-lucide="check-circle"></i>Population-wide Coverage</li>
+                        <li><i data-lucide="check-circle"></i>Risk Distribution</li>
+                        <li><i data-lucide="check-circle"></i>Reduced Fragmentation</li>
+                        <li><i data-lucide="check-circle"></i>Prepaid Fund Security</li>
+                    </ul>
+                </div>
+                
+                <div class="function-card card-purple">
+                    <div class="function-icon">
+                        <i data-lucide="building-2"></i>
+                    </div>
+                    <h3 class="function-title">Service Purchasing</h3>
+                    <p class="function-description">Intelligent allocation and payment to healthcare providers:</p>
+                    <ul class="function-list">
+                        <li><i data-lucide="check-circle"></i>Performance-based Payments</li>
+                        <li><i data-lucide="check-circle"></i>Population Health Focus</li>
+                        <li><i data-lucide="check-circle"></i>Strategic Provider Networks</li>
+                        <li><i data-lucide="check-circle"></i>Quality Assurance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Health Financing Flow</h2>
+                <p class="section-description">
+                    Visualize how HEFIN optimizes the flow of healthcare financing from revenue sources to patient care.
+                </p>
+            </div>
+            
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <div class="flow-icon icon-blue">
+                        <i data-lucide="coins"></i>
+                    </div>
+                    <h4 class="flow-title">Revenue Sources</h4>
+                    <p class="flow-description">Government, Insurance, Payments</p>
+                    <div class="flow-bars">
+                        <div class="flow-bar bar-blue"></div>
+                        <div class="flow-bar bar-green"></div>
+                        <div class="flow-bar bar-light-blue"></div>
+                    </div>
+                </div>
+                
+                <div class="flow-arrow">
+                    <i data-lucide="arrow-right"></i>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="flow-icon icon-green">
+                        <i data-lucide="database"></i>
+                    </div>
+                    <h4 class="flow-title">Pooled Funds</h4>
+                    <p class="flow-description">Strategic Accumulation</p>
+                    <div class="flow-progress">
+                        <span class="progress-text">100%</span>
+                    </div>
+                </div>
+                
+                <div class="flow-arrow">
+                    <i data-lucide="arrow-right"></i>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="flow-icon icon-purple">
+                        <i data-lucide="user-check"></i>
+                    </div>
+                    <h4 class="flow-title">Healthcare Services</h4>
+                    <p class="flow-description">Quality Care Delivery</p>
+                    <div class="service-grid">
+                        <div class="service-cell cell-blue"></div>
+                        <div class="service-cell cell-green"></div>
+                        <div class="service-cell cell-light-blue"></div>
+                        <div class="service-cell cell-purple"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value stat-blue">85%</div>
+                    <div class="stat-label">Coverage Efficiency</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value stat-green">67%</div>
+                    <div class="stat-label">Cost Reduction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value stat-light-blue">92%</div>
+                    <div class="stat-label">Patient Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value stat-purple">78%</div>
+                    <div class="stat-label">Provider Efficiency</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="calculator">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Health Finance Calculator</h2>
+                <p class="section-description">
+                    Calculate potential savings and coverage improvements with HEFIN's intelligent financing system.
+                </p>
+            </div>
+            
+            <div class="calculator-card">
+                <div class="calculator-content">
+                    <div class="calculator-inputs">
+                        <div class="input-header">
+                            <i data-lucide="calculator"></i>
+                            <h3>Input Parameters</h3>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="population">Population Size</label>
+                            <div class="slider-container">
+                                <input type="range" id="population" min="10000" max="1000000" step="10000" value="250000" oninput="updateCalculator()">
+                                <div class="slider-labels">
+                                    <span>10K</span>
+                                    <span id="population-value">250K</span>
+                                    <span>1M</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="budget">Current Healthcare Budget ($)</label>
+                            <div class="slider-container">
+                                <input type="range" id="budget" min="1000000" max="50000000" step="100000" value="10000000" oninput="updateCalculator()">
+                                <div class="slider-labels">
+                                    <span>$1M</span>
+                                    <span id="budget-value">$10M</span>
+                                    <span>$50M</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="coverage">Coverage Target (%)</label>
+                            <div class="slider-container">
+                                <input type="range" id="coverage" min="50" max="100" step="1" value="80" oninput="updateCalculator()">
+                                <div class="slider-labels">
+                                    <span>50%</span>
+                                    <span id="coverage-value">80%</span>
+                                    <span>100%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-full" onclick="calculateOptimization()">
+                            Calculate Optimization
+                        </button>
+                        <div id="loading" class="loading hidden">Calculating...</div>
+                    </div>
+                    
+                    <div class="calculator-results">
+                        <h3>Projected Results</h3>
+                        
+                        <div class="results-summary">
+                            <div class="result-item">
+                                <div class="result-value result-green" id="cost-savings">$2.3M</div>
+                                <div class="result-label">Annual Savings</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value result-blue" id="coverage-improvement">+15%</div>
+                                <div class="result-label">Coverage Increase</div>
+                            </div>
+                        </div>
+                        
+                        <div class="efficiency-metrics">
+                            <h4>Efficiency Gains</h4>
+                            <div class="metric">
+                                <div class="metric-header">
+                                    <span>Administrative Efficiency</span>
+                                    <span id="admin-efficiency">85%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-header">
+                                    <span>Resource Allocation</span>
+                                    <span id="resource-allocation">92%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-header">
+                                    <span>Provider Performance</span>
+                                    <span id="provider-performance">78%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="additional-people">
+                            <p>Potential to serve</p>
+                            <p class="additional-count" id="additional-people">37.5K</p>
+                            <p>additional people</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Details Section -->
+    <section id="patients" class="patients">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Patient Management</h2>
+                <p class="section-description">
+                    Comprehensive patient registration and health record management for universal healthcare coverage.
+                </p>
+            </div>
+            
+            <div class="patient-content">
+                <div class="patient-form-container">
+                    <div class="form-tabs">
+                        <button class="tab-btn active" onclick="switchTab('register')">Patient Registration</button>
+                        <button class="tab-btn" onclick="switchTab('search')">Search Patient</button>
+                        <button class="tab-btn" onclick="switchTab('records')">Medical Records</button>
+                    </div>
+                    
+                    <!-- Patient Registration Form -->
+                    <div id="register-tab" class="tab-content active">
+                        <h3>Register New Patient</h3>
+                        <form id="patient-form" class="patient-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="patientFirstName">First Name *</label>
+                                    <input type="text" id="patientFirstName" name="firstName" placeholder="John" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="patientLastName">Last Name *</label>
+                                    <input type="text" id="patientLastName" name="lastName" placeholder="Doe" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="patientEmail">Email</label>
+                                    <input type="email" id="patientEmail" name="email" placeholder="john.doe@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="patientPhone">Phone Number *</label>
+                                    <input type="tel" id="patientPhone" name="phone" placeholder="+1 (555) 123-4567" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="patientDob">Date of Birth *</label>
+                                    <input type="date" id="patientDob" name="dateOfBirth" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="patientGender">Gender</label>
+                                    <select id="patientGender" name="gender">
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="patientAddress">Address</label>
+                                <textarea id="patientAddress" name="address" rows="2" placeholder="Full address including city, state/province, and postal code"></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="emergencyContact">Emergency Contact Name</label>
+                                    <input type="text" id="emergencyContact" name="emergencyContactName" placeholder="Emergency contact">
+                                </div>
+                                <div class="form-group">
+                                    <label for="emergencyPhone">Emergency Contact Phone</label>
+                                    <input type="tel" id="emergencyPhone" name="emergencyContactPhone" placeholder="+1 (555) 987-6543">
+                                </div>
+                            </div>
+                            
+                            <div class="medical-info">
+                                <h4>Medical Information</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="bloodType">Blood Type</label>
+                                        <select id="bloodType" name="bloodType">
+                                            <option value="">Select Blood Type</option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="height">Height (cm)</label>
+                                        <input type="number" id="height" name="height" placeholder="170" min="50" max="300">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="weight">Weight (kg)</label>
+                                        <input type="number" id="weight" name="weight" placeholder="70" min="1" max="500">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="allergies">Known Allergies</label>
+                                    <textarea id="allergies" name="allergies" rows="2" placeholder="List any known allergies (medications, foods, environmental)"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="medications">Current Medications</label>
+                                    <textarea id="medications" name="currentMedications" rows="2" placeholder="List current medications and dosages"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="conditions">Chronic Conditions</label>
+                                    <textarea id="conditions" name="chronicConditions" rows="2" placeholder="List any chronic medical conditions"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="insurance-info">
+                                <h4>Insurance Information</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="insuranceProvider">Insurance Provider</label>
+                                        <input type="text" id="insuranceProvider" name="insuranceProvider" placeholder="Insurance company name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="policyNumber">Policy Number</label>
+                                        <input type="text" id="policyNumber" name="policyNumber" placeholder="Policy/Member ID">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <i data-lucide="user-plus"></i>
+                                Register Patient
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Patient Search Tab -->
+                    <div id="search-tab" class="tab-content">
+                        <h3>Search Patient Records</h3>
+                        <div class="search-form">
+                            <div class="search-input-group">
+                                <input type="text" id="patient-search" placeholder="Search by name, phone, or patient ID">
+                                <button class="btn btn-primary" onclick="searchPatients()">
+                                    <i data-lucide="search"></i>
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="search-results" class="search-results">
+                            <div class="no-results">
+                                <i data-lucide="users"></i>
+                                <p>Enter search criteria to find patient records</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medical Records Tab -->
+                    <div id="records-tab" class="tab-content">
+                        <h3>Medical Records</h3>
+                        <div id="patient-records" class="patient-records">
+                            <div class="no-patient-selected">
+                                <i data-lucide="file-text"></i>
+                                <p>Select a patient to view medical records</p>
+                                <button class="btn btn-outline" onclick="switchTab('search')">Search Patients</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="patient-stats">
+                    <div class="stats-card">
+                        <div class="stat-header">
+                            <h3>Patient Statistics</h3>
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number" id="total-patients">0</div>
+                                <div class="stat-label">Total Patients</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="new-registrations">0</div>
+                                <div class="stat-label">New This Month</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="avg-age">0</div>
+                                <div class="stat-label">Average Age</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="coverage-rate">0%</div>
+                                <div class="stat-label">Coverage Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-actions-card">
+                        <h4>Quick Actions</h4>
+                        <div class="quick-actions">
+                            <button class="quick-action-btn" onclick="switchTab('register')">
+                                <i data-lucide="user-plus"></i>
+                                <span>New Patient</span>
+                            </button>
+                            <button class="quick-action-btn" onclick="switchTab('search')">
+                                <i data-lucide="search"></i>
+                                <span>Find Patient</span>
+                            </button>
+                            <button class="quick-action-btn" onclick="exportPatients()">
+                                <i data-lucide="download"></i>
+                                <span>Export Data</span>
+                            </button>
+                            <button class="quick-action-btn" onclick="generateReport()">
+                                <i data-lucide="file-bar-chart"></i>
+                                <span>Generate Report</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="coverage-overview">
+                        <h4>Coverage Overview</h4>
+                        <div class="coverage-chart">
+                            <div class="coverage-item">
+                                <div class="coverage-label">Insured</div>
+                                <div class="coverage-bar">
+                                    <div class="coverage-fill coverage-insured" style="width: 75%"></div>
+                                </div>
+                                <div class="coverage-percentage">75%</div>
+                            </div>
+                            <div class="coverage-item">
+                                <div class="coverage-label">Uninsured</div>
+                                <div class="coverage-bar">
+                                    <div class="coverage-fill coverage-uninsured" style="width: 25%"></div>
+                                </div>
+                                <div class="coverage-percentage">25%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get Started with HEFIN</h2>
+                <p class="section-description">
+                    Ready to transform your healthcare financing system? Contact our team for a consultation.
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-form-container">
+                    <h3>Send us a message</h3>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="organization">Organization</label>
+                            <input type="text" id="organization" name="organization" placeholder="Healthcare Organization">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your healthcare financing needs..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i data-lucide="send"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <h3>Contact Information</h3>
+                        <div class="contact-items">
+                            <div class="contact-item">
+                                <div class="contact-icon icon-blue">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <div>
+                                    <p class="contact-title">Email</p>
+                                    <p class="contact-value">contact@hefin.health</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon icon-green">
+                                    <i data-lucide="phone"></i>
+                                </div>
+                                <div>
+                                    <p class="contact-title">Phone</p>
+                                    <p class="contact-value">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon icon-light-blue">
+                                    <i data-lucide="map-pin"></i>
+                                </div>
+                                <div>
+                                    <p class="contact-title">Office</p>
+                                    <p class="contact-value">Global Health Innovation Hub</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="benefits-card">
+                        <h4>Why Choose HEFIN?</h4>
+                        <ul class="benefits-list">
+                            <li><i data-lucide="check-circle"></i>No hidden premiums or bias</li>
+                            <li><i data-lucide="check-circle"></i>AI-powered intelligent care</li>
+                            <li><i data-lucide="check-circle"></i>Fair and transparent financing</li>
+                            <li><i data-lucide="check-circle"></i>Community-powered solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <h3 class="footer-logo">HEFIN</h3>
+                    <p class="footer-description">
+                        Revolutionizing healthcare financing through intelligent, bias-free, and 
+                        community-powered solutions for universal health coverage.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+                        <a href="#" class="social-link"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="social-link"><i data-lucide="facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Revenue Raising</a></li>
+                        <li><a href="#">Fund Pooling</a></li>
+                        <li><a href="#">Service Purchasing</a></li>
+                        <li><a href="#">Analytics Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 HEFIN. All rights reserved. Powered by intelligent healthcare financing.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <div class="toast-content">
+            <i data-lucide="check-circle" class="toast-icon"></i>
+            <div class="toast-text">
+                <div class="toast-title">Success</div>
+                <div class="toast-message">Message sent successfully!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

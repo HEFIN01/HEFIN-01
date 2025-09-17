@@ -1218,3 +1218,278 @@ body {
   font-size: 36px;
   margin-bottom: 16px;
 }
+/* Container */
+.healthcare-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Grid Layout */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    opacity: 0;
+    animation: fadeInGrid 0.8s ease-out 0.3s forwards;
+}
+
+/* Feature Cards */
+.feature-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    animation: fadeInCard 0.6s ease-out forwards;
+    transition: transform 0.3s ease-out;
+}
+
+.feature-card[data-delay="0"] {
+    animation-delay: 0.1s;
+}
+
+.feature-card[data-delay="200"] {
+    animation-delay: 0.3s;
+}
+
+.feature-card[data-delay="400"] {
+    animation-delay: 0.5s;
+}
+
+.card-content {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    height: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f3f4f6;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+}
+
+.feature-card:hover .card-content {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Icon */
+.icon-container {
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.feature-card:hover .icon-container {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+    background-color: #111827;
+    border-radius: 12px;
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.feature-card:hover .icon::after {
+    background-color: #f3f4f6;
+}
+
+/* Content */
+.content {
+    transition: color 0.3s ease;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.feature-description {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.feature-card:hover .feature-title {
+    color: #374151;
+}
+
+.feature-card:hover .feature-description {
+    color: #374151;
+}
+
+/* Hover Indicator */
+.hover-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transition: width 0.5s ease-out;
+}
+
+.feature-card:hover .hover-indicator {
+    width: 100%;
+}
+
+/* Animations */
+@keyframes fadeInGrid {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive Design */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .healthcare-container {
+        padding: 20px 10px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .card-content {
+        padding: 1.5rem;
+    }
+    
+    .feature-title {
+        font-size: 1.125rem;
+    }
+    
+    .feature-description {
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .healthcare-container {
+        padding: 15px 5px;
+    }
+    
+    .features-grid {
+        gap: 1rem;
+    }
+    
+    .card-content {
+        padding: 1.25rem;
+    }
+    
+    .icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .icon::after {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .feature-title {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .feature-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+    
+    .card-content {
+        padding: 2.5rem;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .feature-card,
+    .card-content,
+    .icon-container,
+    .hover-indicator {
+        animation: none;
+        transition: none;
+    }
+    
+    .features-grid {
+        opacity: 1;
+        animation: none;
+    }
+    
+    .feature-card {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Focus states for accessibility */
+.feature-card:focus-within .card-content {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .card-content {
+        border: 2px solid #000;
+    }
+    
+    .icon {
+        background-color: #000;
+    }
+    
+    .feature-title {
+        color: #000;
+    }
+}

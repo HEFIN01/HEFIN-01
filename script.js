@@ -1,766 +1,924 @@
-// HEFIN Health & Finance Intelligence - JavaScript
+ document.addEventListener("DOMContentLoaded", function() {
+    const splash = document.getElementById("splash-screen");
+    const main = document.getElementById("main-content");
 
-// Global state
-let calculatorData = {
-    population: 250000,
-    budget: 10000000,
-    coverage: 80,
-    results: {
-        costSavings: 2300000,
-        coverageImprovement: 15,
-        additionalPeople: 37500,
-        efficiencyMetrics: {
-            administrativeEfficiency: 85,
-            resourceAllocation: 92,
-            providerPerformance: 78
-        }
-    }
-};
+    // After enough time, start fading out splash and show main
+    const totalDuration = 3500;
 
-// Utility functions
-function formatNumber(num) {
-    if (num >= 1000000) {
-        return (num / 1000000).toFixed(1) + 'M';
-    } else if (num >= 1000) {
-        return (num / 1000).toFixed(0) + 'K';
-    } else {
-        return num.toString();
-    }
-}
-
-function formatCurrency(num) {
-    if (num >= 1000000) {
-        return '$' + (num / 1000000).toFixed(1) + 'M';
-    } else if (num >= 1000) {
-        return '$' + (num / 1000).toFixed(0) + 'K';
-    } else {
-        return '$' + num.toString();
-    }
-}
-
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Navigation functions
-function scrollToSection(sectionId) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // Close mobile menu if open
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu) {
-            mobileMenu.classList.remove('active');
-        }
-    } else {
-        console.warn(`Element with ID "${sectionId}" not found`);
-    }
-}
-
-function toggleMobileMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) {
-        mobileMenu.classList.toggle('active');
-    }
-}
-
-// Navbar scroll effect
-function handleNavbarScroll() {
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-}
-
-// Calculator functions
-function updateCalculator() {
-    const population = parseInt(document.getElementById('population').value);
-    const budget = parseInt(document.getElementById('budget').value);
-    const coverage = parseInt(document.getElementById('coverage').value);
-
-    // Update display values
-    document.getElementById('population-value').textContent = formatNumber(population);
-    document.getElementById('budget-value').textContent = formatCurrency(budget);
-    document.getElementById('coverage-value').textContent = coverage + '%';
-
-    // Store values
-    calculatorData.population = population;
-    calculatorData.budget = budget;
-    calculatorData.coverage = coverage;
-
-    // Auto-calculate with debouncing
-    debouncedCalculate();
-}
-
-const debouncedCalculate = debounce(calculateOptimization, 500);
-
-async function calculateOptimization() {
-    const loadingElement = document.getElementById('loading');
-    
-    try {
-        // Show loading state
-        if (loadingElement) {
-            loadingElement.classList.remove('hidden');
-        }
-
-        const response = await fetch('/api/calculate', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                population: calculatorData.population,
-                budget: calculatorData.budget,
-                coverage: calculatorData.coverage
-            })
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            calculatorData.results = data.results;
-            updateCalculatorResults();
-            showToast('Calculation Complete', 'Your health financing optimization results are ready.');
-        } else {
-            showToast('Calculation Failed', data.message || 'Unable to process calculation', 'error');
-        }
-    } catch (error) {
-        console.error('Calculation error:', error);
-        showToast('Error', 'Failed to calculate optimization. Please try again.', 'error');
-    } finally {
-        // Hide loading state
-        if (loadingElement) {
-            loadingElement.classList.add('hidden');
-        }
-    }
-}
-
-function updateCalculatorResults() {
-    const results = calculatorData.results;
-
-    // Update summary values
-    const costSavingsEl = document.getElementById('cost-savings');
-    const coverageImprovementEl = document.getElementById('coverage-improvement');
-    
-    if (costSavingsEl) {
-        costSavingsEl.textContent = formatCurrency(results.costSavings);
-    }
-    
-    if (coverageImprovementEl) {
-        coverageImprovementEl.textContent = '+' + results.coverageImprovement + '%';
-    }
-
-    // Update efficiency metrics
-    const adminEfficiencyEl = document.getElementById('admin-efficiency');
-    const resourceAllocationEl = document.getElementById('resource-allocation');
-    const providerPerformanceEl = document.getElementById('provider-performance');
-    
-    if (adminEfficiencyEl) {
-        adminEfficiencyEl.textContent = results.efficiencyMetrics.administrativeEfficiency + '%';
-    }
-    
-    if (resourceAllocationEl) {
-        resourceAllocationEl.textContent = results.efficiencyMetrics.resourceAllocation + '%';
-    }
-    
-    if (providerPerformanceEl) {
-        providerPerformanceEl.textContent = results.efficiencyMetrics.providerPerformance + '%';
-    }
-
-    // Update progress bars with animation
-    const progressBars = document.querySelectorAll('.progress-fill');
-    if (progressBars.length >= 3) {
-        progressBars[0].style.width = results.efficiencyMetrics.administrativeEfficiency + '%';
-        progressBars[1].style.width = results.efficiencyMetrics.resourceAllocation + '%';
-        progressBars[2].style.width = results.efficiencyMetrics.providerPerformance + '%';
-    }
-
-    // Update additional people count
-    const additionalPeopleEl = document.getElementById('additional-people');
-    if (additionalPeopleEl) {
-        additionalPeopleEl.textContent = formatNumber(results.additionalPeople);
-    }
-}
-
-// Contact form handling
-async function handleContactSubmit(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const formData = new FormData(form);
-    const contactData = {
-        firstName: formData.get('firstName'),
-        lastName: formData.get('lastName'),
-        email: formData.get('email'),
-        organization: formData.get('organization') || '',
-        message: formData.get('message')
-    };
-
-    // Get submit button for loading state
-    const submitButton = form.querySelector('button[type="submit"]');
-    const originalButtonContent = submitButton.innerHTML;
-    
-    try {
-        // Show loading state
-        submitButton.disabled = true;
-        submitButton.innerHTML = '<svg class="animate-spin" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-dasharray="32" stroke-dashoffset="32" opacity="0.3"></circle><path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending...';
-
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(contactData)
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            showToast('Message Sent Successfully!', 'Thank you for your interest in HEFIN. We\'ll get back to you soon.');
-            form.reset();
-        } else {
-            showToast('Submission Failed', data.message || 'Unable to send message', 'error');
-        }
-    } catch (error) {
-        console.error('Contact form error:', error);
-        showToast('Error', 'Failed to send message. Please try again.', 'error');
-    } finally {
-        // Restore button state
-        submitButton.disabled = false;
-        submitButton.innerHTML = originalButtonContent;
-    }
-}
-
-// Toast notification system
-function showToast(title, message, type = 'success') {
-    const toast = document.getElementById('toast');
-    const toastTitle = toast.querySelector('.toast-title');
-    const toastMessage = toast.querySelector('.toast-message');
-    const toastIcon = toast.querySelector('.toast-icon');
-
-    if (toastTitle) toastTitle.textContent = title;
-    if (toastMessage) toastMessage.textContent = message;
-
-    // Update icon based on type
-    if (toastIcon && type === 'error') {
-        toastIcon.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>';
-        toastIcon.style.color = '#dc2626';
-    } else if (toastIcon) {
-        toastIcon.innerHTML = '<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>';
-        toastIcon.style.color = '#16a34a';
-    }
-
-    // Show toast
-    toast.classList.remove('hidden');
-    toast.classList.add('show');
-
-    // Hide toast after 5 seconds
     setTimeout(() => {
-        toast.classList.remove('show');
+        splash.classList.add("fade-out");
+    }, 2500);
+
+    setTimeout(() => {
+        splash.style.display = "none";
+        main.style.display = "block";
+        
+        // Initialize slider after main content is shown
+        initializeImageSlider();
+    }, totalDuration);
+
+    // Optionally hide on click too
+    splash.addEventListener("click", () => {
+        splash.classList.add("fade-out");
         setTimeout(() => {
-            toast.classList.add('hidden');
-        }, 300);
-    }, 5000);
+            splash.style.display = "none";
+            main.style.display = "block";
+            // Initialize slider after main content is shown
+            initializeImageSlider();
+        }, 1000);
+    });
+});
+
+// Website Main Functionality
+let currentUser = null;
+let isUserDropdownOpen = false;
+
+// Utility Functions
+function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#10b981' : '#dc2626'};
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        z-index: 9999;
+        animation: slideInRight 0.3s ease;
+    `;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOutRight 0.3s ease forwards';
+        setTimeout(() => document.body.removeChild(toast), 300);
+    }, 3000);
 }
 
-// Animation observers for scroll effects
-function setupScrollAnimations() {
-    // Create intersection observer for fade-in animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+function getInitials(name) {
+    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+}
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
+function generateAvatar(email) {
+    const colors = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899'];
+    const hash = email.split('').reduce((a, b) => a + b.charCodeAt(0), 0);
+    return colors[hash % colors.length];
+}
 
-    // Observe elements with animation classes
-    const animatedElements = document.querySelectorAll('.function-card, .stat-card, .flow-step');
-    animatedElements.forEach((el) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
+// Navigation Functions
+function goHome() {
+    window.location.href = '#';
+}
+
+// Mobile Menu Functions
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('mobileOverlay');
+    menu.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('mobileOverlay');
+    menu.classList.remove('active');
+    overlay.classList.remove('active');
+}
+
+// User Dropdown Functions
+function toggleUserDropdown() {
+    const dropdown = document.getElementById('userDropdown');
+    isUserDropdownOpen = !isUserDropdownOpen;
+    dropdown.classList.toggle('active', isUserDropdownOpen);
+}
+
+function closeUserDropdown() {
+    const dropdown = document.getElementById('userDropdown');
+    isUserDropdownOpen = false;
+    dropdown.classList.remove('active');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const userProfile = document.getElementById('userProfile');
+    if (isUserDropdownOpen && !userProfile.contains(event.target)) {
+        closeUserDropdown();
+    }
+});
+
+// Modal Functions
+function openSignInModal() {
+    document.getElementById('signInModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSignInModal() {
+    document.getElementById('signInModal').classList.remove('active');
+    document.body.style.overflow = '';
+    clearFormErrors('signInForm');
+}
+
+function openSignUpModal() {
+    document.getElementById('signUpModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSignUpModal() {
+    document.getElementById('signUpModal').classList.remove('active');
+    document.body.style.overflow = '';
+    clearFormErrors('signUpForm');
+}
+
+// Form Functions
+function togglePassword(inputId, button) {
+    const input = document.getElementById(inputId);
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+    
+    button.innerHTML = isPassword ? 
+        `<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L8.464 8.464a10.014 10.014 0 00-2.142 2.428M9.878 9.878a3 3 0 104.243 4.243m4.242-4.242L19.07 7.05A10.014 10.014 0 0021.542 12c-.494 1.563-1.317 2.935-2.472 4.05m-4.242-4.242a3 3 0 00-4.243-4.243"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18"/>
+        </svg>` :
+        `<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        </svg>`;
+}
+
+function clearFormErrors(formId) {
+    const form = document.getElementById(formId);
+    const errorElements = form.querySelectorAll('.error-message');
+    const inputs = form.querySelectorAll('.form-input');
+    
+    errorElements.forEach(el => {
+        el.textContent = '';
+        el.style.display = 'none';
+    });
+    
+    inputs.forEach(input => {
+        input.classList.remove('error');
     });
 }
 
-// Smooth scrolling polyfill for older browsers
-function polyfillSmoothScrolling() {
-    if (!('scrollBehavior' in document.documentElement.style)) {
-        // Add smooth scrolling polyfill for older browsers
-        const links = document.querySelectorAll('button[onclick*="scrollToSection"]');
-        links.forEach(link => {
-            link.addEventListener('click', function(e) {
+function showError(fieldId, message) {
+    const errorElement = document.getElementById(fieldId + 'Error');
+    const inputElement = document.getElementById(fieldId);
+    
+    if (errorElement && inputElement) {
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+        inputElement.classList.add('error');
+    }
+}
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+function validatePassword(password) {
+    return {
+        hasLength: password.length >= 8,
+        hasUpper: /[A-Z]/.test(password),
+        hasLower: /[a-z]/.test(password),
+        hasNumber: /\d/.test(password)
+    };
+}
+
+// Password strength indicator
+document.addEventListener('DOMContentLoaded', function() {
+    const signUpPassword = document.getElementById('signUpPassword');
+    if (signUpPassword) {
+        signUpPassword.addEventListener('input', function() {
+            const password = this.value;
+            const strengthDiv = document.getElementById('passwordStrength');
+            
+            if (password) {
+                strengthDiv.style.display = 'grid';
+                const validation = validatePassword(password);
+                
+                document.getElementById('lengthCheck').classList.toggle('valid', validation.hasLength);
+                document.getElementById('upperCheck').classList.toggle('valid', validation.hasUpper);
+                document.getElementById('lowerCheck').classList.toggle('valid', validation.hasLower);
+                document.getElementById('numberCheck').classList.toggle('valid', validation.hasNumber);
+            } else {
+                strengthDiv.style.display = 'none';
+            }
+        });
+    }
+});
+
+// Authentication Functions
+async function handleSignIn(event) {
+    event.preventDefault();
+    
+    const email = document.getElementById('signInEmail').value;
+    const password = document.getElementById('signInPassword').value;
+    const submitBtn = document.getElementById('signInSubmitBtn');
+    const btnText = document.getElementById('signInBtnText');
+    const spinner = document.getElementById('signInSpinner');
+    
+    clearFormErrors('signInForm');
+    
+    if (!email) {
+        showError('signInEmail', 'Email is required');
+        return;
+    }
+    
+    if (!validateEmail(email)) {
+        showError('signInEmail', 'Please enter a valid email');
+        return;
+    }
+    
+    if (!password) {
+        showError('signInPassword', 'Password is required');
+        return;
+    }
+    
+    if (password.length < 6) {
+        showError('signInPassword', 'Password must be at least 6 characters');
+        return;
+    }
+    
+    submitBtn.disabled = true;
+    btnText.style.display = 'none';
+    spinner.style.display = 'inline-block';
+    
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    const userData = {
+        id: '1',
+        name: email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1),
+        email: email
+    };
+    
+    signInUser(userData);
+    closeSignInModal();
+    showToast(`Welcome back, ${userData.name}!`);
+    
+    document.getElementById('signInForm').reset();
+    submitBtn.disabled = false;
+    btnText.style.display = 'inline';
+    spinner.style.display = 'none';
+}
+
+async function handleSignUp(event) {
+    event.preventDefault();
+    
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('signUpEmail').value;
+    const password = document.getElementById('signUpPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const termsAgree = document.getElementById('termsAgree').checked;
+    const submitBtn = document.getElementById('signUpSubmitBtn');
+    const btnText = document.getElementById('signUpBtnText');
+    const spinner = document.getElementById('signUpSpinner');
+    
+    clearFormErrors('signUpForm');
+    
+    let hasErrors = false;
+    
+    if (!firstName) {
+        showError('firstName', 'First name is required');
+        hasErrors = true;
+    }
+    
+    if (!lastName) {
+        showError('lastName', 'Last name is required');
+        hasErrors = true;
+    }
+    
+    if (!email) {
+        showError('signUpEmail', 'Email is required');
+        hasErrors = true;
+    } else if (!validateEmail(email)) {
+        showError('signUpEmail', 'Please enter a valid email');
+        hasErrors = true;
+    }
+    
+    if (!password) {
+        showError('signUpPassword', 'Password is required');
+        hasErrors = true;
+    } else {
+        const validation = validatePassword(password);
+        if (!validation.hasLength || !validation.hasUpper || !validation.hasLower || !validation.hasNumber) {
+            showError('signUpPassword', 'Password must contain uppercase, lowercase, number and be 8+ characters');
+            hasErrors = true;
+        }
+    }
+    
+    if (!confirmPassword) {
+        showError('confirmPassword', 'Please confirm your password');
+        hasErrors = true;
+    } else if (password !== confirmPassword) {
+        showError('confirmPassword', 'Passwords do not match');
+        hasErrors = true;
+    }
+    
+    if (!termsAgree) {
+        showError('terms', 'You must agree to the terms and conditions');
+        hasErrors = true;
+    }
+    
+    if (hasErrors) return;
+    
+    submitBtn.disabled = true;
+    btnText.style.display = 'none';
+    spinner.style.display = 'inline-block';
+    
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    const userData = {
+        id: Date.now().toString(),
+        name: `${firstName} ${lastName}`,
+        email: email
+    };
+    
+    signInUser(userData);
+    closeSignUpModal();
+    showToast(`Welcome, ${userData.name}!`);
+    
+    document.getElementById('signUpForm').reset();
+    document.getElementById('passwordStrength').style.display = 'none';
+    submitBtn.disabled = false;
+    btnText.style.display = 'inline';
+    spinner.style.display = 'none';
+}
+
+function signInUser(userData) {
+    currentUser = userData;
+    updateUserInterface();
+}
+
+function signOut() {
+    currentUser = null;
+    updateUserInterface();
+    showToast('Successfully signed out');
+}
+
+function updateUserInterface() {
+    const authSection = document.getElementById('authSection');
+    const userProfile = document.getElementById('userProfile');
+    const welcomeTitle = document.getElementById('welcomeTitle');
+    const ctaButtons = document.getElementById('ctaButtons');
+    
+    const mobileAuthSection = document.getElementById('mobileAuthSection');
+    const mobileUserInfo = document.getElementById('mobileUserInfo');
+    const mobileUserActions = document.getElementById('mobileUserActions');
+    
+    if (currentUser) {
+        authSection.style.display = 'none';
+        userProfile.style.display = 'block';
+        
+        const initials = getInitials(currentUser.name);
+        const avatarColor = generateAvatar(currentUser.email);
+        
+        document.getElementById('userInitials').textContent = initials;
+        document.getElementById('userAvatar').style.backgroundColor = avatarColor;
+        document.getElementById('userName').textContent = currentUser.name;
+        document.getElementById('userEmail').textContent = currentUser.email;
+        
+        document.getElementById('mobileUserInitials').textContent = initials;
+        document.getElementById('mobileUserAvatar').style.backgroundColor = avatarColor;
+        document.getElementById('mobileUserName').textContent = currentUser.name;
+        document.getElementById('mobileUserEmail').textContent = currentUser.email;
+        
+        mobileAuthSection.style.display = 'none';
+        mobileUserInfo.style.display = 'block';
+        mobileUserActions.style.display = 'block';
+        
+        welcomeTitle.textContent = `Welcome back, ${currentUser.name.split(' ')[0]}!`;
+        ctaButtons.style.display = 'none';
+        
+    } else {
+        authSection.style.display = 'flex';
+        userProfile.style.display = 'none';
+        
+        mobileAuthSection.style.display = 'block';
+        mobileUserInfo.style.display = 'none';
+        mobileUserActions.style.display = 'none';
+        
+        welcomeTitle.textContent = 'Welcome to HealthFinance';
+        ctaButtons.style.display = 'flex';
+        
+        closeUserDropdown();
+    }
+}
+
+function viewProfile() {
+    showToast('Profile page would open here');
+    closeUserDropdown();
+}
+
+function viewSettings() {
+    showToast('Settings page would open here');
+    closeUserDropdown();
+}
+
+// Close modals when clicking outside
+document.addEventListener('click', function(event) {
+    const signInModal = document.getElementById('signInModal');
+    const signUpModal = document.getElementById('signUpModal');
+    
+    if (event.target === signInModal) {
+        closeSignInModal();
+    }
+    
+    if (event.target === signUpModal) {
+        closeSignUpModal();
+    }
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeSignInModal();
+        closeSignUpModal();
+        closeMobileMenu();
+        closeUserDropdown();
+    }
+});
+
+// IMAGE SLIDER IMPLEMENTATION
+class ImageCarouselSlider {
+    constructor(containerId, options = {}) {
+        this.container = document.getElementById(containerId);
+        if (!this.container) {
+            console.error('Image Slider: Container element not found');
+            return;
+        }
+        
+        this.slides = this.container.querySelectorAll('.carousel-slide');
+        this.dots = this.container.querySelectorAll('.nav-dot');
+        this.currentSlideIndex = 0;
+        this.totalSlides = this.slides.length;
+        this.isAutoPlaying = true;
+        this.autoPlayTimer = null;
+        this.isUserInteracting = false;
+        
+        // Configuration
+        this.settings = {
+            autoPlayInterval: options.autoPlayInterval || 6000,
+            animationDuration: 600,
+            pauseOnHover: options.pauseOnHover !== false,
+            enableKeyboard: options.enableKeyboard !== false,
+            enableTouch: options.enableTouch !== false,
+            ...options
+        };
+        
+        // DOM Elements
+        this.prevButton = document.getElementById('carouselPrev');
+        this.nextButton = document.getElementById('carouselNext');
+        this.playToggleButton = document.getElementById('carouselPlayPause');
+        this.currentSlideDisplay = document.getElementById('currentSlideNum');
+        this.totalSlidesDisplay = document.getElementById('totalSlidesNum');
+        this.progressBar = document.getElementById('carouselProgressBar');
+        this.playIcon = this.playToggleButton?.querySelector('.play-icon');
+        this.pauseIcon = this.playToggleButton?.querySelector('.pause-icon');
+        
+        this.initialize();
+    }
+    
+    initialize() {
+        if (this.totalSlides === 0) {
+            console.error('Image Slider: No slides found');
+            return;
+        }
+        
+        this.setupEventListeners();
+        this.updateSlideDisplay();
+        this.displaySlide(0);
+        this.startAutoPlay();
+        
+        console.log('Image Carousel Slider initialized with', this.totalSlides, 'slides');
+    }
+    
+    setupEventListeners() {
+        // Navigation buttons
+        if (this.prevButton) {
+            this.prevButton.addEventListener('click', () => this.goToPreviousSlide());
+        }
+        if (this.nextButton) {
+            this.nextButton.addEventListener('click', () => this.goToNextSlide());
+        }
+        
+        // Play/Pause button
+        if (this.playToggleButton) {
+            this.playToggleButton.addEventListener('click', () => this.toggleAutoPlay());
+        }
+        
+        // Dot navigation
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Keyboard controls
+        if (this.settings.enableKeyboard) {
+            document.addEventListener('keydown', (e) => this.handleKeyboardInput(e));
+        }
+        
+        // Touch/Swipe support
+        if (this.settings.enableTouch) {
+            this.setupTouchControls();
+        }
+        
+        // Hover pause functionality
+        if (this.settings.pauseOnHover) {
+            this.container.addEventListener('mouseenter', () => {
+                this.isUserInteracting = true;
+                this.pauseAutoPlay();
+            });
+            this.container.addEventListener('mouseleave', () => {
+                this.isUserInteracting = false;
+                this.resumeAutoPlay();
+            });
+        }
+        
+        // Visibility change (pause when tab is inactive)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pauseAutoPlay();
+            } else if (this.isAutoPlaying && !this.isUserInteracting) {
+                this.resumeAutoPlay();
+            }
+        });
+        
+        // CTA button handlers
+        this.setupCTAHandlers();
+    }
+    
+    setupCTAHandlers() {
+        const ctaButtons = this.container.querySelectorAll('.content-button');
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
-                const target = document.getElementById(targetId);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+                const ctaText = e.target.textContent.trim();
+                console.log('CTA clicked:', ctaText);
+                this.handleCTAAction(ctaText);
             });
         });
     }
-}
-
-// Keyboard accessibility
-function setupKeyboardNavigation() {
-    document.addEventListener('keydown', (e) => {
-        // Allow Escape key to close mobile menu
-        if (e.key === 'Escape') {
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu && mobileMenu.classList.contains('active')) {
-                mobileMenu.classList.remove('active');
-            }
-        }
-
-        // Allow Enter key on nav buttons
-        if (e.key === 'Enter' && e.target.classList.contains('nav-link')) {
-            e.target.click();
-        }
-    });
-}
-
-// Performance optimization - lazy loading for images and heavy content
-function setupLazyLoading() {
-    // Add lazy loading attributes to images if not already present
-    const images = document.querySelectorAll('img:not([loading])');
-    images.forEach(img => {
-        img.setAttribute('loading', 'lazy');
-    });
-}
-
-// Error handling for failed API requests
-function setupGlobalErrorHandling() {
-    window.addEventListener('unhandledrejection', (event) => {
-        console.error('Unhandled promise rejection:', event.reason);
-        showToast('Error', 'Something went wrong. Please refresh the page and try again.', 'error');
-        event.preventDefault();
-    });
-
-    window.addEventListener('error', (event) => {
-        console.error('Global error:', event.error);
-    });
-}
-
-// Patient Management Functions
-let currentPatient = null;
-let allPatients = [];
-
-// Tab switching
-function switchTab(tabName) {
-    // Remove active class from all tabs and content
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
     
-    // Add active class to selected tab and content
-    document.querySelector(`button[onclick="switchTab('${tabName}')"]`).classList.add('active');
-    document.getElementById(`${tabName}-tab`).classList.add('active');
-    
-    // Load data based on tab
-    if (tabName === 'search') {
-        loadPatientStats();
-    }
-}
-
-// Patient registration form submission
-async function submitPatientForm(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const formData = new FormData(form);
-    const patientData = {};
-    
-    // Convert FormData to object
-    for (let [key, value] of formData.entries()) {
-        if (value.trim() !== '') {
-            patientData[key] = value;
-        }
-    }
-    
-    try {
-        const response = await fetch('/api/patients', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(patientData)
-        });
+    handleCTAAction(ctaText) {
+        const actions = {
+            'Explore Solutions': () => console.log('Navigate to solutions page'),
+            'Join Network': () => console.log('Open network registration'),
+            'View Analytics': () => console.log('Open analytics dashboard'),
+            'Learn More': () => console.log('Navigate to information page'),
+            'Start Consultation': () => console.log('Open consultation booking')
+        };
         
-        if (response.ok) {
-            const result = await response.json();
-            showToast('Success', 'Patient registered successfully!', 'success');
-            form.reset();
-            loadPatientStats();
+        if (actions[ctaText]) {
+            actions[ctaText]();
+        } else {
+            console.log('CTA action not defined for:', ctaText);
+        }
+    }
+    
+    setupTouchControls() {
+        let startX = 0;
+        let endX = 0;
+        let startY = 0;
+        let endY = 0;
+        let isScrolling = null;
+        
+        this.container.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isScrolling = null;
+        }, { passive: true });
+        
+        this.container.addEventListener('touchmove', (e) => {
+            endX = e.touches[0].clientX;
+            endY = e.touches[0].clientY;
             
-            // Switch to search tab to show the new patient
+            if (isScrolling === null) {
+                isScrolling = Math.abs(endY - startY) > Math.abs(endX - startX);
+            }
+            
+            if (!isScrolling) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        this.container.addEventListener('touchend', () => {
+            if (isScrolling) return;
+            
+            const deltaX = startX - endX;
+            const deltaY = startY - endY;
+            
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    this.goToNextSlide();
+                } else {
+                    this.goToPreviousSlide();
+                }
+            }
+        }, { passive: true });
+    }
+    
+    handleKeyboardInput(e) {
+        if (document.activeElement.tagName === 'INPUT' || 
+            document.activeElement.tagName === 'TEXTAREA') {
+            return;
+        }
+        
+        switch (e.key) {
+            case 'ArrowLeft':
+                e.preventDefault();
+                this.goToPreviousSlide();
+                break;
+            case 'ArrowRight':
+                e.preventDefault();
+                this.goToNextSlide();
+                break;
+            case ' ':
+                e.preventDefault();
+                this.toggleAutoPlay();
+                break;
+            case 'Home':
+                e.preventDefault();
+                this.goToSlide(0);
+                break;
+            case 'End':
+                e.preventDefault();
+                this.goToSlide(this.totalSlides - 1);
+                break;
+        }
+    }
+    
+    displaySlide(index, direction = 'next') {
+        if (index < 0 || index >= this.totalSlides) {
+            console.warn('Image Slider: Invalid slide index:', index);
+            return;
+        }
+        
+        // Remove active classes from all slides and dots
+        this.slides.forEach(slide => {
+            slide.classList.remove('carousel-active', 'carousel-prev');
+        });
+        this.dots.forEach(dot => dot.classList.remove('dot-active'));
+        
+        // Add direction class to current slide
+        const currentSlideElement = this.slides[this.currentSlideIndex];
+        const newSlideElement = this.slides[index];
+        
+        if (direction === 'prev') {
+            currentSlideElement?.classList.add('carousel-prev');
+        }
+        
+        // Activate new slide and dot
+        newSlideElement.classList.add('carousel-active');
+        if (this.dots[index]) {
+            this.dots[index].classList.add('dot-active');
+        }
+        
+        // Update current slide index
+        this.currentSlideIndex = index;
+        
+        // Update display counter
+        this.updateSlideDisplay();
+        
+        // Restart content animations
+        this.restartContentAnimations(newSlideElement);
+        
+        // Reset progress bar
+        this.resetProgressBar();
+    }
+    
+    restartContentAnimations(slideElement) {
+        const animatedElements = slideElement.querySelectorAll(
+            '.content-badge, .content-title, .content-description, .content-button'
+        );
+        
+        animatedElements.forEach(element => {
+            element.style.animation = 'none';
+            element.offsetHeight; // Trigger reflow
+            element.style.animation = null;
+        });
+    }
+    
+    goToNextSlide() {
+        const nextIndex = (this.currentSlideIndex + 1) % this.totalSlides;
+        this.displaySlide(nextIndex, 'next');
+        this.resetAutoPlayTimer();
+    }
+    
+    goToPreviousSlide() {
+        const prevIndex = (this.currentSlideIndex - 1 + this.totalSlides) % this.totalSlides;
+        this.displaySlide(prevIndex, 'prev');
+        this.resetAutoPlayTimer();
+    }
+    
+    goToSlide(index) {
+        if (index === this.currentSlideIndex || index < 0 || index >= this.totalSlides) {
+            return;
+        }
+        
+        const direction = index > this.currentSlideIndex ? 'next' : 'prev';
+        this.displaySlide(index, direction);
+        this.resetAutoPlayTimer();
+    }
+    
+    startAutoPlay() {
+        if (!this.isAutoPlaying || this.isUserInteracting) return;
+        
+        this.resetProgressBar();
+        
+        this.autoPlayTimer = setInterval(() => {
+            this.goToNextSlide();
+        }, this.settings.autoPlayInterval);
+    }
+    
+    stopAutoPlay() {
+        if (this.autoPlayTimer) {
+            clearInterval(this.autoPlayTimer);
+            this.autoPlayTimer = null;
+        }
+        if (this.progressBar) {
+            this.progressBar.style.width = '0%';
+            this.progressBar.style.transition = 'none';
+        }
+    }
+    
+    pauseAutoPlay() {
+        this.stopAutoPlay();
+    }
+    
+    resumeAutoPlay() {
+        if (this.isAutoPlaying && !this.isUserInteracting) {
+            this.startAutoPlay();
+        }
+    }
+    
+    resetAutoPlayTimer() {
+        if (this.isAutoPlaying) {
+            this.stopAutoPlay();
             setTimeout(() => {
-                switchTab('search');
-                searchPatients();
-            }, 1000);
-        } else {
-            const error = await response.json();
-            showToast('Error', error.message || 'Failed to register patient', 'error');
+                if (this.isAutoPlaying && !this.isUserInteracting) {
+                    this.startAutoPlay();
+                }
+            }, 100);
         }
-    } catch (error) {
-        console.error('Error registering patient:', error);
-        showToast('Error', 'Network error. Please try again.', 'error');
-    }
-}
-
-// Search patients
-async function searchPatients() {
-    const searchTerm = document.getElementById('patient-search').value.trim();
-    const resultsContainer = document.getElementById('search-results');
-    
-    if (!searchTerm) {
-        try {
-            const response = await fetch('/api/patients');
-            if (response.ok) {
-                allPatients = await response.json();
-                displaySearchResults(allPatients);
-            } else {
-                console.error('Failed to fetch patients');
-                displayNoResults('Failed to load patients');
-            }
-        } catch (error) {
-            console.error('Error fetching patients:', error);
-            displayNoResults('Network error');
-        }
-        return;
     }
     
-    try {
-        const response = await fetch(`/api/patients/search?q=${encodeURIComponent(searchTerm)}`);
-        if (response.ok) {
-            const patients = await response.json();
-            displaySearchResults(patients);
-        } else {
-            displayNoResults('No patients found');
-        }
-    } catch (error) {
-        console.error('Error searching patients:', error);
-        displayNoResults('Search failed');
-    }
-}
-
-// Display search results
-function displaySearchResults(patients) {
-    const resultsContainer = document.getElementById('search-results');
-    
-    if (!patients || patients.length === 0) {
-        displayNoResults('No patients found');
-        return;
-    }
-    
-    const resultsHTML = patients.map(patient => `
-        <div class="patient-card" onclick="selectPatient('${patient.id}')">
-            <div class="patient-card-header">
-                <div class="patient-name">${patient.firstName} ${patient.lastName}</div>
-                <div class="patient-id">ID: ${patient.id.slice(0, 8)}</div>
-            </div>
-            <div class="patient-info">
-                <div>Phone: ${patient.phone || 'N/A'}</div>
-                <div>DOB: ${patient.dateOfBirth ? new Date(patient.dateOfBirth).toLocaleDateString() : 'N/A'}</div>
-                <div>Email: ${patient.email || 'N/A'}</div>
-                <div>Gender: ${patient.gender || 'N/A'}</div>
-            </div>
-        </div>
-    `).join('');
-    
-    resultsContainer.innerHTML = resultsHTML;
-}
-
-// Display no results message
-function displayNoResults(message) {
-    const resultsContainer = document.getElementById('search-results');
-    resultsContainer.innerHTML = `
-        <div class="no-results">
-            <i data-lucide="users"></i>
-            <p>${message}</p>
-        </div>
-    `;
-    lucide.createIcons();
-}
-
-// Select a patient and show their records
-async function selectPatient(patientId) {
-    try {
-        const response = await fetch(`/api/patients/${patientId}`);
-        if (response.ok) {
-            currentPatient = await response.json();
-            switchTab('records');
-            displayPatientRecords(currentPatient);
-        } else {
-            showToast('Error', 'Failed to load patient details', 'error');
-        }
-    } catch (error) {
-        console.error('Error loading patient:', error);
-        showToast('Error', 'Network error loading patient', 'error');
-    }
-}
-
-// Display patient records
-function displayPatientRecords(patient) {
-    const recordsContainer = document.getElementById('patient-records');
-    
-    const recordsHTML = `
-        <div class="patient-header">
-            <h3>${patient.firstName} ${patient.lastName}</h3>
-            <p>Patient ID: ${patient.id}</p>
-        </div>
+    toggleAutoPlay() {
+        this.isAutoPlaying = !this.isAutoPlaying;
         
-        <div class="patient-details-grid">
-            <div class="detail-section">
-                <h4>Personal Information</h4>
-                <div class="detail-item">
-                    <strong>Date of Birth:</strong> ${patient.dateOfBirth ? new Date(patient.dateOfBirth).toLocaleDateString() : 'N/A'}
-                </div>
-                <div class="detail-item">
-                    <strong>Gender:</strong> ${patient.gender || 'N/A'}
-                </div>
-                <div class="detail-item">
-                    <strong>Phone:</strong> ${patient.phone || 'N/A'}
-                </div>
-                <div class="detail-item">
-                    <strong>Email:</strong> ${patient.email || 'N/A'}
-                </div>
-                <div class="detail-item">
-                    <strong>Address:</strong> ${patient.address || 'N/A'}
-                </div>
-            </div>
-            
-            <div class="detail-section">
-                <h4>Emergency Contact</h4>
-                <div class="detail-item">
-                    <strong>Name:</strong> ${patient.emergencyContactName || 'N/A'}
-                </div>
-                <div class="detail-item">
-                    <strong>Phone:</strong> ${patient.emergencyContactPhone || 'N/A'}
-                </div>
-            </div>
-            
-            <div class="detail-section">
-                <h4>Medical Information</h4>
-                <div class="detail-item">
-                    <strong>Blood Type:</strong> ${patient.bloodType || 'N/A'}
-                </div>
-                <div class="detail-item">
-                    <strong>Height:</strong> ${patient.height ? patient.height + ' cm' : 'N/A'}
-                </div>
-                <div class="detail-item">
-                    <strong>Weight:</strong> ${patient.weight ? patient.weight + ' kg' : 'N/A'}
-                </div>
-                <div class="detail-item">
-                    <strong>Allergies:</strong> ${patient.allergies || 'None reported'}
-                </div>
-                <div class="detail-item">
-                    <strong>Current Medications:</strong> ${patient.currentMedications || 'None reported'}
-                </div>
-                <div class="detail-item">
-                    <strong>Chronic Conditions:</strong> ${patient.chronicConditions || 'None reported'}
-                </div>
-            </div>
-            
-            <div class="detail-section">
-                <h4>Insurance Information</h4>
-                <div class="detail-item">
-                    <strong>Provider:</strong> ${patient.insuranceProvider || 'N/A'}
-                </div>
-                <div class="detail-item">
-                    <strong>Policy Number:</strong> ${patient.policyNumber || 'N/A'}
-                </div>
-            </div>
-        </div>
-        
-        <div class="patient-actions">
-            <button class="btn btn-primary" onclick="editPatient('${patient.id}')">
-                <i data-lucide="edit"></i>
-                Edit Patient
-            </button>
-            <button class="btn btn-outline" onclick="addMedicalRecord('${patient.id}')">
-                <i data-lucide="file-plus"></i>
-                Add Record
-            </button>
-            <button class="btn btn-outline" onclick="generatePatientReport('${patient.id}')">
-                <i data-lucide="printer"></i>
-                Print Report
-            </button>
-        </div>
-    `;
-    
-    recordsContainer.innerHTML = recordsHTML;
-    lucide.createIcons();
-}
-
-// Load patient statistics
-async function loadPatientStats() {
-    try {
-        const response = await fetch('/api/patients/stats');
-        if (response.ok) {
-            const stats = await response.json();
-            updateStatsDisplay(stats);
+        if (this.isAutoPlaying) {
+            this.startAutoPlay();
+            this.showPlayIcon(false);
+        } else {
+            this.stopAutoPlay();
+            this.showPlayIcon(true);
         }
-    } catch (error) {
-        console.error('Error loading patient stats:', error);
-    }
-}
-
-// Update statistics display
-function updateStatsDisplay(stats) {
-    document.getElementById('total-patients').textContent = stats.totalPatients || 0;
-    document.getElementById('new-registrations').textContent = stats.newRegistrations || 0;
-    document.getElementById('avg-age').textContent = stats.averageAge || 0;
-    document.getElementById('coverage-rate').textContent = `${stats.coverageRate || 0}%`;
-}
-
-// Quick action functions
-function editPatient(patientId) {
-    switchTab('register');
-    showToast('Info', 'Edit functionality - populate form with patient data', 'info');
-}
-
-function addMedicalRecord(patientId) {
-    showToast('Info', 'Medical record functionality would open here', 'info');
-}
-
-function generatePatientReport(patientId) {
-    showToast('Info', 'Patient report generation would start here', 'info');
-}
-
-function exportPatients() {
-    showToast('Info', 'Patient data export would start here', 'info');
-}
-
-function generateReport() {
-    showToast('Info', 'Statistical report generation would start here', 'info');
-}
-
-// Initialize application
-function initializeApp() {
-    // Setup scroll effects
-    window.addEventListener('scroll', handleNavbarScroll);
-    
-    // Setup form handling
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleContactSubmit);
+        
+        console.log('Auto-play', this.isAutoPlaying ? 'enabled' : 'disabled');
     }
     
-    // Setup calculator input listeners
-    const populationSlider = document.getElementById('population');
-    const budgetSlider = document.getElementById('budget');
-    const coverageSlider = document.getElementById('coverage');
-    
-    if (populationSlider) populationSlider.addEventListener('input', updateCalculator);
-    if (budgetSlider) budgetSlider.addEventListener('input', updateCalculator);
-    if (coverageSlider) coverageSlider.addEventListener('input', updateCalculator);
-    
-    // Setup initial calculator display
-    updateCalculator();
-    
-    // Setup animations
-    setupScrollAnimations();
-    
-    // Setup accessibility
-    setupKeyboardNavigation();
-    polyfillSmoothScrolling();
-    
-    // Setup performance optimizations
-    setupLazyLoading();
-    
-    // Setup error handling
-    setupGlobalErrorHandling();
-    
-    // Setup patient management
-    const patientForm = document.getElementById('patient-form');
-    if (patientForm) {
-        patientForm.addEventListener('submit', submitPatientForm);
+    showPlayIcon(show) {
+        if (!this.playIcon || !this.pauseIcon) return;
+        
+        if (show) {
+            this.pauseIcon.classList.add('slider-hidden');
+            this.playIcon.classList.remove('slider-hidden');
+        } else {
+            this.playIcon.classList.add('slider-hidden');
+            this.pauseIcon.classList.remove('slider-hidden');
+        }
     }
     
-    // Setup search input
-    const searchInput = document.getElementById('patient-search');
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchPatients();
+    updateSlideDisplay() {
+        if (this.currentSlideDisplay) {
+            this.currentSlideDisplay.textContent = String(this.currentSlideIndex + 1).padStart(2, '0');
+        }
+        if (this.totalSlidesDisplay) {
+            this.totalSlidesDisplay.textContent = String(this.totalSlides).padStart(2, '0');
+        }
+    }
+    
+    resetProgressBar() {
+        if (!this.isAutoPlaying || !this.progressBar) return;
+        
+        this.progressBar.style.transition = 'none';
+        this.progressBar.style.width = '0%';
+        
+        this.progressBar.offsetHeight; // Force reflow
+        
+        requestAnimationFrame(() => {
+            if (this.progressBar) {
+                this.progressBar.style.transition = `width ${this.settings.autoPlayInterval}ms linear`;
+                this.progressBar.style.width = '100%';
             }
         });
     }
     
-    // Load initial patient stats
-    loadPatientStats();
-    
-    // Handle mobile menu clicks outside
-    document.addEventListener('click', (e) => {
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        
-        if (mobileMenu && mobileMenu.classList.contains('active') && 
-            !mobileMenu.contains(e.target) && 
-            !mobileMenuBtn.contains(e.target)) {
-            mobileMenu.classList.remove('active');
+    // Public API methods
+    play() {
+        if (!this.isAutoPlaying) {
+            this.toggleAutoPlay();
         }
-    });
+    }
     
-    console.log('HEFIN application initialized successfully');
+    pause() {
+        if (this.isAutoPlaying) {
+            this.toggleAutoPlay();
+        }
+    }
+    
+    next() {
+        this.goToNextSlide();
+    }
+    
+    previous() {
+        this.goToPreviousSlide();
+    }
+    
+    goto(index) {
+        if (index >= 0 && index < this.totalSlides) {
+            this.goToSlide(index);
+        }
+    }
+    
+    getCurrentSlide() {
+        return this.currentSlideIndex;
+    }
+    
+    getTotalSlides() {
+        return this.totalSlides;
+    }
+    
+    isPlaying() {
+        return this.isAutoPlaying;
+    }
+    
+    destroy() {
+        this.stopAutoPlay();
+        console.log('Image Carousel Slider destroyed');
+    }
 }
 
-// DOM Content Loaded event
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeApp);
-} else {
-    initializeApp();
+// Initialize Image Slider Function
+function initializeImageSlider() {
+    console.log('Initializing Image Carousel Slider...');
+    
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+        const imageSlider = new ImageCarouselSlider('imageCarousel', {
+            autoPlayInterval: 6000,
+            pauseOnHover: true,
+            enableKeyboard: true,
+            enableTouch: true
+        });
+        
+        // Performance optimizations
+        let scrollTicking = false;
+        
+        function handleScroll() {
+            scrollTicking = false;
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (!scrollTicking) {
+                requestAnimationFrame(handleScroll);
+                scrollTicking = true;
+            }
+        }, { passive: true });
+        
+        // Preload images for better performance
+        function preloadSliderImages() {
+            const images = document.querySelectorAll('.carousel-bg-image');
+            images.forEach(img => {
+                if (img.src) {
+                    const link = document.createElement('link');
+                    link.rel = 'preload';
+                    link.href = img.src;
+                    link.as = 'image';
+                    document.head.appendChild(link);
+                }
+            });
+        }
+        
+        // Preload images after initialization
+        setTimeout(preloadSliderImages, 500);
+        
+        // Make slider globally accessible for external control
+        window.imageCarouselSlider = imageSlider;
+        
+        console.log('Image Carousel Slider setup complete');
+    }, 100);
 }
 
-// Service Worker registration for PWA (optional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        // Uncomment to enable service worker
-        // navigator.serviceWorker.register('/sw.js')
-        //     .then((registration) => {
-        //         console.log('SW registered: ', registration);
-        //     })
-        //     .catch((registrationError) => {
-        //         console.log('SW registration failed: ', registrationError);
-        //     });
-    });
-}
-
-// Export functions for global access (if needed)
-window.HEFIN = {
-    scrollToSection,
-    toggleMobileMenu,
-    updateCalculator,
-    calculateOptimization,
-    showToast,
-    formatNumber,
-    formatCurrency
-};
-
-// Make patient functions globally available
-window.switchTab = switchTab;
-window.searchPatients = searchPatients;
-window.selectPatient = selectPatient;
-window.editPatient = editPatient;
-window.addMedicalRecord = addMedicalRecord;
-window.generatePatientReport = generatePatientReport;
-window.exportPatients = exportPatients;
-window.generateReport = generateReport;
+// Initialize on page load if main content is already visible
+document.addEventListener('DOMContentLoaded', function() {
+    updateUserInterface();
+    
+    // Check if main content is already visible (in case splash was disabled)
+    const mainContent = document.getElementById('main-content');
+    if (mainContent && mainContent.style.display !== 'none') {
+        initializeImageSlider();
+    }
+});

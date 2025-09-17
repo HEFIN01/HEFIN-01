@@ -3,751 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HEFIN - Health & Finance Intelligence | No Premiums, No Bias</title>
-    <meta name="description" content="HEFIN revolutionizes healthcare financing through intelligent resource allocation, transparent fund pooling, and strategic purchasing of health services. No premiums, no bias - just intelligent care and fair finance, powered by you.">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="HEFIN - Health & Finance Intelligence">
-    <meta property="og:description" content="No Premiums, No Bias — Just Intelligent Care and Fair Finance, Powered by You">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hefin.health">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
+    <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar" class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">
-                    <h1 class="logo-text">HEFIN</h1>
-                    <p class="logo-subtitle">Health & Finance Intelligence</p>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="nav-menu desktop-menu">
-                    <button class="nav-link" onclick="scrollToSection('home')">Home</button>
-                    <button class="nav-link" onclick="scrollToSection('about')">About</button>
-                    <button class="nav-link" onclick="scrollToSection('solutions')">Solutions</button>
-                    <button class="nav-link" onclick="scrollToSection('calculator')">Calculator</button>
-                    <button class="nav-link" onclick="scrollToSection('patients')">Patients</button>
-                    <button class="nav-link" onclick="scrollToSection('contact')">Contact</button>
-                    <button class="btn btn-primary" onclick="scrollToSection('patients')">Get Started</button>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                    <i data-lucide="menu"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="mobile-menu">
-                <button class="nav-link mobile-nav-link" onclick="scrollToSection('home')">Home</button>
-                <button class="nav-link mobile-nav-link" onclick="scrollToSection('about')">About</button>
-                <button class="nav-link mobile-nav-link" onclick="scrollToSection('solutions')">Solutions</button>
-                <button class="nav-link mobile-nav-link" onclick="scrollToSection('calculator')">Calculator</button>
-                <button class="nav-link mobile-nav-link" onclick="scrollToSection('patients')">Patients</button>
-                <button class="nav-link mobile-nav-link" onclick="scrollToSection('contact')">Contact</button>
-                <button class="btn btn-primary mobile-nav-link" onclick="scrollToSection('patients')">Get Started</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">No Premiums, No Bias</h1>
-                    <h2 class="hero-subtitle">Just Intelligent Care and Fair Finance</h2>
-                    <p class="hero-tagline">Powered by You</p>
-                    <p class="hero-description">
-                        HEFIN revolutionizes healthcare financing by enabling universal health coverage through 
-                        intelligent resource allocation, transparent fund pooling, and strategic purchasing of health services.
-                    </p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-secondary" onclick="scrollToSection('solutions')">Explore Solutions</button>
-                        <button class="btn btn-outline" onclick="scrollToSection('about')">Learn More</button>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-animation">
-                        <div class="animation-circle"></div>
-                        <div class="animation-shape shape-1"></div>
-                        <div class="animation-shape shape-2"></div>
-                        <div class="animation-shape shape-3"></div>
-                        <div class="animation-shape shape-4"></div>
-                        <div class="hero-icon">
-                            <i data-lucide="heart"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Core Functions of Health Financing</h2>
-                <p class="section-description">
-                    HEFIN transforms healthcare financing through three strategic pillars designed to achieve 
-                    universal health coverage and financial protection.
-                </p>
-            </div>
-            
-            <div class="functions-grid">
-                <div class="function-card card-blue">
-                    <div class="function-icon">
-                        <i data-lucide="trending-up"></i>
-                    </div>
-                    <h3 class="function-title">Revenue Raising</h3>
-                    <p class="function-description">Diversified funding sources for sustainable healthcare financing:</p>
-                    <ul class="function-list">
-                        <li><i data-lucide="check-circle"></i>Government Budget Allocation</li>
-                        <li><i data-lucide="check-circle"></i>Insurance Scheme Integration</li>
-                        <li><i data-lucide="check-circle"></i>Optimized Payment Systems</li>
-                        <li><i data-lucide="check-circle"></i>External Aid Coordination</li>
-                    </ul>
-                </div>
-                
-                <div class="function-card card-green">
-                    <div class="function-icon">
-                        <i data-lucide="users"></i>
-                    </div>
-                    <h3 class="function-title">Fund Pooling</h3>
-                    <p class="function-description">Strategic accumulation and management of healthcare funds:</p>
-                    <ul class="function-list">
-                        <li><i data-lucide="check-circle"></i>Population-wide Coverage</li>
-                        <li><i data-lucide="check-circle"></i>Risk Distribution</li>
-                        <li><i data-lucide="check-circle"></i>Reduced Fragmentation</li>
-                        <li><i data-lucide="check-circle"></i>Prepaid Fund Security</li>
-                    </ul>
-                </div>
-                
-                <div class="function-card card-purple">
-                    <div class="function-icon">
-                        <i data-lucide="building-2"></i>
-                    </div>
-                    <h3 class="function-title">Service Purchasing</h3>
-                    <p class="function-description">Intelligent allocation and payment to healthcare providers:</p>
-                    <ul class="function-list">
-                        <li><i data-lucide="check-circle"></i>Performance-based Payments</li>
-                        <li><i data-lucide="check-circle"></i>Population Health Focus</li>
-                        <li><i data-lucide="check-circle"></i>Strategic Provider Networks</li>
-                        <li><i data-lucide="check-circle"></i>Quality Assurance</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solutions Section -->
-    <section id="solutions" class="solutions">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Health Financing Flow</h2>
-                <p class="section-description">
-                    Visualize how HEFIN optimizes the flow of healthcare financing from revenue sources to patient care.
-                </p>
-            </div>
-            
-            <div class="flow-diagram">
-                <div class="flow-step">
-                    <div class="flow-icon icon-blue">
-                        <i data-lucide="coins"></i>
-                    </div>
-                    <h4 class="flow-title">Revenue Sources</h4>
-                    <p class="flow-description">Government, Insurance, Payments</p>
-                    <div class="flow-bars">
-                        <div class="flow-bar bar-blue"></div>
-                        <div class="flow-bar bar-green"></div>
-                        <div class="flow-bar bar-light-blue"></div>
-                    </div>
-                </div>
-                
-                <div class="flow-arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-                
-                <div class="flow-step">
-                    <div class="flow-icon icon-green">
-                        <i data-lucide="database"></i>
-                    </div>
-                    <h4 class="flow-title">Pooled Funds</h4>
-                    <p class="flow-description">Strategic Accumulation</p>
-                    <div class="flow-progress">
-                        <span class="progress-text">100%</span>
-                    </div>
-                </div>
-                
-                <div class="flow-arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-                
-                <div class="flow-step">
-                    <div class="flow-icon icon-purple">
-                        <i data-lucide="user-check"></i>
-                    </div>
-                    <h4 class="flow-title">Healthcare Services</h4>
-                    <p class="flow-description">Quality Care Delivery</p>
-                    <div class="service-grid">
-                        <div class="service-cell cell-blue"></div>
-                        <div class="service-cell cell-green"></div>
-                        <div class="service-cell cell-light-blue"></div>
-                        <div class="service-cell cell-purple"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value stat-blue">85%</div>
-                    <div class="stat-label">Coverage Efficiency</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value stat-green">67%</div>
-                    <div class="stat-label">Cost Reduction</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value stat-light-blue">92%</div>
-                    <div class="stat-label">Patient Satisfaction</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value stat-purple">78%</div>
-                    <div class="stat-label">Provider Efficiency</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Calculator Section -->
-    <section id="calculator" class="calculator">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Health Finance Calculator</h2>
-                <p class="section-description">
-                    Calculate potential savings and coverage improvements with HEFIN's intelligent financing system.
-                </p>
-            </div>
-            
-            <div class="calculator-card">
-                <div class="calculator-content">
-                    <div class="calculator-inputs">
-                        <div class="input-header">
-                            <i data-lucide="calculator"></i>
-                            <h3>Input Parameters</h3>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label for="population">Population Size</label>
-                            <div class="slider-container">
-                                <input type="range" id="population" min="10000" max="1000000" step="10000" value="250000" oninput="updateCalculator()">
-                                <div class="slider-labels">
-                                    <span>10K</span>
-                                    <span id="population-value">250K</span>
-                                    <span>1M</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label for="budget">Current Healthcare Budget ($)</label>
-                            <div class="slider-container">
-                                <input type="range" id="budget" min="1000000" max="50000000" step="100000" value="10000000" oninput="updateCalculator()">
-                                <div class="slider-labels">
-                                    <span>$1M</span>
-                                    <span id="budget-value">$10M</span>
-                                    <span>$50M</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label for="coverage">Coverage Target (%)</label>
-                            <div class="slider-container">
-                                <input type="range" id="coverage" min="50" max="100" step="1" value="80" oninput="updateCalculator()">
-                                <div class="slider-labels">
-                                    <span>50%</span>
-                                    <span id="coverage-value">80%</span>
-                                    <span>100%</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button class="btn btn-primary btn-full" onclick="calculateOptimization()">
-                            Calculate Optimization
-                        </button>
-                        <div id="loading" class="loading hidden">Calculating...</div>
-                    </div>
-                    
-                    <div class="calculator-results">
-                        <h3>Projected Results</h3>
-                        
-                        <div class="results-summary">
-                            <div class="result-item">
-                                <div class="result-value result-green" id="cost-savings">$2.3M</div>
-                                <div class="result-label">Annual Savings</div>
-                            </div>
-                            <div class="result-item">
-                                <div class="result-value result-blue" id="coverage-improvement">+15%</div>
-                                <div class="result-label">Coverage Increase</div>
-                            </div>
-                        </div>
-                        
-                        <div class="efficiency-metrics">
-                            <h4>Efficiency Gains</h4>
-                            <div class="metric">
-                                <div class="metric-header">
-                                    <span>Administrative Efficiency</span>
-                                    <span id="admin-efficiency">85%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-header">
-                                    <span>Resource Allocation</span>
-                                    <span id="resource-allocation">92%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 92%"></div>
-                                </div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-header">
-                                    <span>Provider Performance</span>
-                                    <span id="provider-performance">78%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 78%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="additional-people">
-                            <p>Potential to serve</p>
-                            <p class="additional-count" id="additional-people">37.5K</p>
-                            <p>additional people</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Patient Details Section -->
-    <section id="patients" class="patients">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Patient Management</h2>
-                <p class="section-description">
-                    Comprehensive patient registration and health record management for universal healthcare coverage.
-                </p>
-            </div>
-            
-            <div class="patient-content">
-                <div class="patient-form-container">
-                    <div class="form-tabs">
-                        <button class="tab-btn active" onclick="switchTab('register')">Patient Registration</button>
-                        <button class="tab-btn" onclick="switchTab('search')">Search Patient</button>
-                        <button class="tab-btn" onclick="switchTab('records')">Medical Records</button>
-                    </div>
-                    
-                    <!-- Patient Registration Form -->
-                    <div id="register-tab" class="tab-content active">
-                        <h3>Register New Patient</h3>
-                        <form id="patient-form" class="patient-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="patientFirstName">First Name *</label>
-                                    <input type="text" id="patientFirstName" name="firstName" placeholder="John" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="patientLastName">Last Name *</label>
-                                    <input type="text" id="patientLastName" name="lastName" placeholder="Doe" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="patientEmail">Email</label>
-                                    <input type="email" id="patientEmail" name="email" placeholder="john.doe@email.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="patientPhone">Phone Number *</label>
-                                    <input type="tel" id="patientPhone" name="phone" placeholder="+1 (555) 123-4567" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="patientDob">Date of Birth *</label>
-                                    <input type="date" id="patientDob" name="dateOfBirth" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="patientGender">Gender</label>
-                                    <select id="patientGender" name="gender">
-                                        <option value="">Select Gender</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
-                                        <option value="prefer-not-to-say">Prefer not to say</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="patientAddress">Address</label>
-                                <textarea id="patientAddress" name="address" rows="2" placeholder="Full address including city, state/province, and postal code"></textarea>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="emergencyContact">Emergency Contact Name</label>
-                                    <input type="text" id="emergencyContact" name="emergencyContactName" placeholder="Emergency contact">
-                                </div>
-                                <div class="form-group">
-                                    <label for="emergencyPhone">Emergency Contact Phone</label>
-                                    <input type="tel" id="emergencyPhone" name="emergencyContactPhone" placeholder="+1 (555) 987-6543">
-                                </div>
-                            </div>
-                            
-                            <div class="medical-info">
-                                <h4>Medical Information</h4>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="bloodType">Blood Type</label>
-                                        <select id="bloodType" name="bloodType">
-                                            <option value="">Select Blood Type</option>
-                                            <option value="A+">A+</option>
-                                            <option value="A-">A-</option>
-                                            <option value="B+">B+</option>
-                                            <option value="B-">B-</option>
-                                            <option value="AB+">AB+</option>
-                                            <option value="AB-">AB-</option>
-                                            <option value="O+">O+</option>
-                                            <option value="O-">O-</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="height">Height (cm)</label>
-                                        <input type="number" id="height" name="height" placeholder="170" min="50" max="300">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="weight">Weight (kg)</label>
-                                        <input type="number" id="weight" name="weight" placeholder="70" min="1" max="500">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="allergies">Known Allergies</label>
-                                    <textarea id="allergies" name="allergies" rows="2" placeholder="List any known allergies (medications, foods, environmental)"></textarea>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="medications">Current Medications</label>
-                                    <textarea id="medications" name="currentMedications" rows="2" placeholder="List current medications and dosages"></textarea>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="conditions">Chronic Conditions</label>
-                                    <textarea id="conditions" name="chronicConditions" rows="2" placeholder="List any chronic medical conditions"></textarea>
-                                </div>
-                            </div>
-                            
-                            <div class="insurance-info">
-                                <h4>Insurance Information</h4>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="insuranceProvider">Insurance Provider</label>
-                                        <input type="text" id="insuranceProvider" name="insuranceProvider" placeholder="Insurance company name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="policyNumber">Policy Number</label>
-                                        <input type="text" id="policyNumber" name="policyNumber" placeholder="Policy/Member ID">
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary btn-full">
-                                <i data-lucide="user-plus"></i>
-                                Register Patient
-                            </button>
-                        </form>
-                    </div>
-                    
-                    <!-- Patient Search Tab -->
-                    <div id="search-tab" class="tab-content">
-                        <h3>Search Patient Records</h3>
-                        <div class="search-form">
-                            <div class="search-input-group">
-                                <input type="text" id="patient-search" placeholder="Search by name, phone, or patient ID">
-                                <button class="btn btn-primary" onclick="searchPatients()">
-                                    <i data-lucide="search"></i>
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div id="search-results" class="search-results">
-                            <div class="no-results">
-                                <i data-lucide="users"></i>
-                                <p>Enter search criteria to find patient records</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medical Records Tab -->
-                    <div id="records-tab" class="tab-content">
-                        <h3>Medical Records</h3>
-                        <div id="patient-records" class="patient-records">
-                            <div class="no-patient-selected">
-                                <i data-lucide="file-text"></i>
-                                <p>Select a patient to view medical records</p>
-                                <button class="btn btn-outline" onclick="switchTab('search')">Search Patients</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="patient-stats">
-                    <div class="stats-card">
-                        <div class="stat-header">
-                            <h3>Patient Statistics</h3>
-                            <i data-lucide="activity"></i>
-                        </div>
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <div class="stat-number" id="total-patients">0</div>
-                                <div class="stat-label">Total Patients</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" id="new-registrations">0</div>
-                                <div class="stat-label">New This Month</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" id="avg-age">0</div>
-                                <div class="stat-label">Average Age</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" id="coverage-rate">0%</div>
-                                <div class="stat-label">Coverage Rate</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="quick-actions-card">
-                        <h4>Quick Actions</h4>
-                        <div class="quick-actions">
-                            <button class="quick-action-btn" onclick="switchTab('register')">
-                                <i data-lucide="user-plus"></i>
-                                <span>New Patient</span>
-                            </button>
-                            <button class="quick-action-btn" onclick="switchTab('search')">
-                                <i data-lucide="search"></i>
-                                <span>Find Patient</span>
-                            </button>
-                            <button class="quick-action-btn" onclick="exportPatients()">
-                                <i data-lucide="download"></i>
-                                <span>Export Data</span>
-                            </button>
-                            <button class="quick-action-btn" onclick="generateReport()">
-                                <i data-lucide="file-bar-chart"></i>
-                                <span>Generate Report</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="coverage-overview">
-                        <h4>Coverage Overview</h4>
-                        <div class="coverage-chart">
-                            <div class="coverage-item">
-                                <div class="coverage-label">Insured</div>
-                                <div class="coverage-bar">
-                                    <div class="coverage-fill coverage-insured" style="width: 75%"></div>
-                                </div>
-                                <div class="coverage-percentage">75%</div>
-                            </div>
-                            <div class="coverage-item">
-                                <div class="coverage-label">Uninsured</div>
-                                <div class="coverage-bar">
-                                    <div class="coverage-fill coverage-uninsured" style="width: 25%"></div>
-                                </div>
-                                <div class="coverage-percentage">25%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get Started with HEFIN</h2>
-                <p class="section-description">
-                    Ready to transform your healthcare financing system? Contact our team for a consultation.
-                </p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-form-container">
-                    <h3>Send us a message</h3>
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name</label>
-                                <input type="text" id="firstName" name="firstName" placeholder="John" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name</label>
-                                <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="organization">Organization</label>
-                            <input type="text" id="organization" name="organization" placeholder="Healthcare Organization">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your healthcare financing needs..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <i data-lucide="send"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-                
-                <div class="contact-info">
-                    <div class="contact-details">
-                        <h3>Contact Information</h3>
-                        <div class="contact-items">
-                            <div class="contact-item">
-                                <div class="contact-icon icon-blue">
-                                    <i data-lucide="mail"></i>
-                                </div>
-                                <div>
-                                    <p class="contact-title">Email</p>
-                                    <p class="contact-value">contact@hefin.health</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon icon-green">
-                                    <i data-lucide="phone"></i>
-                                </div>
-                                <div>
-                                    <p class="contact-title">Phone</p>
-                                    <p class="contact-value">+1 (555) 123-4567</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon icon-light-blue">
-                                    <i data-lucide="map-pin"></i>
-                                </div>
-                                <div>
-                                    <p class="contact-title">Office</p>
-                                    <p class="contact-value">Global Health Innovation Hub</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="benefits-card">
-                        <h4>Why Choose HEFIN?</h4>
-                        <ul class="benefits-list">
-                            <li><i data-lucide="check-circle"></i>No hidden premiums or bias</li>
-                            <li><i data-lucide="check-circle"></i>AI-powered intelligent care</li>
-                            <li><i data-lucide="check-circle"></i>Fair and transparent financing</li>
-                            <li><i data-lucide="check-circle"></i>Community-powered solutions</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-main">
-                    <h3 class="footer-logo">HEFIN</h3>
-                    <p class="footer-description">
-                        Revolutionizing healthcare financing through intelligent, bias-free, and 
-                        community-powered solutions for universal health coverage.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
-                        <a href="#" class="social-link"><i data-lucide="linkedin"></i></a>
-                        <a href="#" class="social-link"><i data-lucide="facebook"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Solutions</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Revenue Raising</a></li>
-                        <li><a href="#">Fund Pooling</a></li>
-                        <li><a href="#">Service Purchasing</a></li>
-                        <li><a href="#">Analytics Dashboard</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 HEFIN. All rights reserved. Powered by intelligent healthcare financing.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="toast hidden">
-        <div class="toast-content">
-            <i data-lucide="check-circle" class="toast-icon"></i>
-            <div class="toast-text">
-                <div class="toast-title">Success</div>
-                <div class="toast-message">Message sent successfully!</div>
-            </div>
+    <div id="splash-screen">
+        <div class="splash-content">
+            <h1>Welcome <br> To Our</h1>
+            <img src="LOGO-removebg-preview.png" alt="Logo" class="splash-logo">
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- Main content of the site -->
+    <div id="main-content" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <!-- Logo -->
+                    <div class="logo" onclick="goHome()">
+                        <img src="LOGO-removebg-preview.png" alt="logo" class="logo-img">
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <nav class="nav">
+                        <a href="#home" class="nav-item">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Home</span>
+                        </a>
+                        <a href="#about" class="nav-item">
+                            <span>About</span>
+                        </a>
+                        <a href="#service" class="nav-item">
+                            <i class="fa-solid fa-heart-circle-plus"></i>
+                            <span>Service</span>
+                        </a>
+                        <a href="#contact" class="nav-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>Contact</span>
+                        </a>
+                    </nav>
+
+                    <!-- Desktop Auth Section -->
+                    <div class="auth-section" id="authSection">
+                        <button class="btn btn-ghost" onclick="openSignInModal()">Sign In</button>
+                        <button class="btn btn-primary" onclick="openSignUpModal()">Sign Up</button>
+                    </div>
+
+                    <!-- User Profile (Hidden by default) -->
+                    <div class="user-profile" id="userProfile" style="display: none;">
+                        <button class="user-avatar" id="userAvatar" onclick="toggleUserDropdown()">
+                            <span id="userInitials">U</span>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <div class="user-info">
+                                <div class="user-name" id="userName">User Name</div>
+                                <div class="user-email" id="userEmail">user@example.com</div>
+                            </div>
+                            <button class="dropdown-item" onclick="viewProfile()">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                </svg>
+                                Profile
+                            </button>
+                            <button class="dropdown-item" onclick="viewSettings()">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                Settings
+                            </button>
+                            <button class="dropdown-item" onclick="signOut()">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                                </svg>
+                                Log out
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: white;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="close-btn" onclick="closeMobileMenu()">&times;</button>
+            
+            <!-- Mobile Auth Buttons (shown when not logged in) -->
+            <div id="mobileAuthSection">
+                <button class="btn btn-ghost" style="width: 100%; margin-bottom: 8px;" onclick="openSignInModal(); closeMobileMenu();">Sign In</button>
+                <button class="btn btn-primary" style="width: 100%; margin-bottom: 16px;" onclick="openSignUpModal(); closeMobileMenu();">Sign Up</button>
+            </div>
+
+            <!-- Mobile User Info (hidden by default) -->
+            <div id="mobileUserInfo" style="display: none; padding: 16px; border-bottom: 1px solid rgba(0,0,0,0.1); margin-bottom: 16px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="user-avatar" id="mobileUserAvatar">
+                        <span id="mobileUserInitials">U</span>
+                    </div>
+                    <div>
+                        <div class="user-name" id="mobileUserName">User Name</div>
+                        <div class="user-email" id="mobileUserEmail">user@example.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav">
+                <a href="#home" class="mobile-nav-item" onclick="closeMobileMenu()">
+                   <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="mobile-nav-item" onclick="closeMobileMenu()">
+                    <span>About</span>
+                </a>
+                <a href="#service" class="mobile-nav-item" onclick="closeMobileMenu()">
+                    <i class="fa-solid fa-heart-circle-plus"></i>
+                    <span>Service</span>
+                </a>
+                <a href="#contact" class="mobile-nav-item" onclick="closeMobileMenu()">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+
+            <!-- Mobile User Actions (hidden by default) -->
+            <div id="mobileUserActions" style="display: none; margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.1);">
+                <button class="mobile-nav-item" style="border: none; background: none; width: 100%; text-align: left;" onclick="viewProfile(); closeMobileMenu();">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                    Profile
+                </button>
+                <button class="mobile-nav-item" style="border: none; background: none; width: 100%; text-align: left;" onclick="viewSettings(); closeMobileMenu();">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    Settings
+                </button>
+                <button class="mobile-nav-item" style="border: none; background: none; width: 100%; text-align: left; color: #dc2626;" onclick="signOut(); closeMobileMenu();">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                    Log out
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <h1 class="welcome-title" id="welcomeTitle">Welcome to HealthFinance</h1>
+                <p class="welcome-subtitle">Your complete solution for health monitoring and financial management. Join thousands of users who trust us with their most important data.</p>
+                <div class="cta-buttons" id="ctaButtons">
+                    <button class="btn btn-primary" onclick="openSignUpModal()">Get Started</button>
+                    <button class="btn btn-ghost" onclick="openSignInModal()">Learn More</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sign In Modal -->
+        <div class="modal" id="signInModal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeSignInModal()">&times;</button>
+                <div class="modal-header">
+                    <h2 class="modal-title">Welcome Back</h2>
+                    <p class="modal-subtitle">Sign in to access your health and financial dashboard</p>
+                </div>
+                <form id="signInForm" onsubmit="handleSignIn(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="signInEmail">Email</label>
+                        <input class="form-input" type="email" id="signInEmail" placeholder="Enter your email" required>
+                        <div class="error-message" id="signInEmailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signInPassword">Password</label>
+                        <div class="input-group">
+                            <input class="form-input" type="password" id="signInPassword" placeholder="Enter your password" required>
+                            <button type="button" class="input-toggle" onclick="togglePassword('signInPassword', this)">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="error-message" id="signInPasswordError"></div>
+                    </div>
+                    <div style="text-align: left; margin-bottom: 24px;">
+                        <a href="#" class="link">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="signInSubmitBtn">
+                        <span id="signInBtnText">Sign In</span>
+                        <div class="spinner" id="signInSpinner" style="display: none;"></div>
+                    </button>
+                    <div style="text-align: center; margin-top: 16px; font-size: 14px;">
+                        <span style="color: #6b7280;">Don't have an account? </span>
+                        <a href="#" class="link" onclick="closeSignInModal(); openSignUpModal();">Sign up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Sign Up Modal -->
+        <div class="modal" id="signUpModal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeSignUpModal()">&times;</button>
+                <div class="modal-header">
+                    <h2 class="modal-title">Create Your Account</h2>
+                    <p class="modal-subtitle">Join us to manage your health and finances securely</p>
+                </div>
+                <form id="signUpForm" onsubmit="handleSignUp(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="firstName">First Name</label>
+                            <input class="form-input" type="text" id="firstName" placeholder="First name" required>
+                            <div class="error-message" id="firstNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="lastName">Last Name</label>
+                            <input class="form-input" type="text" id="lastName" placeholder="Last name" required>
+                            <div class="error-message" id="lastNameError"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signUpEmail">Email</label>
+                        <input class="form-input" type="email" id="signUpEmail" placeholder="Enter your email" required>
+                        <div class="error-message" id="signUpEmailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signUpPassword">Password</label>
+                        <div class="input-group">
+                            <input class="form-input" type="password" id="signUpPassword" placeholder="Create a password" required>
+                            <button type="button" class="input-toggle" onclick="togglePassword('signUpPassword', this)">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength" style="display: none;">
+                            <div class="strength-item" id="lengthCheck">
+                                <span>✓</span> 8+ characters
+                            </div>
+                            <div class="strength-item" id="upperCheck">
+                                <span>✓</span> Uppercase
+                            </div>
+                            <div class="strength-item" id="lowerCheck">
+                                <span>✓</span> Lowercase
+                            </div>
+                            <div class="strength-item" id="numberCheck">
+                                <span>✓</span> Number
+                            </div>
+                        </div>
+                        <div class="error-message" id="signUpPasswordError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="confirmPassword">Confirm Password</label>
+                        <div class="input-group">
+                            <input class="form-input" type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                            <button type="button" class="input-toggle" onclick="togglePassword('confirmPassword', this)">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="error-message" id="confirmPasswordError"></div>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="termsAgree" class="checkbox" required>
+                        <label for="termsAgree" class="checkbox-label">
+                            I agree to the <a href="#" class="link">Terms & Conditions</a> and <a href="#" class="link">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <div class="error-message" id="termsError"></div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="signUpSubmitBtn">
+                        <span id="signUpBtnText">Create Account</span>
+                        <div class="spinner" id="signUpSpinner" style="display: none;"></div>
+                    </button>
+                    <div style="text-align: center; margin-top: 16px; font-size: 14px;">
+                        <span style="color: #6b7280;">Already have an account? </span>
+                        <a href="#" class="link" onclick="closeSignUpModal(); openSignInModal();">Sign in</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Image Slider Section -->
+        <div class="image-slider-wrapper">
+            <div class="image-carousel" id="imageCarousel">
+                <!-- Slide Container -->
+                <div class="carousel-slides-container" id="carouselSlidesContainer">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide carousel-active" data-slide="0">
+                        <img src="https://images.unsplash.com/photo-1630128295920-627fb9aff5a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3NwaXRhbCUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzU4MDUyMDczfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Advanced Medical Infrastructure" class="carousel-bg-image">
+                        <div class="carousel-overlay"></div>
+                        <div class="carousel-content">
+                            <div class="content-badge">Healthcare Technology</div>
+                            <h3 class="content-title">Advanced Medical Infrastructure</h3>
+                            <p class="content-description">State-of-the-art healthcare facilities equipped with cutting-edge technology to deliver exceptional patient care and support universal health coverage initiatives.</p>
+                            <button class="content-button">Explore Solutions</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide" data-slide="1">
+                        <img src="https://images.unsplash.com/photo-1631039302217-5a6c56371e86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwcHJvZmVzc2lvbmFscyUyMG1lZXRpbmd8ZW58MXx8fHwxNzU4MTA5MTU0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Healthcare Professional Networks" class="carousel-bg-image">
+                        <div class="carousel-overlay"></div>
+                        <div class="carousel-content">
+                            <div class="content-badge">Collaborative Care</div>
+                            <h3 class="content-title">Healthcare Professional Networks</h3>
+                            <p class="content-description">Fostering collaboration among healthcare professionals to create integrated care systems that prioritize patient outcomes and equitable access to quality healthcare services.</p>
+                            <button class="content-button">Join Network</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide" data-slide="2">
+                        <img src="https://images.unsplash.com/photo-1659353886114-9aa119aef5aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwZGF0YSUyMGFuYWx5dGljc3xlbnwxfHx8fDE3NTgxMDkxNTR8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Intelligent Healthcare Analytics" class="carousel-bg-image">
+                        <div class="carousel-overlay"></div>
+                        <div class="carousel-content">
+                            <div class="content-badge">Data Analytics</div>
+                            <h3 class="content-title">Intelligent Healthcare Analytics</h3>
+                            <p class="content-description">Leveraging advanced data analytics and AI to optimize healthcare delivery, reduce costs, and improve patient outcomes through evidence-based decision making.</p>
+                            <button class="content-button">View Analytics</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide" data-slide="3">
+                        <img src="https://images.unsplash.com/photo-1698247889546-730231ee9dfa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwZmluYW5jaW5nfGVufDF8fHx8MTV7NTgxMDkxNTR8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Transparent Healthcare Financing" class="carousel-bg-image">
+                        <div class="carousel-overlay"></div>
+                        <div class="carousel-content">
+                            <div class="content-badge">Financial Innovation</div>
+                            <h3 class="content-title">Transparent Healthcare Financing</h3>
+                            <p class="content-description">Revolutionary financing models that eliminate premiums and bias, ensuring fair and accessible healthcare funding through innovative community-powered financial solutions.</p>
+                            <button class="content-button">Learn More</button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="carousel-slide" data-slide="4">
+                        <img src="https://images.unsplash.com/photo-1691934286085-c88039d93dae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWxlbWVkaWNpbmUlMjBjb25zdWx0YXRpb258ZW58MXx8fHwxNzU4MDkzNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Telemedicine Solutions" class="carousel-bg-image">
+                        <div class="carousel-overlay"></div>
+                        <div class="carousel-content">
+                            <div class="content-badge">Digital Health</div>
+                            <h3 class="content-title">Telemedicine Solutions</h3>
+                            <p class="content-description">Breaking geographical barriers through comprehensive telemedicine platforms that ensure quality healthcare access for all, regardless of location or economic status.</p>
+                            <button class="content-button">Start Consultation</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="carousel-navigation">
+                    <!-- Previous/Next Buttons -->
+                    <button class="nav-arrow nav-prev" id="carouselPrev" aria-label="Previous slide">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="nav-arrow nav-next" id="carouselNext" aria-label="Next slide">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <!-- Play/Pause Button -->
+                    <button class="play-pause-btn" id="carouselPlayPause" aria-label="Toggle slideshow">
+                        <svg class="pause-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="4" width="4" height="16" fill="currentColor"/>
+                            <rect x="14" y="4" width="4" height="16" fill="currentColor"/>
+                        </svg>
+                        <svg class="play-icon slider-hidden" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+                        </svg>
+                    </button>
+
+                    <!-- Slide Counter -->
+                    <div class="slide-counter">
+                        <span id="currentSlideNum">01</span> / <span id="totalSlidesNum">05</span>
+                    </div>
+                </div>
+
+                <!-- Dot Navigation -->
+                <div class="dot-navigation">
+                    <button class="nav-dot dot-active" data-target="0" aria-label="Go to slide 1"></button>
+                    <button class="nav-dot" data-target="1" aria-label="Go to slide 2"></button>
+                    <button class="nav-dot" data-target="2" aria-label="Go to slide 3"></button>
+                    <button class="nav-dot" data-target="3" aria-label="Go to slide 4"></button>
+                    <button class="nav-dot" data-target="4" aria-label="Go to slide 5"></button>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar" id="carouselProgressBar"></div>
+                </div>
+            </div>
+        </div>
+        <!-- HTML -->
+<div class="card-container">
+  <div class="card">
+    <div class="icon">💼</div>
+    <h3>Revenue Raising</h3>
+    <p>Diverse funding sources including government budgets, insurance schemes, and community contributions to ensure sustainable healthcare financing.</p>
+  </div>
+  <div class="card">
+    <div class="icon">🤝</div>
+    <h3>Fund Pooling</h3>
+    <p>Strategic accumulation of prepaid funds to ensure comprehensive population coverage and risk sharing across communities.</p>
+  </div>
+  <div class="card">
+    <div class="icon">📊</div>
+    <h3>Strategic Purchasing</h3>
+    <p>Performance-based payment systems aligned with population health needs and outcomes to maximize healthcare value.</p>
+  </div>
+</div>
+
+     
+    </div>
+
     <script src="script.js"></script>
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-    </script>
 </body>
 </html>

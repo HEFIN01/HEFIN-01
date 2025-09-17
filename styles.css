@@ -190,7 +190,9 @@
             .nav {
                 display: flex;
                 align-items: center;
+                color: black;
             }
+            
         }
 
         .nav-item {
@@ -198,7 +200,7 @@
             align-items: center;
             gap: 0.25rem;
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(247, 246, 246, 0.7);
             transition: all 0.2s ease;
             opacity: 0;
             transform: translateY(20px);
@@ -217,16 +219,13 @@
         }
 
         .nav-item:hover {
-            color: #f7f2f2;
+            color: #ffffff;
             transform: translateY(-5px);
         }
 
         .fa-solid {
             width: 16px;
             height: 16px;
-            color: white;
-        }
-        .fa-square-info{
             color: white;
         }
 
@@ -408,6 +407,7 @@
             }
         }
 
+
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -454,14 +454,16 @@
             gap: 12px;
             padding: 12px;
             text-decoration: none;
-            color: #e3e5e9;
+            color: #dbdbdb;
             border-radius: 8px;
+            background-color: black;
             margin-bottom: 4px;
             transition: background-color 0.2s ease;
         }
 
         .mobile-nav-item:hover {
             background-color: #f3f4f6;
+            color: black;
         }
 
         /* Modal Styles */

@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HealthFinance - Your Complete Healthcare & Financial Solution</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div id="splash-screen">
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
         <div class="splash-content">
-            <h1>Welcome <br> To Our</h1>
-            <img src="LOGO-removebg-preview.png" alt="Logo" class="splash-logo">
+            <div class="splash-content-container">
+                <h1 class="splash-title">Welcome <br /> To Our</h1>
+                <div class="splash-logo-container">
+                    <img src="LOGO-removebg-preview.png" alt="Logo" class="splash-logo">
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Main content of the site -->
-    <div id="main-content" style="display: none;">
+    <!-- Main Content -->
+    <div id="main-content" class="main-content" style="display: none;">
         <!-- Header -->
         <header class="header">
-            <div class="container">
+            <div class="header-container">
                 <div class="header-content">
                     <!-- Logo -->
                     <div class="logo" onclick="goHome()">
@@ -29,19 +34,19 @@
                     <!-- Desktop Navigation -->
                     <nav class="nav">
                         <a href="#home" class="nav-item">
-                            <i class="fa-solid fa-house"></i>
+                            <i class="fas fa-home"></i>
                             <span>Home</span>
                         </a>
                         <a href="#about" class="nav-item">
-                            <i class="fa-solid fa-info"></i>
+                            <i class="fas fa-info-circle"></i>
                             <span>About</span>
                         </a>
                         <a href="#service" class="nav-item">
-                            <i class="fa-solid fa-heart-circle-plus"></i>
+                            <i class="fas fa-heart"></i>
                             <span>Service</span>
                         </a>
                         <a href="#contact" class="nav-item">
-                            <i class="fa-solid fa-phone"></i>
+                            <i class="fas fa-phone"></i>
                             <span>Contact</span>
                         </a>
                     </nav>
@@ -63,22 +68,15 @@
                                 <div class="user-email" id="userEmail">user@example.com</div>
                             </div>
                             <button class="dropdown-item" onclick="viewProfile()">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                                </svg>
+                                <i class="fas fa-user"></i>
                                 Profile
                             </button>
                             <button class="dropdown-item" onclick="viewSettings()">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                </svg>
+                                <i class="fas fa-cog"></i>
                                 Settings
                             </button>
                             <button class="dropdown-item" onclick="signOut()">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
-                                </svg>
+                                <i class="fas fa-sign-out-alt"></i>
                                 Log out
                             </button>
                         </div>
@@ -86,9 +84,7 @@
 
                     <!-- Mobile Menu Button -->
                     <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: white;">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
+                        <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
@@ -101,15 +97,15 @@
         <div class="mobile-menu" id="mobileMenu">
             <button class="close-btn" onclick="closeMobileMenu()">&times;</button>
             
-            <!-- Mobile Auth Buttons (shown when not logged in) -->
+            <!-- Mobile Auth Buttons -->
             <div id="mobileAuthSection">
-                <button class="btn btn-ghost" style="width: 100%; margin-bottom: 8px;" onclick="openSignInModal(); closeMobileMenu();">Sign In</button>
-                <button class="btn btn-primary" style="width: 100%; margin-bottom: 16px;" onclick="openSignUpModal(); closeMobileMenu();">Sign Up</button>
+                <button class="btn btn-ghost mobile-auth-btn" onclick="openSignInModal(); closeMobileMenu();">Sign In</button>
+                <button class="btn btn-primary mobile-auth-btn" onclick="openSignUpModal(); closeMobileMenu();">Sign Up</button>
             </div>
 
-            <!-- Mobile User Info (hidden by default) -->
-            <div id="mobileUserInfo" style="display: none; padding: 16px; border-bottom: 1px solid rgba(0,0,0,0.1); margin-bottom: 16px;">
-                <div style="display: flex; align-items: center; gap: 12px;">
+            <!-- Mobile User Info -->
+            <div id="mobileUserInfo" style="display: none;" class="mobile-user-info">
+                <div class="mobile-user-details">
                     <div class="user-avatar" id="mobileUserAvatar">
                         <span id="mobileUserInitials">U</span>
                     </div>
@@ -123,49 +119,43 @@
             <!-- Mobile Navigation -->
             <nav class="mobile-nav">
                 <a href="#home" class="mobile-nav-item" onclick="closeMobileMenu()">
-                   <i class="fa-solid fa-house"></i>
+                    <i class="fas fa-home"></i>
                     <span>Home</span>
                 </a>
                 <a href="#about" class="mobile-nav-item" onclick="closeMobileMenu()">
+                    <i class="fas fa-info-circle"></i>
                     <span>About</span>
                 </a>
                 <a href="#service" class="mobile-nav-item" onclick="closeMobileMenu()">
-                    <i class="fa-solid fa-heart-circle-plus"></i>
+                    <i class="fas fa-heart"></i>
                     <span>Service</span>
                 </a>
                 <a href="#contact" class="mobile-nav-item" onclick="closeMobileMenu()">
-                    <i class="fa-solid fa-phone"></i>
+                    <i class="fas fa-phone"></i>
                     <span>Contact</span>
                 </a>
             </nav>
 
-            <!-- Mobile User Actions (hidden by default) -->
-            <div id="mobileUserActions" style="display: none; margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.1);">
-                <button class="mobile-nav-item" style="border: none; background: none; width: 100%; text-align: left;" onclick="viewProfile(); closeMobileMenu();">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                    </svg>
+            <!-- Mobile User Actions -->
+            <div id="mobileUserActions" style="display: none;" class="mobile-user-actions">
+                <button class="mobile-nav-item" onclick="viewProfile(); closeMobileMenu();">
+                    <i class="fas fa-user"></i>
                     Profile
                 </button>
-                <button class="mobile-nav-item" style="border: none; background: none; width: 100%; text-align: left;" onclick="viewSettings(); closeMobileMenu();">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
+                <button class="mobile-nav-item" onclick="viewSettings(); closeMobileMenu();">
+                    <i class="fas fa-cog"></i>
                     Settings
                 </button>
-                <button class="mobile-nav-item" style="border: none; background: none; width: 100%; text-align: left; color: #dc2626;" onclick="signOut(); closeMobileMenu();">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
-                    </svg>
+                <button class="mobile-nav-item logout-btn" onclick="signOut(); closeMobileMenu();">
+                    <i class="fas fa-sign-out-alt"></i>
                     Log out
                 </button>
             </div>
         </div>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="container">
+        <!-- Welcome Section -->
+        <main class="welcome-section">
+            <div class="welcome-container">
                 <h1 class="welcome-title" id="welcomeTitle">Welcome to HealthFinance</h1>
                 <p class="welcome-subtitle">Your complete solution for health monitoring and financial management. Join thousands of users who trust us with their most important data.</p>
                 <div class="cta-buttons" id="ctaButtons">
@@ -175,147 +165,20 @@
             </div>
         </main>
 
-        <!-- Sign In Modal -->
-        <div class="modal" id="signInModal">
-            <div class="modal-content">
-                <button class="close-btn" onclick="closeSignInModal()">&times;</button>
-                <div class="modal-header">
-                    <h2 class="modal-title">Welcome Back</h2>
-                    <p class="modal-subtitle">Sign in to access your health and financial dashboard</p>
-                </div>
-                <form id="signInForm" onsubmit="handleSignIn(event)">
-                    <div class="form-group">
-                        <label class="form-label" for="signInEmail">Email</label>
-                        <input class="form-input" type="email" id="signInEmail" placeholder="Enter your email" required>
-                        <div class="error-message" id="signInEmailError"></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="signInPassword">Password</label>
-                        <div class="input-group">
-                            <input class="form-input" type="password" id="signInPassword" placeholder="Enter your password" required>
-                            <button type="button" class="input-toggle" onclick="togglePassword('signInPassword', this)">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="error-message" id="signInPasswordError"></div>
-                    </div>
-                    <div style="text-align: left; margin-bottom: 24px;">
-                        <a href="#" class="link">Forgot password?</a>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="signInSubmitBtn">
-                        <span id="signInBtnText">Sign In</span>
-                        <div class="spinner" id="signInSpinner" style="display: none;"></div>
-                    </button>
-                    <div style="text-align: center; margin-top: 16px; font-size: 14px;">
-                        <span style="color: #6b7280;">Don't have an account? </span>
-                        <a href="#" class="link" onclick="closeSignInModal(); openSignUpModal();">Sign up</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- Sign Up Modal -->
-        <div class="modal" id="signUpModal">
-            <div class="modal-content">
-                <button class="close-btn" onclick="closeSignUpModal()">&times;</button>
-                <div class="modal-header">
-                    <h2 class="modal-title">Create Your Account</h2>
-                    <p class="modal-subtitle">Join us to manage your health and finances securely</p>
-                </div>
-                <form id="signUpForm" onsubmit="handleSignUp(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="firstName">First Name</label>
-                            <input class="form-input" type="text" id="firstName" placeholder="First name" required>
-                            <div class="error-message" id="firstNameError"></div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="lastName">Last Name</label>
-                            <input class="form-input" type="text" id="lastName" placeholder="Last name" required>
-                            <div class="error-message" id="lastNameError"></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="signUpEmail">Email</label>
-                        <input class="form-input" type="email" id="signUpEmail" placeholder="Enter your email" required>
-                        <div class="error-message" id="signUpEmailError"></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="signUpPassword">Password</label>
-                        <div class="input-group">
-                            <input class="form-input" type="password" id="signUpPassword" placeholder="Create a password" required>
-                            <button type="button" class="input-toggle" onclick="togglePassword('signUpPassword', this)">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="password-strength" id="passwordStrength" style="display: none;">
-                            <div class="strength-item" id="lengthCheck">
-                                <span>✓</span> 8+ characters
-                            </div>
-                            <div class="strength-item" id="upperCheck">
-                                <span>✓</span> Uppercase
-                            </div>
-                            <div class="strength-item" id="lowerCheck">
-                                <span>✓</span> Lowercase
-                            </div>
-                            <div class="strength-item" id="numberCheck">
-                                <span>✓</span> Number
-                            </div>
-                        </div>
-                        <div class="error-message" id="signUpPasswordError"></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="confirmPassword">Confirm Password</label>
-                        <div class="input-group">
-                            <input class="form-input" type="password" id="confirmPassword" placeholder="Confirm your password" required>
-                            <button type="button" class="input-toggle" onclick="togglePassword('confirmPassword', this)">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="error-message" id="confirmPasswordError"></div>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="termsAgree" class="checkbox" required>
-                        <label for="termsAgree" class="checkbox-label">
-                            I agree to the <a href="#" class="link">Terms & Conditions</a> and <a href="#" class="link">Privacy Policy</a>
-                        </label>
-                    </div>
-                    <div class="error-message" id="termsError"></div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="signUpSubmitBtn">
-                        <span id="signUpBtnText">Create Account</span>
-                        <div class="spinner" id="signUpSpinner" style="display: none;"></div>
-                    </button>
-                    <div style="text-align: center; margin-top: 16px; font-size: 14px;">
-                        <span style="color: #6b7280;">Already have an account? </span>
-                        <a href="#" class="link" onclick="closeSignUpModal(); openSignInModal();">Sign in</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <!-- Image Slider Section -->
         <div class="image-slider-wrapper">
             <div class="image-carousel" id="imageCarousel">
                 <!-- Slide Container -->
-                <div class="carousel-slides-container" id="carouselSlidesContainer">
+                <div class="carousel-slides-container">
                     <!-- Slide 1 -->
                     <div class="carousel-slide carousel-active" data-slide="0">
-                        <img src="https://images.unsplash.com/photo-1630128295920-627fb9aff5a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3NwaXRhbCUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzU4MDUyMDczfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Advanced Medical Infrastructure" class="carousel-bg-image">
+                        <img src="https://images.unsplash.com/photo-1630128295920-627fb9aff5a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3NwaXRhbCUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzU4MTY2NzM5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" alt="Advanced Medical Infrastructure" class="carousel-bg-image">
                         <div class="carousel-overlay"></div>
                         <div class="carousel-content">
                             <div class="content-badge">Healthcare Technology</div>
                             <h3 class="content-title">Advanced Medical Infrastructure</h3>
                             <p class="content-description">State-of-the-art healthcare facilities equipped with cutting-edge technology to deliver exceptional patient care and support universal health coverage initiatives.</p>
-                            <button class="content-button">Explore Solutions</button>
+                            <button class="content-button" onclick="handleCTAClick('Explore Solutions')">Explore Solutions</button>
                         </div>
                     </div>
 
@@ -327,31 +190,31 @@
                             <div class="content-badge">Collaborative Care</div>
                             <h3 class="content-title">Healthcare Professional Networks</h3>
                             <p class="content-description">Fostering collaboration among healthcare professionals to create integrated care systems that prioritize patient outcomes and equitable access to quality healthcare services.</p>
-                            <button class="content-button">Join Network</button>
+                            <button class="content-button" onclick="handleCTAClick('Join Network')">Join Network</button>
                         </div>
                     </div>
 
                     <!-- Slide 3 -->
                     <div class="carousel-slide" data-slide="2">
-                        <img src="https://images.unsplash.com/photo-1659353886114-9aa119aef5aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwZGF0YSUyMGFuYWx5dGljc3xlbnwxfHx8fDE3NTgxMDkxNTR8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Intelligent Healthcare Analytics" class="carousel-bg-image">
+                        <img src="https://images.unsplash.com/photo-1659353886114-9aa119aef5aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwZGF0YSUyMGFuYWx5dGljc3xlbnwxfHx8fDE3NTgyMDc0MzN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" alt="Intelligent Healthcare Analytics" class="carousel-bg-image">
                         <div class="carousel-overlay"></div>
                         <div class="carousel-content">
                             <div class="content-badge">Data Analytics</div>
                             <h3 class="content-title">Intelligent Healthcare Analytics</h3>
                             <p class="content-description">Leveraging advanced data analytics and AI to optimize healthcare delivery, reduce costs, and improve patient outcomes through evidence-based decision making.</p>
-                            <button class="content-button">View Analytics</button>
+                            <button class="content-button" onclick="handleCTAClick('View Analytics')">View Analytics</button>
                         </div>
                     </div>
 
                     <!-- Slide 4 -->
                     <div class="carousel-slide" data-slide="3">
-                        <img src="https://images.unsplash.com/photo-1698247889546-730231ee9dfa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwZmluYW5jaW5nfGVufDF8fHx8MTV7NTgxMDkxNTR8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Transparent Healthcare Financing" class="carousel-bg-image">
+                        <img src="https://images.unsplash.com/photo-1698247889546-730231ee9dfa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwZmluYW5jaW5nfGVufDF8fHx8MTc1ODEwOTE1NHww&ixlib=rb-4.1.0&q=80&w=1080" alt="Transparent Healthcare Financing" class="carousel-bg-image">
                         <div class="carousel-overlay"></div>
                         <div class="carousel-content">
                             <div class="content-badge">Financial Innovation</div>
                             <h3 class="content-title">Transparent Healthcare Financing</h3>
                             <p class="content-description">Revolutionary financing models that eliminate premiums and bias, ensuring fair and accessible healthcare funding through innovative community-powered financial solutions.</p>
-                            <button class="content-button">Learn More</button>
+                            <button class="content-button" onclick="handleCTAClick('Learn More')">Learn More</button>
                         </div>
                     </div>
 
@@ -363,37 +226,23 @@
                             <div class="content-badge">Digital Health</div>
                             <h3 class="content-title">Telemedicine Solutions</h3>
                             <p class="content-description">Breaking geographical barriers through comprehensive telemedicine platforms that ensure quality healthcare access for all, regardless of location or economic status.</p>
-                            <button class="content-button">Start Consultation</button>
+                            <button class="content-button" onclick="handleCTAClick('Start Consultation')">Start Consultation</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Navigation Controls -->
                 <div class="carousel-navigation">
-                    <!-- Previous/Next Buttons -->
-                    <button class="nav-arrow nav-prev" id="carouselPrev" aria-label="Previous slide">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                    <button class="nav-arrow nav-prev" id="carouselPrev" onclick="prevSlide()" aria-label="Previous slide">
+                        <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button class="nav-arrow nav-next" id="carouselNext" aria-label="Next slide">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                    <button class="nav-arrow nav-next" id="carouselNext" onclick="nextSlide()" aria-label="Next slide">
+                        <i class="fas fa-chevron-right"></i>
                     </button>
-
-                    <!-- Play/Pause Button -->
-                    <button class="play-pause-btn" id="carouselPlayPause" aria-label="Toggle slideshow">
-                        <svg class="pause-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="6" y="4" width="4" height="16" fill="currentColor"/>
-                            <rect x="14" y="4" width="4" height="16" fill="currentColor"/>
-                        </svg>
-                        <svg class="play-icon slider-hidden" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
-                        </svg>
+                    <button class="play-pause-btn" id="carouselPlayPause" onclick="toggleAutoPlay()" aria-label="Toggle slideshow">
+                        <i class="fas fa-pause pause-icon" id="pauseIcon"></i>
+                        <i class="fas fa-play play-icon hidden" id="playIcon"></i>
                     </button>
-
-                    <!-- Slide Counter -->
                     <div class="slide-counter">
                         <span id="currentSlideNum">01</span> / <span id="totalSlidesNum">05</span>
                     </div>
@@ -401,11 +250,11 @@
 
                 <!-- Dot Navigation -->
                 <div class="dot-navigation">
-                    <button class="nav-dot dot-active" data-target="0" aria-label="Go to slide 1"></button>
-                    <button class="nav-dot" data-target="1" aria-label="Go to slide 2"></button>
-                    <button class="nav-dot" data-target="2" aria-label="Go to slide 3"></button>
-                    <button class="nav-dot" data-target="3" aria-label="Go to slide 4"></button>
-                    <button class="nav-dot" data-target="4" aria-label="Go to slide 5"></button>
+                    <button class="nav-dot dot-active" data-target="0" onclick="goToSlide(0)" aria-label="Go to slide 1"></button>
+                    <button class="nav-dot" data-target="1" onclick="goToSlide(1)" aria-label="Go to slide 2"></button>
+                    <button class="nav-dot" data-target="2" onclick="goToSlide(2)" aria-label="Go to slide 3"></button>
+                    <button class="nav-dot" data-target="3" onclick="goToSlide(3)" aria-label="Go to slide 4"></button>
+                    <button class="nav-dot" data-target="4" onclick="goToSlide(4)" aria-label="Go to slide 5"></button>
                 </div>
 
                 <!-- Progress Bar -->
@@ -414,59 +263,284 @@
                 </div>
             </div>
         </div>
-        <div class="healthcare-container">
-        <div class="features-grid">
-            <!-- Revenue Raising Card -->
-            <div class="feature-card" data-delay="0">
-                <div class="card-content">
-                    <div class="icon-container">
-                        <div class="icon"></div>
-                    </div>
-                    <div class="content">
-                        <h3 class="feature-title">Revenue Raising</h3>
-                        <p class="feature-description">
-                            Diverse funding sources including government budgets, insurance schemes, and community contributions to ensure sustainable healthcare financing.
-                        </p>
-                    </div>
-                    <div class="hover-indicator"></div>
-                </div>
-            </div>
 
-            <!-- Fund Pooling Card -->
-            <div class="feature-card" data-delay="200">
-                <div class="card-content">
-                    <div class="icon-container">
-                        <div class="icon"></div>
+        <!-- Features Grid Section -->
+        <div class="features-container">
+            <div class="features-grid">
+                <!-- Feature Card 1 -->
+                <div class="feature-card" data-delay="0">
+                    <div class="card-content">
+                        <div class="icon-container">
+                            <div class="feature-icon"></div>
+                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">Revenue Raising</h3>
+                            <p class="feature-description">
+                                Diverse funding sources including government budgets, insurance schemes, and community contributions to ensure sustainable healthcare financing.
+                            </p>
+                        </div>
+                        <div class="hover-indicator"></div>
                     </div>
-                    <div class="content">
-                        <h3 class="feature-title">Fund Pooling</h3>
-                        <p class="feature-description">
-                            Strategic accumulation of prepaid funds to ensure comprehensive population coverage and risk sharing across communities.
-                        </p>
-                    </div>
-                    <div class="hover-indicator"></div>
                 </div>
-            </div>
 
-            <!-- Strategic Purchasing Card -->
-            <div class="feature-card" data-delay="400">
-                <div class="card-content">
-                    <div class="icon-container">
-                        <div class="icon"></div>
+                <!-- Feature Card 2 -->
+                <div class="feature-card" data-delay="200">
+                    <div class="card-content">
+                        <div class="icon-container">
+                            <div class="feature-icon"></div>
+                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">Fund Pooling</h3>
+                            <p class="feature-description">
+                                Strategic accumulation of prepaid funds to ensure comprehensive population coverage and risk sharing across communities.
+                            </p>
+                        </div>
+                        <div class="hover-indicator"></div>
                     </div>
-                    <div class="content">
-                        <h3 class="feature-title">Strategic Purchasing</h3>
-                        <p class="feature-description">
-                            Performance-based payment systems aligned with population health needs and outcomes to maximize healthcare value.
-                        </p>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="feature-card" data-delay="400">
+                    <div class="card-content">
+                        <div class="icon-container">
+                            <div class="feature-icon"></div>
+                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">Strategic Purchasing</h3>
+                            <p class="feature-description">
+                                Performance-based payment systems aligned with population health needs and outcomes to maximize healthcare value.
+                            </p>
+                        </div>
+                        <div class="hover-indicator"></div>
                     </div>
-                    <div class="hover-indicator"></div>
                 </div>
             </div>
         </div>
+
+        <!-- Why Choose HEFIN Section -->
+        <section class="why-choose-section" id="whyChooseSection">
+            <div class="why-choose-container">
+                <div class="why-choose-grid">
+                    <!-- Content Section -->
+                    <div class="why-choose-content">
+                        <div class="content-header">
+                            <h2 class="section-title">Why Choose HEFIN</h2>
+                            <p class="section-intro">
+                                We understand that health and wealth are interconnected. Our 
+                                integrated approach ensures that your financial decisions 
+                                support your health goals, and your health investments protect 
+                                your financial future.
+                            </p>
+                        </div>
+
+                        <!-- Benefits List -->
+                        <div class="benefits-list">
+                            <div class="benefit-card" data-delay="0">
+                                <div class="benefit-icon">🎯</div>
+                                <div class="benefit-details">
+                                    <h3 class="benefit-heading">Integrated Approach</h3>
+                                    <p class="benefit-text">
+                                        Seamlessly connecting your health and financial wellbeing for optimal outcomes.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="benefit-card" data-delay="150">
+                                <div class="benefit-icon">💡</div>
+                                <div class="benefit-details">
+                                    <h3 class="benefit-heading">Expert Team</h3>
+                                    <p class="benefit-text">
+                                        Certified healthcare professionals and financial advisors working together.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="benefit-card" data-delay="300">
+                                <div class="benefit-icon">🔒</div>
+                                <div class="benefit-details">
+                                    <h3 class="benefit-heading">Secure & Compliant</h3>
+                                    <p class="benefit-text">
+                                        HIPAA-compliant healthcare services with SEC-regulated financial planning.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="benefit-card" data-delay="450">
+                                <div class="benefit-icon">⚡</div>
+                                <div class="benefit-details">
+                                    <h3 class="benefit-heading">Technology-Driven</h3>
+                                    <p class="benefit-text">
+                                        Advanced analytics and AI-powered insights for personalized recommendations.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Section -->
+                    <div class="why-choose-visual">
+                        <div class="image-wrapper">
+                            <div class="image-gradient"></div>
+                            <img 
+                                src="https://images.unsplash.com/photo-1565688527174-775059ac429c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFsdGhjYXJlJTIwZmluYW5jaWFsJTIwcGxhbm5pbmclMjB0ZWFtd29ya3xlbnwxfHx8fDE3NTgyMDIxNjR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                                alt="Professional healthcare and financial advisor"
+                                class="hero-image"
+                            />
+                            <div class="float-element float-primary"></div>
+                            <div class="float-element float-secondary"></div>
+                        </div>
+                        <div class="bg-decoration bg-accent-one"></div>
+                        <div class="bg-decoration bg-accent-two"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Services Section -->
+        <section class="services-section" id="servicesSection">
+            <div class="services-container">
+                <div class="services-content">
+                    <h1 class="services-title">Our Services</h1>
+                    <p class="services-subtitle">
+                        Comprehensive healthcare and financial solutions designed to protect and grow what matters most to you
+                    </p>
+                </div>
+                
+                <!-- Decorative Elements -->
+                <div class="services-decoration services-decoration-one"></div>
+                <div class="services-decoration services-decoration-two"></div>
+                <div class="services-decoration services-decoration-three"></div>
+            </div>
+            
+            <!-- Background Pattern -->
+            <div class="services-bg-pattern">
+                <div class="services-pattern-dot services-dot-one"></div>
+                <div class="services-pattern-dot services-dot-two"></div>
+                <div class="services-pattern-dot services-dot-three"></div>
+                <div class="services-pattern-dot services-dot-four"></div>
+                <div class="services-pattern-dot services-dot-five"></div>
+                <div class="services-pattern-dot services-dot-six"></div>
+            </div>
+        </section>
     </div>
 
-     
+    <!-- Auth Modals -->
+    <!-- Sign In Modal -->
+    <div class="modal" id="signInModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeSignInModal()">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Welcome Back</h2>
+                <p class="modal-subtitle">Sign in to access your health and financial dashboard</p>
+            </div>
+            <form id="signInForm" onsubmit="handleSignIn(event)">
+                <div class="form-group">
+                    <label class="form-label" for="signInEmail">Email</label>
+                    <input class="form-input" type="email" id="signInEmail" placeholder="Enter your email" required>
+                    <div class="error-message" id="signInEmailError"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="signInPassword">Password</label>
+                    <div class="input-group">
+                        <input class="form-input" type="password" id="signInPassword" placeholder="Enter your password" required>
+                        <button type="button" class="input-toggle" onclick="togglePassword('signInPassword', this)">
+                            <i class="fas fa-eye" id="signInPasswordIcon"></i>
+                        </button>
+                    </div>
+                    <div class="error-message" id="signInPasswordError"></div>
+                </div>
+                <div class="forgot-password">
+                    <a href="#" class="link">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary full-width" id="signInSubmitBtn">
+                    <span id="signInBtnText">Sign In</span>
+                    <div class="spinner hidden" id="signInSpinner"></div>
+                </button>
+                <div class="auth-switch">
+                    <span>Don't have an account? </span>
+                    <a href="#" class="link" onclick="closeSignInModal(); openSignUpModal();">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal" id="signUpModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeSignUpModal()">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Create Your Account</h2>
+                <p class="modal-subtitle">Join us to manage your health and finances securely</p>
+            </div>
+            <form id="signUpForm" onsubmit="handleSignUp(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="firstName">First Name</label>
+                        <input class="form-input" type="text" id="firstName" placeholder="First name" required>
+                        <div class="error-message" id="firstNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="lastName">Last Name</label>
+                        <input class="form-input" type="text" id="lastName" placeholder="Last name" required>
+                        <div class="error-message" id="lastNameError"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="signUpEmail">Email</label>
+                    <input class="form-input" type="email" id="signUpEmail" placeholder="Enter your email" required>
+                    <div class="error-message" id="signUpEmailError"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="signUpPassword">Password</label>
+                    <div class="input-group">
+                        <input class="form-input" type="password" id="signUpPassword" placeholder="Create a password" required>
+                        <button type="button" class="input-toggle" onclick="togglePassword('signUpPassword', this)">
+                            <i class="fas fa-eye" id="signUpPasswordIcon"></i>
+                        </button>
+                    </div>
+                    <div class="password-strength" id="passwordStrength" style="display: none;">
+                        <div class="strength-item" id="lengthCheck">
+                            <span>✓</span> 8+ characters
+                        </div>
+                        <div class="strength-item" id="upperCheck">
+                            <span>✓</span> Uppercase
+                        </div>
+                        <div class="strength-item" id="lowerCheck">
+                            <span>✓</span> Lowercase
+                        </div>
+                        <div class="strength-item" id="numberCheck">
+                            <span>✓</span> Number
+                        </div>
+                    </div>
+                    <div class="error-message" id="signUpPasswordError"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="confirmPassword">Confirm Password</label>
+                    <div class="input-group">
+                        <input class="form-input" type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                        <button type="button" class="input-toggle" onclick="togglePassword('confirmPassword', this)">
+                            <i class="fas fa-eye" id="confirmPasswordIcon"></i>
+                        </button>
+                    </div>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="termsAgree" class="checkbox" required>
+                    <label for="termsAgree" class="checkbox-label">
+                        I agree to the <a href="#" class="link">Terms & Conditions</a> and <a href="#" class="link">Privacy Policy</a>
+                    </label>
+                </div>
+                <div class="error-message" id="termsError"></div>
+                <button type="submit" class="btn btn-primary full-width" id="signUpSubmitBtn">
+                    <span id="signUpBtnText">Create Account</span>
+                    <div class="spinner hidden" id="signUpSpinner"></div>
+                </button>
+                <div class="auth-switch">
+                    <span>Already have an account? </span>
+                    <a href="#" class="link" onclick="closeSignUpModal(); openSignInModal();">Sign in</a>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="script.js"></script>

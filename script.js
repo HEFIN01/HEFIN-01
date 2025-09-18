@@ -846,3 +846,776 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log('HealthFinance application loaded successfully!');
+
+// Vanilla JavaScript for Healthcare & Financial Services Animation
+(function() {
+    'use strict';
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Early return if user prefers reduced motion
+    if (prefersReducedMotion) {
+        // Make all elements visible immediately
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-feature');
+            animatedElements.forEach(element => {
+                element.classList.add('animate-in');
+            });
+        });
+        return;
+    }
+
+    // Intersection Observer options
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '-50px 0px -50px 0px'
+    };
+
+    // Create intersection observer for scroll animations
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const delay = parseInt(element.getAttribute('data-delay')) || 0;
+                
+                setTimeout(() => {
+                    element.classList.add('animate-in');
+                    
+                    // Animate icon wrapper after card animation
+                    const iconWrapper = element.querySelector('.vanilla-service-icon-wrapper');
+                    if (iconWrapper) {
+                        setTimeout(() => {
+                            iconWrapper.classList.add('animate-in');
+                        }, 300);
+                    }
+                    
+                    // Animate features with staggered delays
+                    const features = element.querySelectorAll('.animate-feature');
+                    features.forEach((feature, index) => {
+                        const featureDelay = parseInt(feature.getAttribute('data-delay')) || 0;
+                        setTimeout(() => {
+                            feature.classList.add('animate-in');
+                        }, 500 + featureDelay);
+                    });
+                    
+                }, delay);
+                
+                // Stop observing this element
+                observer.unobserve(element);
+            }
+        });
+    }, observerOptions);
+
+    // Enhanced hover effects
+    function addHoverEffects() {
+        const serviceCards = document.querySelectorAll('.vanilla-service-card-container');
+        
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const iconWrapper = this.querySelector('.vanilla-service-icon-wrapper');
+                if (iconWrapper) {
+                    iconWrapper.style.transform = 'scale(1.1)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                const iconWrapper = this.querySelector('.vanilla-service-icon-wrapper');
+                if (iconWrapper && iconWrapper.classList.contains('animate-in')) {
+                    iconWrapper.style.transform = 'scale(1)';
+                }
+            });
+        });
+
+        // Feature item hover effects
+        const featureItems = document.querySelectorAll('.vanilla-service-feature-item');
+        featureItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                if (this.classList.contains('animate-in')) {
+                    this.style.transform = 'translateX(4px)';
+                }
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                if (this.classList.contains('animate-in')) {
+                    this.style.transform = 'translateX(0)';
+                }
+            });
+        });
+    }
+
+    // Initialize animations when DOM is ready
+    function initializeAnimations() {
+        // Observe elements for scroll animations
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Add hover effects
+        addHoverEffects();
+
+        // Animate elements already in viewport on load
+        setTimeout(() => {
+            const viewportHeight = window.innerHeight;
+            elementsToAnimate.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                const isInViewport = rect.top < viewportHeight && rect.bottom > 0;
+                
+                if (isInViewport && !element.classList.contains('animate-in')) {
+                    const delay = parseInt(element.getAttribute('data-delay')) || 0;
+                    
+                    setTimeout(() => {
+                        element.classList.add('animate-in');
+                        
+                        // Animate icon wrapper
+                        const iconWrapper = element.querySelector('.vanilla-service-icon-wrapper');
+                        if (iconWrapper) {
+                            setTimeout(() => {
+                                iconWrapper.classList.add('animate-in');
+                            }, 300);
+                        }
+                        
+                        // Animate features
+                        const features = element.querySelectorAll('.animate-feature');
+                        features.forEach((feature, index) => {
+                            const featureDelay = parseInt(feature.getAttribute('data-delay')) || 0;
+                            setTimeout(() => {
+                                feature.classList.add('animate-in');
+                            }, 500 + featureDelay);
+                        });
+                        
+                    }, delay);
+                    
+                    observer.unobserve(element);
+                }
+            });
+        }, 100);
+    }
+
+    // Smooth scroll behavior for any internal links (optional enhancement)
+    function initSmoothScroll() {
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+
+    // Performance optimization: throttle scroll events
+    function throttle(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Add scroll event listener for additional effects (if needed)
+    const handleScroll = throttle(function() {
+        // Additional scroll-based animations can be added here
+        // Currently handled by Intersection Observer
+    }, 16); // ~60fps
+
+    // Initialize everything when DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAnimations();
+            initSmoothScroll();
+            window.addEventListener('scroll', handleScroll, { passive: true });
+        });
+    } else {
+        // DOM already loaded
+        initializeAnimations();
+        initSmoothScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    // Handle window resize for responsive animations
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            // Reinitialize hover effects after resize
+            addHoverEffects();
+        }, 250);
+    });
+
+    // Cleanup function (if needed for SPAs)
+    window.vanillaServicesCleanup = function() {
+        observer.disconnect();
+        window.removeEventListener('scroll', handleScroll);
+    };
+
+})();
+
+// Healthcare & Financial Planning Consultation and Calculator
+(function() {
+    'use strict';
+
+    // DOM Elements
+    const popupOverlay = document.getElementById('popupOverlay');
+    const consultationPopup = document.getElementById('consultationPopup');
+    const calculatorPopup = document.getElementById('calculatorPopup');
+    const consultationForm = document.getElementById('consultationForm');
+
+    // Initialize the application
+    function initializeApp() {
+        setupEventListeners();
+        setupFormValidation();
+        setupCalculatorTabs();
+        setupDateConstraints();
+    }
+
+    // Setup Event Listeners
+    function setupEventListeners() {
+        // CTA Button clicks
+        document.querySelectorAll('[data-popup]').forEach(button => {
+            button.addEventListener('click', function() {
+                const popupType = this.getAttribute('data-popup');
+                openPopup(popupType);
+            });
+        });
+
+        // Close button clicks
+        document.querySelectorAll('[data-close]').forEach(button => {
+            button.addEventListener('click', function() {
+                const popupType = this.getAttribute('data-close');
+                closePopup(popupType);
+            });
+        });
+
+        // Overlay click to close
+        popupOverlay.addEventListener('click', closeAllPopups);
+
+        // Escape key to close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAllPopups();
+            }
+        });
+
+        // Form submission
+        consultationForm.addEventListener('submit', handleFormSubmission);
+
+        // Calculator input changes
+        document.querySelectorAll('.calc-input').forEach(input => {
+            input.addEventListener('input', debounce(function() {
+                const panel = this.closest('.calc-panel');
+                if (panel && panel.classList.contains('active')) {
+                    const panelId = panel.id;
+                    if (panelId === 'savingsPanel') calculateHSA();
+                    else if (panelId === 'insurancePanel') calculateInsurance();
+                    else if (panelId === 'retirementPanel') calculateRetirement();
+                }
+            }, 500));
+        });
+    }
+
+    // Open Popup
+    function openPopup(type) {
+        popupOverlay.classList.add('active');
+        
+        if (type === 'consultation') {
+            consultationPopup.classList.add('active');
+            // Focus first input and ensure proper scrolling
+            setTimeout(() => {
+                const firstInput = consultationPopup.querySelector('input');
+                if (firstInput) firstInput.focus();
+                
+                // Ensure scroll container is properly set
+                const scrollContainer = consultationPopup.querySelector('.consultation-form');
+                if (scrollContainer) {
+                    scrollContainer.scrollTop = 0;
+                }
+            }, 300);
+        } else if (type === 'calculator') {
+            calculatorPopup.classList.add('active');
+            // Trigger initial calculation and reset scroll
+            setTimeout(() => {
+                calculateHSA();
+                
+                // Ensure scroll container is properly set
+                const scrollContainer = calculatorPopup.querySelector('.calculator-content');
+                if (scrollContainer) {
+                    scrollContainer.scrollTop = 0;
+                }
+            }, 300);
+        }
+        
+        // Prevent body scroll but allow popup content scroll
+        document.body.style.overflow = 'hidden';
+        document.body.style.paddingRight = getScrollbarWidth() + 'px';
+    }
+
+    // Close Popup
+    function closePopup(type) {
+        if (type === 'consultation') {
+            consultationPopup.classList.remove('active');
+        } else if (type === 'calculator') {
+            calculatorPopup.classList.remove('active');
+        }
+        
+        // Check if any popup is still open
+        const anyPopupOpen = document.querySelector('.popup-modal.active');
+        if (!anyPopupOpen) {
+            popupOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+        }
+    }
+
+    // Close All Popups
+    function closeAllPopups() {
+        document.querySelectorAll('.popup-modal').forEach(popup => {
+            popup.classList.remove('active');
+        });
+        popupOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+    }
+
+    // Setup Form Validation
+    function setupFormValidation() {
+        const inputs = consultationForm.querySelectorAll('input, select, textarea');
+        
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+            
+            input.addEventListener('input', function() {
+                if (this.classList.contains('error')) {
+                    validateField(this);
+                }
+            });
+        });
+    }
+
+    // Validate Individual Field
+    function validateField(field) {
+        const value = field.value.trim();
+        const fieldType = field.type;
+        const fieldName = field.name;
+        
+        // Remove existing error state
+        field.classList.remove('error');
+        removeErrorMessage(field);
+        
+        // Required field validation
+        if (field.hasAttribute('required') && !value) {
+            showFieldError(field, 'This field is required');
+            return false;
+        }
+        
+        // Email validation
+        if (fieldType === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                showFieldError(field, 'Please enter a valid email address');
+                return false;
+            }
+        }
+        
+        // Phone validation
+        if (fieldType === 'tel' && value) {
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            const cleanPhone = value.replace(/[\s\-\(\)]/g, '');
+            if (!phoneRegex.test(cleanPhone)) {
+                showFieldError(field, 'Please enter a valid phone number');
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    // Show Field Error
+    function showFieldError(field, message) {
+        field.classList.add('error');
+        
+        const errorElement = document.createElement('div');
+        errorElement.className = 'field-error';
+        errorElement.textContent = message;
+        
+        field.parentNode.appendChild(errorElement);
+        
+        // Add error styles if not already defined
+        if (!document.querySelector('style[data-form-errors]')) {
+            const style = document.createElement('style');
+            style.setAttribute('data-form-errors', '');
+            style.textContent = `
+                .form-input.error, .form-select.error, .form-textarea.error {
+                    border-color: #ef4444 !important;
+                }
+                .field-error {
+                    color: #ef4444;
+                    font-size: 0.875rem;
+                    margin-top: 4px;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    // Remove Error Message
+    function removeErrorMessage(field) {
+        const errorElement = field.parentNode.querySelector('.field-error');
+        if (errorElement) {
+            errorElement.remove();
+        }
+    }
+
+    // Handle Form Submission
+    function handleFormSubmission(e) {
+        e.preventDefault();
+        
+        // Validate all fields
+        const inputs = consultationForm.querySelectorAll('input, select, textarea');
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            if (!validateField(input)) {
+                isValid = false;
+            }
+        });
+        
+        if (!isValid) {
+            // Focus first error field
+            const firstError = consultationForm.querySelector('.error');
+            if (firstError) firstError.focus();
+            return;
+        }
+        
+        // Show loading state
+        const submitBtn = consultationForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+        
+        // Simulate form submission
+        setTimeout(() => {
+            // In a real application, you would send this data to your server
+            const formData = new FormData(consultationForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            showSuccessMessage('Thank you! Your consultation request has been submitted. We will contact you within 24 hours.');
+            
+            // Reset form and close popup
+            consultationForm.reset();
+            closePopup('consultation');
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            
+        }, 2000);
+    }
+
+    // Show Success Message
+    function showSuccessMessage(message) {
+        const successDiv = document.createElement('div');
+        successDiv.className = 'success-toast';
+        successDiv.textContent = message;
+        
+        // Add styles
+        successDiv.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 10000;
+            max-width: 400px;
+            font-size: 14px;
+            animation: slideInRight 0.3s ease;
+        `;
+        
+        // Add animation
+        if (!document.querySelector('style[data-success-toast]')) {
+            const style = document.createElement('style');
+            style.setAttribute('data-success-toast', '');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        document.body.appendChild(successDiv);
+        
+        // Remove after 5 seconds
+        setTimeout(() => {
+            successDiv.style.animation = 'slideInRight 0.3s ease reverse';
+            setTimeout(() => {
+                if (successDiv.parentNode) {
+                    successDiv.parentNode.removeChild(successDiv);
+                }
+            }, 300);
+        }, 5000);
+    }
+
+    // Setup Date Constraints
+    function setupDateConstraints() {
+        const dateInput = document.getElementById('preferredDate');
+        if (dateInput) {
+            // Set minimum date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.min = tomorrow.toISOString().split('T')[0];
+            
+            // Set maximum date to 3 months from today
+            const maxDate = new Date();
+            maxDate.setMonth(maxDate.getMonth() + 3);
+            dateInput.max = maxDate.toISOString().split('T')[0];
+        }
+    }
+
+    // Setup Calculator Tabs
+    function setupCalculatorTabs() {
+        const tabs = document.querySelectorAll('.calc-tab');
+        const panels = document.querySelectorAll('.calc-panel');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetPanel = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and panels
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding panel
+                this.classList.add('active');
+                document.getElementById(targetPanel + 'Panel').classList.add('active');
+                
+                // Trigger calculation for the active panel
+                setTimeout(() => {
+                    if (targetPanel === 'savings') calculateHSA();
+                    else if (targetPanel === 'insurance') calculateInsurance();
+                    else if (targetPanel === 'retirement') calculateRetirement();
+                }, 100);
+            });
+        });
+    }
+
+    // HSA Calculator
+    window.calculateHSA = function() {
+        const currentAge = parseInt(document.getElementById('currentAge').value) || 30;
+        const retirementAge = parseInt(document.getElementById('retirementAge').value) || 65;
+        const monthlyContribution = parseFloat(document.getElementById('monthlyContribution').value) || 300;
+        const currentBalance = parseFloat(document.getElementById('currentBalance').value) || 5000;
+        const annualReturn = parseFloat(document.getElementById('annualReturn').value) / 100 || 0.07;
+        
+        const yearsToRetirement = retirementAge - currentAge;
+        const monthsToRetirement = yearsToRetirement * 12;
+        const monthlyReturn = annualReturn / 12;
+        
+        // Calculate future value of current balance
+        const futureValueCurrent = currentBalance * Math.pow(1 + annualReturn, yearsToRetirement);
+        
+        // Calculate future value of monthly contributions (annuity)
+        const futureValueContributions = monthlyContribution * 
+            ((Math.pow(1 + monthlyReturn, monthsToRetirement) - 1) / monthlyReturn);
+        
+        const totalAtRetirement = futureValueCurrent + futureValueContributions;
+        const totalContributions = currentBalance + (monthlyContribution * monthsToRetirement);
+        const investmentGrowth = totalAtRetirement - totalContributions;
+        
+        // Update UI
+        document.getElementById('totalAtRetirement').textContent = formatCurrency(totalAtRetirement);
+        document.getElementById('totalContributions').textContent = formatCurrency(totalContributions);
+        document.getElementById('investmentGrowth').textContent = formatCurrency(investmentGrowth);
+    };
+
+    // Insurance Calculator
+    window.calculateInsurance = function() {
+        const familySize = parseInt(document.getElementById('familySize').value) || 1;
+        const planType = document.getElementById('planType').value || 'silver';
+        const monthlyPremium = parseFloat(document.getElementById('monthlyPremium').value) || 500;
+        const deductible = parseFloat(document.getElementById('deductible').value) || 3000;
+        const expectedMedical = parseFloat(document.getElementById('expectedMedical').value) || 2000;
+        
+        const annualPremium = monthlyPremium * 12;
+        
+        // Calculate out-of-pocket maximum based on plan type and family size
+        const outOfPocketMaximums = {
+            bronze: familySize === 1 ? 8700 : 17400,
+            silver: familySize === 1 ? 8700 : 17400,
+            gold: familySize === 1 ? 7000 : 14000,
+            platinum: familySize === 1 ? 5000 : 10000
+        };
+        
+        const outOfPocket = outOfPocketMaximums[planType];
+        const actualOutOfPocket = Math.min(expectedMedical, Math.max(0, expectedMedical - deductible));
+        const totalAnnualCost = annualPremium + actualOutOfPocket;
+        
+        // Update UI
+        document.getElementById('annualPremium').textContent = formatCurrency(annualPremium);
+        document.getElementById('outOfPocket').textContent = formatCurrency(outOfPocket);
+        document.getElementById('totalAnnualCost').textContent = formatCurrency(totalAnnualCost);
+    };
+
+    // Retirement Healthcare Calculator
+    window.calculateRetirement = function() {
+        const retireAge = parseInt(document.getElementById('retireAge').value) || 65;
+        const lifeExpectancy = parseInt(document.getElementById('lifeExpectancy').value) || 85;
+        const currentHealthSpending = parseFloat(document.getElementById('currentHealthSpending').value) || 4000;
+        const inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100 || 0.05;
+        
+        const yearsInRetirement = lifeExpectancy - retireAge;
+        let totalCost = 0;
+        
+        // Calculate total healthcare costs with inflation
+        for (let year = 0; year < yearsInRetirement; year++) {
+            const yearCost = currentHealthSpending * Math.pow(1 + inflationRate, year);
+            totalCost += yearCost;
+        }
+        
+        const avgAnnualCost = totalCost / yearsInRetirement;
+        const savingsTarget = totalCost * 1.2; // 20% buffer
+        
+        // Update UI
+        document.getElementById('totalRetirementCost').textContent = formatCurrency(totalCost);
+        document.getElementById('avgAnnualCost').textContent = formatCurrency(avgAnnualCost);
+        document.getElementById('savingsTarget').textContent = formatCurrency(savingsTarget);
+    };
+
+    // Utility Functions
+    function formatCurrency(amount) {
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(amount);
+    }
+
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Accessibility improvements
+    function setupAccessibility() {
+        // Trap focus within popups
+        document.querySelectorAll('.popup-modal').forEach(popup => {
+            popup.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    trapFocus(e, this);
+                }
+            });
+        });
+    }
+
+    function trapFocus(e, container) {
+        const focusableElements = container.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+                lastElement.focus();
+                e.preventDefault();
+            }
+        } else {
+            if (document.activeElement === lastElement) {
+                firstElement.focus();
+                e.preventDefault();
+            }
+        }
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+            setupAccessibility();
+            enableTouchScrolling();
+            handleMobileViewport();
+        });
+    } else {
+        initializeApp();
+        setupAccessibility();
+        enableTouchScrolling();
+        handleMobileViewport();
+    }
+
+    // Get scrollbar width to prevent layout shift
+    function getScrollbarWidth() {
+        const outer = document.createElement('div');
+        outer.style.visibility = 'hidden';
+        outer.style.overflow = 'scroll';
+        outer.style.msOverflowStyle = 'scrollbar';
+        document.body.appendChild(outer);
+        
+        const inner = document.createElement('div');
+        outer.appendChild(inner);
+        
+        const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+        outer.parentNode.removeChild(outer);
+        
+        return scrollbarWidth;
+    }
+
+    // Improve touch scrolling on iOS
+    function enableTouchScrolling() {
+        const scrollContainers = document.querySelectorAll('.consultation-form, .calculator-content');
+        scrollContainers.forEach(container => {
+            container.style.webkitOverflowScrolling = 'touch';
+            container.style.overflowScrolling = 'touch';
+        });
+    }
+
+    // Handle mobile viewport height issues
+    function handleMobileViewport() {
+        const setVH = () => {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        };
+        
+        setVH();
+        window.addEventListener('resize', setVH);
+        window.addEventListener('orientationchange', () => {
+            setTimeout(setVH, 100);
+        });
+    }
+
+    // Cleanup function for SPAs
+    window.consultationCalculatorCleanup = function() {
+        closeAllPopups();
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+    };
+
+})();

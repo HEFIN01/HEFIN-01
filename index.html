@@ -14,7 +14,9 @@
             <div class="splash-content-container">
                 <h1 class="splash-title">Welcome <br /> To Our</h1>
                 <div class="splash-logo-container">
-                    <img src="LOGO-removebg-preview.png" alt="Logo" class="splash-logo">
+                    <div class="splash-logo">
+                        <img src="LOGO-removebg-preview.png" alt="splash screen logo">
+                    </div>
                 </div>
             </div>
         </div>
@@ -27,25 +29,27 @@
             <div class="header-container">
                 <div class="header-content">
                     <!-- Logo -->
-                    <div class="logo" onclick="goHome()">
-                        <img src="LOGO-removebg-preview.png" alt="logo" class="logo-img">
+                    <div class="logo" onclick="scrollToSection('home')">
+                        <div class="logo-img">
+                            <img src="LOGO-removebg-preview.png" alt="" style="height: 60px; width: 70px;">
+                        </div>
                     </div>
 
                     <!-- Desktop Navigation -->
                     <nav class="nav">
-                        <a href="#home" class="nav-item">
+                        <a href="#home" class="nav-item" onclick="scrollToSection('home')">
                             <i class="fas fa-home"></i>
                             <span>Home</span>
                         </a>
-                        <a href="#about" class="nav-item">
+                        <a href="#about" class="nav-item" onclick="scrollToSection('why-choose-section')">
                             <i class="fas fa-info-circle"></i>
                             <span>About</span>
                         </a>
-                        <a href="#service" class="nav-item">
+                        <a href="#service" class="nav-item" onclick="scrollToSection('services-section')">
                             <i class="fas fa-heart"></i>
                             <span>Service</span>
                         </a>
-                        <a href="#contact" class="nav-item">
+                        <a href="#contact" class="nav-item" onclick="scrollToSection('contact-section')">
                             <i class="fas fa-phone"></i>
                             <span>Contact</span>
                         </a>
@@ -118,19 +122,19 @@
 
             <!-- Mobile Navigation -->
             <nav class="mobile-nav">
-                <a href="#home" class="mobile-nav-item" onclick="closeMobileMenu()">
+                <a href="#home" class="mobile-nav-item" onclick="scrollToSection('home'); closeMobileMenu()">
                     <i class="fas fa-home"></i>
                     <span>Home</span>
                 </a>
-                <a href="#about" class="mobile-nav-item" onclick="closeMobileMenu()">
+                <a href="#about" class="mobile-nav-item" onclick="scrollToSection('why-choose-section'); closeMobileMenu()">
                     <i class="fas fa-info-circle"></i>
                     <span>About</span>
                 </a>
-                <a href="#service" class="mobile-nav-item" onclick="closeMobileMenu()">
+                <a href="#service" class="mobile-nav-item" onclick="scrollToSection('services-section'); closeMobileMenu()">
                     <i class="fas fa-heart"></i>
                     <span>Service</span>
                 </a>
-                <a href="#contact" class="mobile-nav-item" onclick="closeMobileMenu()">
+                <a href="#contact" class="mobile-nav-item" onclick="scrollToSection('contact-section'); closeMobileMenu()">
                     <i class="fas fa-phone"></i>
                     <span>Contact</span>
                 </a>
@@ -154,7 +158,7 @@
         </div>
 
         <!-- Welcome Section -->
-        <main class="welcome-section">
+        <main id="home" class="welcome-section">
             <div class="welcome-container">
                 <h1 class="welcome-title" id="welcomeTitle">Welcome to HealthFinance</h1>
                 <p class="welcome-subtitle">Your complete solution for health monitoring and financial management. Join thousands of users who trust us with their most important data.</p>
@@ -318,7 +322,7 @@
         </div>
 
         <!-- Why Choose HEFIN Section -->
-        <section class="why-choose-section" id="whyChooseSection">
+        <section class="why-choose-section" id="why-choose-section">
             <div class="why-choose-container">
                 <div class="why-choose-grid">
                     <!-- Content Section -->
@@ -397,7 +401,7 @@
         </section>
 
         <!-- Our Services Section -->
-        <section class="services-section" id="servicesSection">
+        <section class="services-section" id="services-section">
             <div class="services-container">
                 <div class="services-content">
                     <h1 class="services-title">Our Services</h1>
@@ -422,699 +426,836 @@
                 <div class="services-pattern-dot services-dot-six"></div>
             </div>
         </section>
-    </div>
 
         <div class="vanilla-services-main-container">
-        <!-- Healthcare Services Section -->
-        <section class="vanilla-healthcare-services-section">
-            <div class="vanilla-section-header-wrapper animate-on-scroll">
-                <h2 class="vanilla-section-main-title">Healthcare Services</h2>
-                <p class="vanilla-section-main-description">Complete healthcare solutions focused on prevention, treatment, and long-term wellness</p>
-            </div>
-            
-            <div class="vanilla-services-grid-container">
-                <!-- Primary Care Card -->
-                <div class="vanilla-service-card-container animate-on-scroll" data-delay="0">
-                    <div class="vanilla-service-card-content">
-                        <div class="vanilla-service-icon-wrapper vanilla-healthcare-primary">
-                            <svg class="vanilla-service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/>
-                                <path d="M7 13h10"/>
-                                <path d="M12 8v10"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="vanilla-service-text-content">
-                            <h3 class="vanilla-service-card-title">Primary Care</h3>
-                            <p class="vanilla-service-card-description">Comprehensive primary healthcare with preventive focus</p>
+            <!-- Healthcare Services Section -->
+            <section class="vanilla-healthcare-services-section">
+                <div class="vanilla-section-header-wrapper animate-on-scroll">
+                    <h2 class="vanilla-section-main-title">Healthcare Services</h2>
+                    <p class="vanilla-section-main-description">Complete healthcare solutions focused on prevention, treatment, and long-term wellness</p>
+                </div>
+                
+                <div class="vanilla-services-grid-container">
+                    <!-- Primary Care Card -->
+                    <div class="vanilla-service-card-container animate-on-scroll" data-delay="0">
+                        <div class="vanilla-service-card-content">
+                            <div class="vanilla-service-icon-wrapper vanilla-healthcare-primary">
+                                <i class="fas fa-plus vanilla-service-icon"></i>
+                            </div>
                             
-                            <ul class="vanilla-service-features-list">
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="0">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Annual health screenings</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="100">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Chronic disease management</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="200">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Preventive care programs</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="300">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">24/7 telehealth access</span>
-                                </li>
-                            </ul>
+                            <div class="vanilla-service-text-content">
+                                <h3 class="vanilla-service-card-title">Primary Care</h3>
+                                <p class="vanilla-service-card-description">Comprehensive primary healthcare with preventive focus</p>
+                                
+                                <ul class="vanilla-service-features-list">
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="0">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Annual health screenings</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="100">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Chronic disease management</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="200">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Preventive care programs</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="300">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">24/7 telehealth access</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Analytics Card -->
+                    <div class="vanilla-service-card-container animate-on-scroll" data-delay="200">
+                        <div class="vanilla-service-card-content">
+                            <div class="vanilla-service-icon-wrapper vanilla-healthcare-analytics">
+                                <i class="fas fa-chart-bar vanilla-service-icon"></i>
+                            </div>
+                            
+                            <div class="vanilla-service-text-content">
+                                <h3 class="vanilla-service-card-title">Health Analytics</h3>
+                                <p class="vanilla-service-card-description">Data-driven insights for optimal health outcomes</p>
+                                
+                                <ul class="vanilla-service-features-list">
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="0">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Personalized health reports</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="100">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Risk assessment tools</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="200">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Treatment optimization</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="300">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Predictive health modeling</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Family Care Card -->
+                    <div class="vanilla-service-card-container animate-on-scroll" data-delay="400">
+                        <div class="vanilla-service-card-content">
+                            <div class="vanilla-service-icon-wrapper vanilla-healthcare-family">
+                                <i class="fas fa-users vanilla-service-icon"></i>
+                            </div>
+                            
+                            <div class="vanilla-service-text-content">
+                                <h3 class="vanilla-service-card-title">Family Care</h3>
+                                <p class="vanilla-service-card-description">Coordinated healthcare for the whole family</p>
+                                
+                                <ul class="vanilla-service-features-list">
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="0">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Pediatric to geriatric care</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="100">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Family health planning</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="200">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Coordinated specialist referrals</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="300">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Health education programs</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Health Analytics Card -->
-                <div class="vanilla-service-card-container animate-on-scroll" data-delay="200">
-                    <div class="vanilla-service-card-content">
-                        <div class="vanilla-service-icon-wrapper vanilla-healthcare-analytics">
-                            <svg class="vanilla-service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="18" x2="18" y1="20" y2="10"/>
-                                <line x1="12" x2="12" y1="20" y2="4"/>
-                                <line x1="6" x2="6" y1="20" y2="14"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="vanilla-service-text-content">
-                            <h3 class="vanilla-service-card-title">Health Analytics</h3>
-                            <p class="vanilla-service-card-description">Data-driven insights for optimal health outcomes</p>
+            <!-- Financial Services Section -->
+            <section class="vanilla-financial-services-section">
+                <div class="vanilla-section-header-wrapper animate-on-scroll">
+                    <h2 class="vanilla-section-main-title">Financial Services</h2>
+                    <p class="vanilla-section-main-description">Strategic financial planning and wealth management tailored to your healthcare needs</p>
+                </div>
+                
+                <div class="vanilla-services-grid-container">
+                    <!-- Health Savings Planning Card -->
+                    <div class="vanilla-service-card-container animate-on-scroll" data-delay="0">
+                        <div class="vanilla-service-card-content">
+                            <div class="vanilla-service-icon-wrapper vanilla-financial-savings">
+                                <i class="fas fa-home vanilla-service-icon"></i>
+                            </div>
                             
-                            <ul class="vanilla-service-features-list">
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="0">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Personalized health reports</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="100">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Risk assessment tools</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="200">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Treatment optimization</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="300">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Predictive health modeling</span>
-                                </li>
-                            </ul>
+                            <div class="vanilla-service-text-content">
+                                <h3 class="vanilla-service-card-title">Health Savings Planning</h3>
+                                <p class="vanilla-service-card-description">Optimize your healthcare spending and savings</p>
+                                
+                                <ul class="vanilla-service-features-list">
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="0">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">HSA/FSA optimization</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="100">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Medical expense planning</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="200">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Healthcare budgeting</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="300">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Tax-advantaged strategies</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Investment Management Card -->
+                    <div class="vanilla-service-card-container animate-on-scroll" data-delay="200">
+                        <div class="vanilla-service-card-content">
+                            <div class="vanilla-service-icon-wrapper vanilla-financial-investment">
+                                <i class="fas fa-chart-line vanilla-service-icon"></i>
+                            </div>
+                            
+                            <div class="vanilla-service-text-content">
+                                <h3 class="vanilla-service-card-title">Investment Management</h3>
+                                <p class="vanilla-service-card-description">Grow your wealth while protecting your health future</p>
+                                
+                                <ul class="vanilla-service-features-list">
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="0">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Diversified portfolio management</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="100">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Risk-adjusted returns</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="200">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Healthcare sector investments</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="300">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Retirement planning integration</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insurance Solutions Card -->
+                    <div class="vanilla-service-card-container animate-on-scroll" data-delay="400">
+                        <div class="vanilla-service-card-content">
+                            <div class="vanilla-service-icon-wrapper vanilla-financial-insurance">
+                                <i class="fas fa-shield-alt vanilla-service-icon"></i>
+                            </div>
+                            
+                            <div class="vanilla-service-text-content">
+                                <h3 class="vanilla-service-card-title">Insurance Solutions</h3>
+                                <p class="vanilla-service-card-description">Comprehensive protection for health and wealth</p>
+                                
+                                <ul class="vanilla-service-features-list">
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="0">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Health insurance optimization</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="100">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Life and disability coverage</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="200">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Long-term care planning</span>
+                                    </li>
+                                    <li class="vanilla-service-feature-item animate-feature" data-delay="300">
+                                        <i class="fas fa-check vanilla-feature-checkmark-icon"></i>
+                                        <span class="vanilla-feature-text">Insurance portfolio review</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </section>
+        </div>
 
-                <!-- Family Care Card -->
-                <div class="vanilla-service-card-container animate-on-scroll" data-delay="400">
-                    <div class="vanilla-service-card-content">
-                        <div class="vanilla-service-icon-wrapper vanilla-healthcare-family">
-                            <svg class="vanilla-service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="m22 21-3.5-3.5"/>
-                                <circle cx="20" cy="8" r="2"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="vanilla-service-text-content">
-                            <h3 class="vanilla-service-card-title">Family Care</h3>
-                            <p class="vanilla-service-card-description">Coordinated healthcare for the whole family</p>
-                            
-                            <ul class="vanilla-service-features-list">
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="0">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Pediatric to geriatric care</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="100">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Family health planning</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="200">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Coordinated specialist referrals</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="300">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Health education programs</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+        <!-- Call to Action Section -->
+        <section class="cta-integration-section">
+            <div class="cta-content-wrapper">
+                <h2 class="cta-main-heading">Ready to integrate your healthcare and financial planning?</h2>
+                <div class="cta-buttons-container">
+                    <button class="cta-btn cta-consultation-btn" data-popup="consultation">
+                        <i class="fas fa-smile cta-btn-icon"></i>
+                        Book Consultation
+                    </button>
+                    <button class="cta-btn cta-calculator-btn" data-popup="calculator">
+                        <i class="fas fa-calculator cta-btn-icon"></i>
+                        Financial Calculator
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- Financial Services Section -->
-        <section class="vanilla-financial-services-section">
-            <div class="vanilla-section-header-wrapper animate-on-scroll">
-                <h2 class="vanilla-section-main-title">Financial Services</h2>
-                <p class="vanilla-section-main-description">Strategic financial planning and wealth management tailored to your healthcare needs</p>
-            </div>
-            
-            <div class="vanilla-services-grid-container">
-                <!-- Health Savings Planning Card -->
-                <div class="vanilla-service-card-container animate-on-scroll" data-delay="0">
-                    <div class="vanilla-service-card-content">
-                        <div class="vanilla-service-icon-wrapper vanilla-financial-savings">
-                            <svg class="vanilla-service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                <polyline points="9,22 9,12 15,12 15,22"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="vanilla-service-text-content">
-                            <h3 class="vanilla-service-card-title">Health Savings Planning</h3>
-                            <p class="vanilla-service-card-description">Optimize your healthcare spending and savings</p>
-                            
-                            <ul class="vanilla-service-features-list">
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="0">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">HSA/FSA optimization</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="100">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Medical expense planning</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="200">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Healthcare budgeting</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="300">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Tax-advantaged strategies</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <!-- Popup Overlay -->
+        <div class="popup-overlay" id="popupOverlay"></div>
 
-                <!-- Investment Management Card -->
-                <div class="vanilla-service-card-container animate-on-scroll" data-delay="200">
-                    <div class="vanilla-service-card-content">
-                        <div class="vanilla-service-icon-wrapper vanilla-financial-investment">
-                            <svg class="vanilla-service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
-                            </svg>
+        <!-- Book Consultation Popup -->
+        <div class="popup-modal consultation-popup" id="consultationPopup">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3 class="popup-title">Book Your Consultation</h3>
+                    <button class="popup-close" data-close="consultation">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form class="consultation-form" id="consultationForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="firstName">First Name *</label>
+                            <input class="form-input" type="text" id="firstName" name="firstName" required>
                         </div>
-                        
-                        <div class="vanilla-service-text-content">
-                            <h3 class="vanilla-service-card-title">Investment Management</h3>
-                            <p class="vanilla-service-card-description">Grow your wealth while protecting your health future</p>
-                            
-                            <ul class="vanilla-service-features-list">
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="0">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Diversified portfolio management</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="100">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Risk-adjusted returns</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="200">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Healthcare sector investments</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="300">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Retirement planning integration</span>
-                                </li>
-                            </ul>
+                        <div class="form-group">
+                            <label class="form-label" for="lastName">Last Name *</label>
+                            <input class="form-input" type="text" id="lastName" name="lastName" required>
                         </div>
                     </div>
-                </div>
-
-                <!-- Insurance Solutions Card -->
-                <div class="vanilla-service-card-container animate-on-scroll" data-delay="400">
-                    <div class="vanilla-service-card-content">
-                        <div class="vanilla-service-icon-wrapper vanilla-financial-insurance">
-                            <svg class="vanilla-service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
-                                <path d="m9 12 2 2 4-4"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="vanilla-service-text-content">
-                            <h3 class="vanilla-service-card-title">Insurance Solutions</h3>
-                            <p class="vanilla-service-card-description">Comprehensive protection for health and wealth</p>
-                            
-                            <ul class="vanilla-service-features-list">
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="0">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Health insurance optimization</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="100">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Life and disability coverage</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="200">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Long-term care planning</span>
-                                </li>
-                                <li class="vanilla-service-feature-item animate-feature" data-delay="300">
-                                    <svg class="vanilla-feature-checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20,6 9,17 4,12"/>
-                                    </svg>
-                                    <span class="vanilla-feature-text">Insurance portfolio review</span>
-                                </li>
-                            </ul>
-                        </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address *</label>
+                        <input class="form-input" type="email" id="email" name="email" required>
                     </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    <!-- Call to Action Section -->
-    <!-- Call to Action Section -->
-    <section class="cta-integration-section">
-        <div class="cta-content-wrapper">
-            <h2 class="cta-main-heading">Ready to integrate your healthcare and financial planning?</h2>
-            <div class="cta-buttons-container">
-                <button class="cta-btn cta-consultation-btn" data-popup="consultation">
-                    <svg class="cta-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                        <line x1="9" x2="9.01" y1="9" y2="9"/>
-                        <line x1="15" x2="15.01" y1="9" y2="9"/>
-                    </svg>
-                    Book Consultation
-                </button>
-                <button class="cta-btn cta-calculator-btn" data-popup="calculator">
-                    <svg class="cta-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect width="16" height="20" x="4" y="2" rx="2"/>
-                        <line x1="8" x2="16" y1="6" y2="6"/>
-                        <line x1="8" x2="16" y1="10" y2="10"/>
-                        <line x1="8" x2="16" y1="14" y2="14"/>
-                        <line x1="8" x2="16" y1="18" y2="18"/>
-                    </svg>
-                    Financial Calculator
-                </button>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number *</label>
+                        <input class="form-input" type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="consultationType">Consultation Type *</label>
+                        <select class="form-select" id="consultationType" name="consultationType" required>
+                            <option value="">Select consultation type</option>
+                            <option value="healthcare">Healthcare Planning</option>
+                            <option value="financial">Financial Planning</option>
+                            <option value="integrated">Integrated Healthcare & Financial</option>
+                            <option value="insurance">Insurance Review</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="preferredDate">Preferred Date</label>
+                        <input class="form-input" type="date" id="preferredDate" name="preferredDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="preferredTime">Preferred Time</label>
+                        <select class="form-select" id="preferredTime" name="preferredTime">
+                            <option value="">Select preferred time</option>
+                            <option value="9am-12pm">9:00 AM - 12:00 PM</option>
+                            <option value="12pm-3pm">12:00 PM - 3:00 PM</option>
+                            <option value="3pm-6pm">3:00 PM - 6:00 PM</option>
+                            <option value="6pm-8pm">6:00 PM - 8:00 PM</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="message">Additional Information</label>
+                        <textarea class="form-textarea" id="message" name="message" rows="4" placeholder="Please describe your specific needs or questions..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" data-close="consultation">Cancel</button>
+                        <button type="submit" class="btn-primary">Book Consultation</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
 
-    <!-- Popup Overlay -->
-    <div class="popup-overlay" id="popupOverlay"></div>
-
-    <!-- Book Consultation Popup -->
-    <div class="popup-modal consultation-popup" id="consultationPopup">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h3 class="popup-title">Book Your Consultation</h3>
-                <button class="popup-close" data-close="consultation">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="m18 6-12 12"/>
-                        <path d="m6 6 12 12"/>
-                    </svg>
-                </button>
+        <!-- Financial Calculator Popup -->
+        <div class="popup-modal calculator-popup" id="calculatorPopup">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3 class="popup-title">Healthcare Financial Calculator</h3>
+                    <button class="popup-close" data-close="calculator">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="calculator-content">
+                    <div class="calculator-tabs">
+                        <button class="calc-tab active" data-tab="savings">Health Savings</button>
+                        <button class="calc-tab" data-tab="insurance">Insurance</button>
+                        <button class="calc-tab" data-tab="retirement">Retirement Health</button>
+                    </div>
+                    
+                    <!-- Health Savings Calculator -->
+                    <div class="calc-panel active" id="savingsPanel">
+                        <h4 class="calc-panel-title">Health Savings Account (HSA) Calculator</h4>
+                        <div class="calc-form">
+                            <div class="calc-grid">
+                                <div class="calc-group">
+                                    <label class="calc-label" for="currentAge">Current Age</label>
+                                    <input class="calc-input" type="number" id="currentAge" value="30" min="18" max="100">
+                                </div>
+                                <div class="calc-group">
+                                    <label class="calc-label" for="retirementAge">Retirement Age</label>
+                                    <input class="calc-input" type="number" id="retirementAge" value="65" min="50" max="80">
+                                </div>
+                            </div>
+                            
+                            <div class="calc-grid">
+                                <div class="calc-group">
+                                    <label class="calc-label" for="monthlyContribution">Monthly HSA Contribution</label>
+                                    <input class="calc-input" type="number" id="monthlyContribution" value="300" min="0" step="50">
+                                </div>
+                                <div class="calc-group">
+                                    <label class="calc-label" for="currentBalance">Current HSA Balance</label>
+                                    <input class="calc-input" type="number" id="currentBalance" value="5000" min="0" step="100">
+                                </div>
+                            </div>
+                            
+                            <div class="calc-group">
+                                <label class="calc-label" for="annualReturn">Expected Annual Return (%)</label>
+                                <input class="calc-input" type="number" id="annualReturn" value="7" min="0" max="15" step="0.5">
+                            </div>
+                            
+                            <button class="calc-btn" onclick="calculateHSA()">Calculate HSA Growth</button>
+                            
+                            <div class="calc-results" id="hsaResults">
+                                <div class="result-item">
+                                    <span class="result-label">Total at Retirement:</span>
+                                    <span class="result-value" id="totalAtRetirement">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Total Contributions:</span>
+                                    <span class="result-value" id="totalContributions">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Investment Growth:</span>
+                                    <span class="result-value" id="investmentGrowth">$0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Insurance Calculator -->
+                    <div class="calc-panel" id="insurancePanel">
+                        <h4 class="calc-panel-title">Health Insurance Cost Calculator</h4>
+                        <div class="calc-form">
+                            <div class="calc-grid">
+                                <div class="calc-group">
+                                    <label class="calc-label" for="familySize">Family Size</label>
+                                    <select class="calc-select" id="familySize">
+                                        <option value="1">Individual</option>
+                                        <option value="2">Couple</option>
+                                        <option value="3">Family of 3</option>
+                                        <option value="4">Family of 4</option>
+                                        <option value="5">Family of 5+</option>
+                                    </select>
+                                </div>
+                                <div class="calc-group">
+                                    <label class="calc-label" for="planType">Plan Type</label>
+                                    <select class="calc-select" id="planType">
+                                        <option value="bronze">Bronze</option>
+                                        <option value="silver">Silver</option>
+                                        <option value="gold">Gold</option>
+                                        <option value="platinum">Platinum</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="calc-grid">
+                                <div class="calc-group">
+                                    <label class="calc-label" for="monthlyPremium">Monthly Premium</label>
+                                    <input class="calc-input" type="number" id="monthlyPremium" value="500" min="0" step="25">
+                                </div>
+                                <div class="calc-group">
+                                    <label class="calc-label" for="deductible">Annual Deductible</label>
+                                    <input class="calc-input" type="number" id="deductible" value="3000" min="0" step="500">
+                                </div>
+                            </div>
+                            
+                            <div class="calc-group">
+                                <label class="calc-label" for="expectedMedical">Expected Annual Medical Expenses</label>
+                                <input class="calc-input" type="number" id="expectedMedical" value="2000" min="0" step="250">
+                            </div>
+                            
+                            <button class="calc-btn" onclick="calculateInsurance()">Calculate Insurance Costs</button>
+                            
+                            <div class="calc-results" id="insuranceResults">
+                                <div class="result-item">
+                                    <span class="result-label">Annual Premium Cost:</span>
+                                    <span class="result-value" id="annualPremium">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Out-of-Pocket Maximum:</span>
+                                    <span class="result-value" id="outOfPocket">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Total Annual Cost:</span>
+                                    <span class="result-value" id="totalAnnualCost">$0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Retirement Health Calculator -->
+                    <div class="calc-panel" id="retirementPanel">
+                        <h4 class="calc-panel-title">Retirement Healthcare Cost Calculator</h4>
+                        <div class="calc-form">
+                            <div class="calc-grid">
+                                <div class="calc-group">
+                                    <label class="calc-label" for="retireAge">Retirement Age</label>
+                                    <input class="calc-input" type="number" id="retireAge" value="65" min="50" max="80">
+                                </div>
+                                <div class="calc-group">
+                                    <label class="calc-label" for="lifeExpectancy">Life Expectancy</label>
+                                    <input class="calc-input" type="number" id="lifeExpectancy" value="85" min="70" max="100">
+                                </div>
+                            </div>
+                            
+                            <div class="calc-grid">
+                                <div class="calc-group">
+                                    <label class="calc-label" for="currentHealthSpending">Current Annual Health Spending</label>
+                                    <input class="calc-input" type="number" id="currentHealthSpending" value="4000" min="0" step="500">
+                                </div>
+                                <div class="calc-group">
+                                    <label class="calc-label" for="inflationRate">Healthcare Inflation Rate (%)</label>
+                                    <input class="calc-input" type="number" id="inflationRate" value="5" min="0" max="10" step="0.5">
+                                </div>
+                            </div>
+                            
+                            <button class="calc-btn" onclick="calculateRetirement()">Calculate Retirement Costs</button>
+                            
+                            <div class="calc-results" id="retirementResults">
+                                <div class="result-item">
+                                    <span class="result-label">Total Healthcare Costs in Retirement:</span>
+                                    <span class="result-value" id="totalRetirementCost">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Average Annual Cost:</span>
+                                    <span class="result-value" id="avgAnnualCost">$0</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Recommended Savings Target:</span>
+                                    <span class="result-value" id="savingsTarget">$0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <form class="consultation-form" id="consultationForm">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label class="form-label" for="firstName">First Name *</label>
-                        <input class="form-input" type="text" id="firstName" name="firstName" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="lastName">Last Name *</label>
-                        <input class="form-input" type="text" id="lastName" name="lastName" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="email">Email Address *</label>
-                    <input class="form-input" type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="phone">Phone Number *</label>
-                    <input class="form-input" type="tel" id="phone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="consultationType">Consultation Type *</label>
-                    <select class="form-select" id="consultationType" name="consultationType" required>
-                        <option value="">Select consultation type</option>
-                        <option value="healthcare">Healthcare Planning</option>
-                        <option value="financial">Financial Planning</option>
-                        <option value="integrated">Integrated Healthcare & Financial</option>
-                        <option value="insurance">Insurance Review</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="preferredDate">Preferred Date</label>
-                    <input class="form-input" type="date" id="preferredDate" name="preferredDate">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="preferredTime">Preferred Time</label>
-                    <select class="form-select" id="preferredTime" name="preferredTime">
-                        <option value="">Select preferred time</option>
-                        <option value="9am-12pm">9:00 AM - 12:00 PM</option>
-                        <option value="12pm-3pm">12:00 PM - 3:00 PM</option>
-                        <option value="3pm-6pm">3:00 PM - 6:00 PM</option>
-                        <option value="6pm-8pm">6:00 PM - 8:00 PM</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="message">Additional Information</label>
-                    <textarea class="form-textarea" id="message" name="message" rows="4" placeholder="Please describe your specific needs or questions..."></textarea>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn-secondary" data-close="consultation">Cancel</button>
-                    <button type="submit" class="btn-primary">Book Consultation</button>
-                </div>
-            </form>
         </div>
-    </div>
 
-    <!-- Financial Calculator Popup -->
-    <div class="popup-modal calculator-popup" id="calculatorPopup">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h3 class="popup-title">Healthcare Financial Calculator</h3>
-                <button class="popup-close" data-close="calculator">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="m18 6-12 12"/>
-                        <path d="m6 6 12 12"/>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="calculator-content">
-                <div class="calculator-tabs">
-                    <button class="calc-tab active" data-tab="savings">Health Savings</button>
-                    <button class="calc-tab" data-tab="insurance">Insurance</button>
-                    <button class="calc-tab" data-tab="retirement">Retirement Health</button>
-                </div>
-                
-                <!-- Health Savings Calculator -->
-                <div class="calc-panel active" id="savingsPanel">
-                    <h4 class="calc-panel-title">Health Savings Account (HSA) Calculator</h4>
-                    <div class="calc-form">
-                        <div class="calc-grid">
-                            <div class="calc-group">
-                                <label class="calc-label" for="currentAge">Current Age</label>
-                                <input class="calc-input" type="number" id="currentAge" value="30" min="18" max="100">
-                            </div>
-                            <div class="calc-group">
-                                <label class="calc-label" for="retirementAge">Retirement Age</label>
-                                <input class="calc-input" type="number" id="retirementAge" value="65" min="50" max="80">
-                            </div>
+        <!-- Contact Section -->
+        <div class="contact-main-wrapper" id="contact-section">
+            <div class="contact-container">
+                <div class="contact-grid-layout">
+                    <!-- Contact Information Section -->
+                    <div class="contact-info-section">
+                        <div class="contact-header-area">
+                            <h1 class="contact-main-title">Get In Touch</h1>
+                            <p class="contact-description">
+                                Ready to take control of your health and financial future? Our team is here to help you get started.
+                            </p>
                         </div>
-                        
-                        <div class="calc-grid">
-                            <div class="calc-group">
-                                <label class="calc-label" for="monthlyContribution">Monthly HSA Contribution</label>
-                                <input class="calc-input" type="number" id="monthlyContribution" value="300" min="0" step="50">
+
+                        <div class="contact-details-list">
+                            <div class="contact-visit-info contact-item">
+                                <div class="contact-icon-wrapper pink-bg">
+                                    <i class="fas fa-map-marker-alt contact-location-icon"></i>
+                                </div>
+                                <div class="contact-address-details">
+                                    <h3 class="contact-visit-title">Visit Us</h3>
+                                    <div class="contact-address-text">
+                                        <p class="contact-street">123 Healthcare Plaza</p>
+                                        <p class="contact-district">Coimbatore District</p>
+                                        <p class="contact-state">Tamil Nadu</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="calc-group">
-                                <label class="calc-label" for="currentBalance">Current HSA Balance</label>
-                                <input class="calc-input" type="number" id="currentBalance" value="5000" min="0" step="100">
+
+                            <div class="contact-phone-info contact-item">
+                                <div class="contact-icon-wrapper pink-bg">
+                                    <i class="fas fa-phone contact-phone-icon"></i>
+                                </div>
+                                <div class="contact-phone-details">
+                                    <h3 class="contact-call-title">Call Us</h3>
+                                    <div class="contact-phone-numbers">
+                                        <p class="contact-main-number">Main: +91 7904630017</p>
+                                        <p class="contact-emergency-number">Emergency: 5555</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="calc-group">
-                            <label class="calc-label" for="annualReturn">Expected Annual Return (%)</label>
-                            <input class="calc-input" type="number" id="annualReturn" value="7" min="0" max="15" step="0.5">
-                        </div>
-                        
-                        <button class="calc-btn" onclick="calculateHSA()">Calculate HSA Growth</button>
-                        
-                        <div class="calc-results" id="hsaResults">
-                            <div class="result-item">
-                                <span class="result-label">Total at Retirement:</span>
-                                <span class="result-value" id="totalAtRetirement">$0</span>
+
+                            <div class="contact-email-info contact-item">
+                                <div class="contact-icon-wrapper purple-bg">
+                                    <i class="fas fa-envelope contact-email-icon"></i>
+                                </div>
+                                <div class="contact-email-details">
+                                    <h3 class="contact-email-title">Email Us</h3>
+                                    <p class="contact-email-address">hefinhealthcare@gmail.com</p>
+                                </div>
                             </div>
-                            <div class="result-item">
-                                <span class="result-label">Total Contributions:</span>
-                                <span class="result-value" id="totalContributions">$0</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">Investment Growth:</span>
-                                <span class="result-value" id="investmentGrowth">$0</span>
+
+                            <div class="contact-hours-info contact-item">
+                                <div class="contact-icon-wrapper blue-bg">
+                                    <i class="fas fa-clock contact-hours-icon"></i>
+                                </div>
+                                <div class="contact-hours-details">
+                                    <h3 class="contact-hours-title">Office Hours</h3>
+                                    <div class="contact-schedule">
+                                        <p class="contact-weekday-hours">Mon-Fri: 8:00 AM - 6:00 PM</p>
+                                        <p class="contact-saturday-hours">Sat: 9:00 AM - 2:00 PM</p>
+                                        <p class="contact-sunday-hours">Sun: Closed</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Insurance Calculator -->
-                <div class="calc-panel" id="insurancePanel">
-                    <h4 class="calc-panel-title">Health Insurance Cost Calculator</h4>
-                    <div class="calc-form">
-                        <div class="calc-grid">
-                            <div class="calc-group">
-                                <label class="calc-label" for="familySize">Family Size</label>
-                                <select class="calc-select" id="familySize">
-                                    <option value="1">Individual</option>
-                                    <option value="2">Couple</option>
-                                    <option value="3">Family of 3</option>
-                                    <option value="4">Family of 4</option>
-                                    <option value="5">Family of 5+</option>
+
+                    <!-- Contact Form Section -->
+                    <div class="contact-form-section">
+                        <div class="contact-form-header">
+                            <h2 class="contact-form-title">Send us a message</h2>
+                            <p class="contact-form-subtitle">We'll respond within 24 hours</p>
+                        </div>
+
+                        <form id="contactForm" class="contact-form-container">
+                            <div class="contact-name-row">
+                                <div class="contact-firstname-field">
+                                    <label for="contactFirstName" class="contact-firstname-label">First Name *</label>
+                                    <input type="text" id="contactFirstName" class="contact-firstname-input" required>
+                                </div>
+                                <div class="contact-lastname-field">
+                                    <label for="contactLastName" class="contact-lastname-label">Last Name *</label>
+                                    <input type="text" id="contactLastName" class="contact-lastname-input" required>
+                                </div>
+                            </div>
+
+                            <div class="contact-email-field">
+                                <label for="contactEmail" class="contact-email-field-label">Email *</label>
+                                <input type="email" id="contactEmail" class="contact-email-field-input" required>
+                            </div>
+
+                            <div class="contact-phone-field">
+                                <label for="contactPhone" class="contact-phone-field-label">Phone</label>
+                                <input type="tel" id="contactPhone" class="contact-phone-field-input">
+                            </div>
+
+                            <div class="contact-service-field">
+                                <label for="serviceInterest" class="contact-service-field-label">Service Interest</label>
+                                <select id="serviceInterest" class="contact-service-dropdown">
+                                    <option value="">Select a service</option>
+                                    <option value="general">General Consultation</option>
+                                    <option value="health">Health Services</option>
+                                    <option value="financial">Financial Planning</option>
+                                    <option value="emergency">Emergency Services</option>
+                                    <option value="other">Other</option>
                                 </select>
                             </div>
-                            <div class="calc-group">
-                                <label class="calc-label" for="planType">Plan Type</label>
-                                <select class="calc-select" id="planType">
-                                    <option value="bronze">Bronze</option>
-                                    <option value="silver">Silver</option>
-                                    <option value="gold">Gold</option>
-                                    <option value="platinum">Platinum</option>
-                                </select>
+
+                            <div class="contact-message-field">
+                                <label for="contactMessage" class="contact-message-field-label">Message *</label>
+                                <textarea id="contactMessage" class="contact-message-textarea" placeholder="Tell us about your needs and how we can help..." required></textarea>
                             </div>
-                        </div>
-                        
-                        <div class="calc-grid">
-                            <div class="calc-group">
-                                <label class="calc-label" for="monthlyPremium">Monthly Premium</label>
-                                <input class="calc-input" type="number" id="monthlyPremium" value="500" min="0" step="25">
-                            </div>
-                            <div class="calc-group">
-                                <label class="calc-label" for="deductible">Annual Deductible</label>
-                                <input class="calc-input" type="number" id="deductible" value="3000" min="0" step="500">
-                            </div>
-                        </div>
-                        
-                        <div class="calc-group">
-                            <label class="calc-label" for="expectedMedical">Expected Annual Medical Expenses</label>
-                            <input class="calc-input" type="number" id="expectedMedical" value="2000" min="0" step="250">
-                        </div>
-                        
-                        <button class="calc-btn" onclick="calculateInsurance()">Calculate Insurance Costs</button>
-                        
-                        <div class="calc-results" id="insuranceResults">
-                            <div class="result-item">
-                                <span class="result-label">Annual Premium Cost:</span>
-                                <span class="result-value" id="annualPremium">$0</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">Out-of-Pocket Maximum:</span>
-                                <span class="result-value" id="outOfPocket">$0</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">Total Annual Cost:</span>
-                                <span class="result-value" id="totalAnnualCost">$0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Retirement Health Calculator -->
-                <div class="calc-panel" id="retirementPanel">
-                    <h4 class="calc-panel-title">Retirement Healthcare Cost Calculator</h4>
-                    <div class="calc-form">
-                        <div class="calc-grid">
-                            <div class="calc-group">
-                                <label class="calc-label" for="retireAge">Retirement Age</label>
-                                <input class="calc-input" type="number" id="retireAge" value="65" min="50" max="80">
-                            </div>
-                            <div class="calc-group">
-                                <label class="calc-label" for="lifeExpectancy">Life Expectancy</label>
-                                <input class="calc-input" type="number" id="lifeExpectancy" value="85" min="70" max="100">
-                            </div>
-                        </div>
-                        
-                        <div class="calc-grid">
-                            <div class="calc-group">
-                                <label class="calc-label" for="currentHealthSpending">Current Annual Health Spending</label>
-                                <input class="calc-input" type="number" id="currentHealthSpending" value="4000" min="0" step="500">
-                            </div>
-                            <div class="calc-group">
-                                <label class="calc-label" for="inflationRate">Healthcare Inflation Rate (%)</label>
-                                <input class="calc-input" type="number" id="inflationRate" value="5" min="0" max="10" step="0.5">
-                            </div>
-                        </div>
-                        
-                        <button class="calc-btn" onclick="calculateRetirement()">Calculate Retirement Costs</button>
-                        
-                        <div class="calc-results" id="retirementResults">
-                            <div class="result-item">
-                                <span class="result-label">Total Healthcare Costs in Retirement:</span>
-                                <span class="result-value" id="totalRetirementCost">$0</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">Average Annual Cost:</span>
-                                <span class="result-value" id="avgAnnualCost">$0</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">Recommended Savings Target:</span>
-                                <span class="result-value" id="savingsTarget">$0</span>
-                            </div>
-                        </div>
+
+                            <button type="submit" class="contact-submit-button">Send Message</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        <!-- Footer -->
+        <footer class="footer-main-container">
+            <div class="footer-content-wrapper">
+                <div class="footer-grid-layout">
+                    <!-- Brand Section -->
+                    <div class="footer-brand-section">
+                        <div class="footer-brand-area">
+                            <h2 class="footer-brand-title">HEFIN</h2>
+                            <p class="footer-brand-description">
+                                Bridging healthcare and financial services for a secure, healthy future.
+                            </p>
+                        </div>
 
-    <!-- Auth Modals -->
-    <!-- Sign In Modal -->
-    <div class="modal" id="signInModal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeSignInModal()">&times;</button>
-            <div class="modal-header">
-                <h2 class="modal-title">Welcome Back</h2>
-                <p class="modal-subtitle">Sign in to access your health and financial dashboard</p>
-            </div>
-            <form id="signInForm" onsubmit="handleSignIn(event)">
-                <div class="form-group">
-                    <label class="form-label" for="signInEmail">Email</label>
-                    <input class="form-input" type="email" id="signInEmail" placeholder="Enter your email" required>
-                    <div class="error-message" id="signInEmailError"></div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="signInPassword">Password</label>
-                    <div class="input-group">
-                        <input class="form-input" type="password" id="signInPassword" placeholder="Enter your password" required>
-                        <button type="button" class="input-toggle" onclick="togglePassword('signInPassword', this)">
-                            <i class="fas fa-eye" id="signInPasswordIcon"></i>
-                        </button>
+                        <div class="footer-social-section">
+                            <div class="footer-social-links">
+                                <a href="#" class="footer-social-icon footer-linkedin-link" data-social="linkedin">
+                                    <i class="fab fa-linkedin footer-social-icon-svg"></i>
+                                    <span class="sr-only">LinkedIn</span>
+                                </a>
+                                <a href="#" class="footer-social-icon footer-twitter-link" data-social="twitter">
+                                    <i class="fab fa-twitter footer-social-icon-svg"></i>
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+                                <a href="#" class="footer-social-icon footer-facebook-link" data-social="facebook">
+                                    <i class="fab fa-facebook footer-social-icon-svg"></i>
+                                    <span class="sr-only">Facebook</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="error-message" id="signInPasswordError"></div>
+
+                    <!-- Services Section -->
+                    <div class="footer-services-section">
+                        <h3 class="footer-services-title">Services</h3>
+                        <nav class="footer-services-nav">
+                            <ul class="footer-services-list">
+                                <li class="footer-services-item">
+                                    <a href="#" class="footer-service-link footer-primary-care-link">Primary Care</a>
+                                </li>
+                                <li class="footer-services-item">
+                                    <a href="#" class="footer-service-link footer-health-analytics-link">Health Analytics</a>
+                                </li>
+                                <li class="footer-services-item">
+                                    <a href="#" class="footer-service-link footer-investment-link">Investment Management</a>
+                                </li>
+                                <li class="footer-services-item">
+                                    <a href="#" class="footer-service-link footer-insurance-link">Insurance Solutions</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!-- Company Section -->
+                    <div class="footer-company-section">
+                        <h3 class="footer-company-title">Company</h3>
+                        <nav class="footer-company-nav">
+                            <ul class="footer-company-list">
+                                <li class="footer-company-item">
+                                    <a href="#" class="footer-company-link footer-about-link">About Us</a>
+                                </li>
+                                <li class="footer-company-item">
+                                    <a href="#" class="footer-company-link footer-careers-link">Careers</a>
+                                </li>
+                                <li class="footer-company-item">
+                                    <a href="#" class="footer-company-link footer-press-link">Press</a>
+                                </li>
+                                <li class="footer-company-item">
+                                    <a href="#" class="footer-company-link footer-contact-link">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!-- Legal Section -->
+                    <div class="footer-legal-section">
+                        <h3 class="footer-legal-title">Legal</h3>
+                        <nav class="footer-legal-nav">
+                            <ul class="footer-legal-list">
+                                <li class="footer-legal-item">
+                                    <a href="#" class="footer-legal-link footer-privacy-link">Privacy Policy</a>
+                                </li>
+                                <li class="footer-legal-item">
+                                    <a href="#" class="footer-legal-link footer-terms-link">Terms of Service</a>
+                                </li>
+                                <li class="footer-legal-item">
+                                    <a href="#" class="footer-legal-link footer-hipaa-link">HIPAA Compliance</a>
+                                </li>
+                                <li class="footer-legal-item">
+                                    <a href="#" class="footer-legal-link footer-sec-link">SEC Disclosures</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
-                <div class="forgot-password">
-                    <a href="#" class="link">Forgot password?</a>
+
+                <!-- Copyright Section -->
+                <div class="footer-copyright-section">
+                    <div class="footer-copyright-container">
+                        <p class="footer-copyright-text">© 2025 HEFIN. All rights reserved.</p>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary full-width" id="signInSubmitBtn">
-                    <span id="signInBtnText">Sign In</span>
-                    <div class="spinner hidden" id="signInSpinner"></div>
-                </button>
-                <div class="auth-switch">
-                    <span>Don't have an account? </span>
-                    <a href="#" class="link" onclick="closeSignInModal(); openSignUpModal();">Sign up</a>
+            </div>
+        </footer>
+
+        <!-- Auth Modals -->
+        <!-- Sign In Modal -->
+        <div class="modal" id="signInModal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeSignInModal()">&times;</button>
+                <div class="modal-header">
+                    <h2 class="modal-title">Welcome Back</h2>
+                    <p class="modal-subtitle">Sign in to access your health and financial dashboard</p>
                 </div>
-            </form>
+                <form id="signInForm" onsubmit="handleSignIn(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="signInEmail">Email</label>
+                        <input class="form-input" type="email" id="signInEmail" placeholder="Enter your email" required>
+                        <div class="error-message" id="signInEmailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signInPassword">Password</label>
+                        <div class="input-group">
+                            <input class="form-input" type="password" id="signInPassword" placeholder="Enter your password" required>
+                            <button type="button" class="input-toggle" onclick="togglePassword('signInPassword', this)">
+                                <i class="fas fa-eye" id="signInPasswordIcon"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="signInPasswordError"></div>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#" class="link">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width" id="signInSubmitBtn">
+                        <span id="signInBtnText">Sign In</span>
+                        <div class="spinner hidden" id="signInSpinner"></div>
+                    </button>
+                    <div class="auth-switch">
+                        <span>Don't have an account? </span>
+                        <a href="#" class="link" onclick="closeSignInModal(); openSignUpModal();">Sign up</a>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <!-- Sign Up Modal -->
-    <div class="modal" id="signUpModal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeSignUpModal()">&times;</button>
-            <div class="modal-header">
-                <h2 class="modal-title">Create Your Account</h2>
-                <p class="modal-subtitle">Join us to manage your health and finances securely</p>
+        <!-- Sign Up Modal -->
+        <div class="modal" id="signUpModal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeSignUpModal()">&times;</button>
+                <div class="modal-header">
+                    <h2 class="modal-title">Create Your Account</h2>
+                    <p class="modal-subtitle">Join us to manage your health and finances securely</p>
+                </div>
+                <form id="signUpForm" onsubmit="handleSignUp(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="signUpFirstName">First Name</label>
+                            <input class="form-input" type="text" id="signUpFirstName" placeholder="First name" required>
+                            <div class="error-message" id="firstNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="signUpLastName">Last Name</label>
+                            <input class="form-input" type="text" id="signUpLastName" placeholder="Last name" required>
+                            <div class="error-message" id="lastNameError"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signUpEmail">Email</label>
+                        <input class="form-input" type="email" id="signUpEmail" placeholder="Enter your email" required>
+                        <div class="error-message" id="signUpEmailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signUpPassword">Password</label>
+                        <div class="input-group">
+                            <input class="form-input" type="password" id="signUpPassword" placeholder="Create a password" required>
+                            <button type="button" class="input-toggle" onclick="togglePassword('signUpPassword', this)">
+                                <i class="fas fa-eye" id="signUpPasswordIcon"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength" style="display: none;">
+                            <div class="strength-item" id="lengthCheck">
+                                <span>✓</span> 8+ characters
+                            </div>
+                            <div class="strength-item" id="upperCheck">
+                                <span>✓</span> Uppercase
+                            </div>
+                            <div class="strength-item" id="lowerCheck">
+                                <span>✓</span> Lowercase
+                            </div>
+                            <div class="strength-item" id="numberCheck">
+                                <span>✓</span> Number
+                            </div>
+                        </div>
+                        <div class="error-message" id="signUpPasswordError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="confirmPassword">Confirm Password</label>
+                        <div class="input-group">
+                            <input class="form-input" type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                            <button type="button" class="input-toggle" onclick="togglePassword('confirmPassword', this)">
+                                <i class="fas fa-eye" id="confirmPasswordIcon"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="confirmPasswordError"></div>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="termsAgree" class="checkbox" required>
+                        <label for="termsAgree" class="checkbox-label">
+                            I agree to the <a href="#" class="link">Terms & Conditions</a> and <a href="#" class="link">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <div class="error-message" id="termsError"></div>
+                    <button type="submit" class="btn btn-primary full-width" id="signUpSubmitBtn">
+                        <span id="signUpBtnText">Create Account</span>
+                        <div class="spinner hidden" id="signUpSpinner"></div>
+                    </button>
+                    <div class="auth-switch">
+                        <span>Already have an account? </span>
+                        <a href="#" class="link" onclick="closeSignUpModal(); openSignInModal();">Sign in</a>
+                    </div>
+                </form>
             </div>
-            <form id="signUpForm" onsubmit="handleSignUp(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label" for="firstName">First Name</label>
-                        <input class="form-input" type="text" id="firstName" placeholder="First name" required>
-                        <div class="error-message" id="firstNameError"></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="lastName">Last Name</label>
-                        <input class="form-input" type="text" id="lastName" placeholder="Last name" required>
-                        <div class="error-message" id="lastNameError"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="signUpEmail">Email</label>
-                    <input class="form-input" type="email" id="signUpEmail" placeholder="Enter your email" required>
-                    <div class="error-message" id="signUpEmailError"></div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="signUpPassword">Password</label>
-                    <div class="input-group">
-                        <input class="form-input" type="password" id="signUpPassword" placeholder="Create a password" required>
-                        <button type="button" class="input-toggle" onclick="togglePassword('signUpPassword', this)">
-                            <i class="fas fa-eye" id="signUpPasswordIcon"></i>
-                        </button>
-                    </div>
-                    <div class="password-strength" id="passwordStrength" style="display: none;">
-                        <div class="strength-item" id="lengthCheck">
-                            <span>✓</span> 8+ characters
-                        </div>
-                        <div class="strength-item" id="upperCheck">
-                            <span>✓</span> Uppercase
-                        </div>
-                        <div class="strength-item" id="lowerCheck">
-                            <span>✓</span> Lowercase
-                        </div>
-                        <div class="strength-item" id="numberCheck">
-                            <span>✓</span> Number
-                        </div>
-                    </div>
-                    <div class="error-message" id="signUpPasswordError"></div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="confirmPassword">Confirm Password</label>
-                    <div class="input-group">
-                        <input class="form-input" type="password" id="confirmPassword" placeholder="Confirm your password" required>
-                        <button type="button" class="input-toggle" onclick="togglePassword('confirmPassword', this)">
-                            <i class="fas fa-eye" id="confirmPasswordIcon"></i>
-                        </button>
-                    </div>
-                    <div class="error-message" id="confirmPasswordError"></div>
-                </div>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="termsAgree" class="checkbox" required>
-                    <label for="termsAgree" class="checkbox-label">
-                        I agree to the <a href="#" class="link">Terms & Conditions</a> and <a href="#" class="link">Privacy Policy</a>
-                    </label>
-                </div>
-                <div class="error-message" id="termsError"></div>
-                <button type="submit" class="btn btn-primary full-width" id="signUpSubmitBtn">
-                    <span id="signUpBtnText">Create Account</span>
-                    <div class="spinner hidden" id="signUpSpinner"></div>
-                </button>
-                <div class="auth-switch">
-                    <span>Already have an account? </span>
-                    <a href="#" class="link" onclick="closeSignUpModal(); openSignInModal();">Sign in</a>
-                </div>
-            </form>
         </div>
     </div>
 

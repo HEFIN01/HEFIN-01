@@ -1,0 +1,11 @@
+type Record = record {
+id : nat;
+category : text;
+description : text;
+value : nat;
+};
+
+service : {
+addRecord: (principal, text, text, nat) -> ();
+getRecords: (principal) -> (vec Record);
+}

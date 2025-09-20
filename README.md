@@ -49,4 +49,16 @@ Encrypted Data: Implement data encryption within the canister to ensure maximum 
 
 Inter-Canister Communication: Extend the project with multiple canisters (e.g., a separate AI canister for analytics) that can securely communicate with the main backend.
 
-Claims Processing Logic: Add more complex Motoko logic to simulate the automated claims processing and fraud detection described in the project concept.
+Claims Processing Logic: Add more complex Motoko logic to simulate the automated claims processing and fraud detection described in the project concept
+.# HEFIN Backend (Motoko canister + Mongo integration)
+
+## Prereqs
+- DFINITY SDK (`dfx`) installed
+- Node 18+ and npm
+- Docker & docker-compose (for local Mongo + integration service)
+
+## Local canister build & deploy (local replica)
+1. Start local replica
+   ```bash
+   dfx start --background
+

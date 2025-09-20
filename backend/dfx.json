@@ -1,0 +1,13 @@
+{
+  "canisters": {
+    "backend": {
+      "main": "src/backend/main.mo",
+      "type": "motoko"
+    },
+    "ui": {
+      "main": "src/ui",
+      "type": "assets"
+    }
+  },
+  "dfx": "0.15.1"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "hefin-integration-service",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@dfinity/agent": "^0.12.0",
+    "@dfinity/identity-ed25519": "^0.12.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "mongodb": "^5.8.0",
+    "node-fetch": "^3.4.0"
+  }
+}

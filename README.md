@@ -61,4 +61,22 @@ Claims Processing Logic: Add more complex Motoko logic to simulate the automated
 1. Start local replica
    ```bash
    dfx start --background
+   
+---
+
+## 8) Suggestions & next steps
+- Add capability-based tokens: produce signed short-lived tokens from the canister (or an admin workflow) and require them at the Node service. Or use a two-way attestation: the canister stores a known admin principal and the node signs messages using a key registered on-chain.
+- For AI models: keep training & inference off-chain (Node service or GPU cluster), store model outputs or model hashes/pointers in Mongo, and store justification/pointer on-chain.
+- Add tests: unit tests for Motoko (moc tests) and integration tests for Node<->Canister (use `agent-js` in test harness).
+- Audit for privacy: encrypted fields in Mongo; store only pointers and cryptographic hashes on-chain.
+
+---
+
+If you want, I can:
+- generate a full GitHub repo file tree with all files populated,
+- provide a complete `dfx.json` tuned for a specific dfx version,
+- or convert the Node service to CommonJS if your environment requires it.
+
+Which of those would you like me to produce next?
+
 

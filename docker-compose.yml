@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo:6
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+  integration:
+    build:
+      context: ./integration-service
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+      - MONGO_DB=hefin
+      - CANISTER_ID=REPLACE_WITH_CANISTER_ID
+      - DFINITY_KEY_PATH=/data/dfx_identity.pem
+    volumes:
+      - ./integration-service/dfx_identity.pem:/data/dfx_identity.pem:rw
+    depends_on:
+      - mongo
+    ports:
+      - "3000:3000"
+
+volumes:
+  mongo-data:

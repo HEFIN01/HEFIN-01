@@ -1,29 +1,30 @@
 {
   "canisters": {
-    "hefin_backend": {
-      "main": "hefin_backend/main.mo",
-      "type": "motoko",
-      "candid": "hefin_backend/hefin.did"
+    "hefin": {
+      "main": "backend/main.mo",
+      "type": "motoko"
     },
-    "hefin_frontend": {
-      "dependencies": [
-        "hefin_backend"
-      ],
-      "frontend": {
-        "entrypoint": "hefin_frontend/index.html"
-      },
-      "source": [
-        "hefin_frontend/assets",
-        "hefin_frontend/src"
-      ],
-      "type": "assets"
+    "user_data_canister": {
+      "main": "backend/user_data_canister.mo",
+      "type": "motoko"
+    },
+    "health_records_canister": {
+      "main": "backend/health_records_canister.mo",
+      "type": "motoko"
+    },
+    "financial_records_canister": {
+      "main": "backend/financial_records_canister.mo",
+      "type": "motoko"
+    },
+    "ai_model_canister": {
+      "main": "backend/ai_model_canister.mo",
+      "type": "motoko"
+    },
+    "insurance_claims_canister": {
+      "main": "backend/insurance_claims_canister.mo",
+      "type": "motoko"
     }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
+  }
+}
   "version": 1
 }

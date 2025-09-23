@@ -11,6 +11,9 @@ hefin_backend: A Motoko canister that acts as the backend, storing and managing 
 hefin_frontend: An asset canister that serves the web UI (HTML, CSS, and JavaScript).
 
 Note on Database: On the Internet Computer, canisters act as both the application logic and the data store. This project uses Motoko's stable data structures for orthogonal persistence, eliminating the need for an external database like MongoDB and aligning with the principles of decentralization.
+Future Roadmap:
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/768b8e0b-5d75-40a0-9c28-bbfbf3ec67bf" />
+
 
 Development and Deployment Instructions
 Prerequisites

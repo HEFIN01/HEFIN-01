@@ -2,6 +2,8 @@ HEFIN: Decentralized Health and Finance Platform
 This repository contains a conceptual proof-of-concept for the HEFIN platform, a decentralized application (dapp) built on the Internet Computer Protocol (ICP). The platform aims to provide a secure, user-centric experience for managing health and financial data.
 
 Architecture
+<img width="2787" height="1755" alt="image" src="https://github.com/user-attachments/assets/2daeb987-74dc-49ea-b73d-466f8059de17" />
+
 The application consists of two main canisters:
 
 hefin_backend: A Motoko canister that acts as the backend, storing and managing user data.
@@ -78,5 +80,6 @@ If you want, I can:
 - or convert the Node service to CommonJS if your environment requires it.
 
 Which of those would you like me to produce next?
+
 
 
